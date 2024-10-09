@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model booking {
+  bookingId Int      @unique(map: "bookingId") @default(autoincrement())
+  startTime DateTime @db.Time(0)
+  endTime   DateTime @db.Time(0)
+  date      DateTime @db.Date
+  purpose   String   @db.VarChar(255)
+  roomId    Int
+  userId    Int
+
+  @@id([bookingId, roomId, userId])
+}
+
+model cancellation {
+  cancelId   Int      @unique(map: "cancelId") @default(autoincrement())
+  reason     String   @db.VarChar(255)
+  cancelDate DateTime @db.Date
+  userId     Int
+  bookingId  Int
+
+  @@id([cancelId, userId, bookingId])
+}
+
+model room {
+  roomId       Int    @id @unique(map: "roomId") @default(autoincrement())
+  roomName     String @db.VarChar(255)
+  roomDesc     String @db.VarChar(255)
+  roomCapacity Int
+  roomType     String @db.VarChar(255)
+  picLink      String @db.VarChar(255)
+}
+
+model user {
+  userId     Int    @id @unique(map: "userId") @default(autoincrement())
+  username   String @db.VarChar(255)
+  email      String @db.VarChar(255)
+  password   String @db.VarChar(255)
+  phoneNum   String @db.VarChar(255)
+  department String @db.VarChar(255)
+  role       String @db.VarChar(255)
+}
