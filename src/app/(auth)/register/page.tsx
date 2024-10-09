@@ -1,16 +1,24 @@
-import Image from "next/image"
-
-
 const Register = () => {
   return (
-    <div className='p-6 space-y-4 grid-cols-2'>
-        <h1 className='text-2xl font-bold text-gray-900'>Create an account</h1>
-        <Image height={1500}
-        alt="Picture of the author" 
-        width={1500}
-        src="https://wallpapers.com/images/featured/picture-en3dnh2zi84sgt3t.webp"/>
+    <div className="p-6 space-y-4 grid grid-cols-2 items-center">
+      <img
+          className="bg-blue-100"
+          src="https://i.ibb.co/jvpyC0p/login-mdr.jpg"
+          alt="login-mdr"
+        />
+      <h1 className="text-2xl font-bold text-gray-900 bg-yellow-50 h-full">Create an Account</h1>
     </div>
-  )
+  );
 }
 
 export default Register
+
+/*<div className="container rounded-lg">
+        <img
+          src="https://i.ibb.co/jvpyC0p/login-mdr.jpg"
+          alt="login-mdr"
+        />
+      </div>
+      <h1 className="text-2xl font-bold text-gray-900 pl-6 pt-0">
+        Create an account
+      </h1>*/
