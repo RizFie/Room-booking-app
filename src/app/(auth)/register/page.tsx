@@ -12,7 +12,7 @@ const Register = () => {
       </div>
       <div className="container">
         <h1 className="text-2xl font-bold text-gray-600 pl-5 pt-5">Register</h1>
-        <div className="px-5">
+        <div className="px-7">
           <FormRegister/>
         </div>
       </div>
