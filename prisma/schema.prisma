@@ -39,22 +39,22 @@ model room {
 }
 
 model user {
-  userId     Int    @id @unique(map: "userId") @default(autoincrement())
-  username   String @db.VarChar(255)
-  email      String @db.VarChar(255)
-  password   String @db.VarChar(255)
-  phoneNum   String @db.VarChar(255)
-  department String @db.VarChar(255)
-  role       String @db.VarChar(255) @default("user")
+  userId     Int      @id @unique(map: "userId") @default(autoincrement())
+  fullname   String   @db.VarChar(255)
+  email      String   @db.VarChar(255)
+  password   String   @db.VarChar(255)
+  phoneNum   String   @db.VarChar(255)
+  department String   @db.VarChar(255)
+  role       String   @default("user") @db.VarChar(255)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
 
 model verificationToken {
   identifier String
-  token String
-  expires DateTime
+  token      String
+  expires    DateTime
 
-  @@unique([identifier,token])
+  @@unique([identifier, token])
   @@map("verificationtokens")
 }
