@@ -5,8 +5,8 @@ const AuthLayout = ( {children}:{children: React.ReactNode} ) => {
         className="flex flex-col items-center justify-between px-6 py-8 
                     mx-auto h-screen"
       >
-        <div
-          className="w-full bg-white rounded-lg shadow mt-0
+        <div id="authShadow"
+          className="w-full bg-white rounded-lg mt-0
                       max-w-md"
         >
           {children}

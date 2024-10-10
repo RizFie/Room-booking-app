@@ -1,12 +1,16 @@
 const Register = () => {
   return (
-    <div className="p-6 space-y-4 grid grid-cols-2 items-center">
-      <img
-          className="bg-blue-100"
+    <div className="grid grid-cols-2 overflow-hidden grid-flow-col">
+      <div className="container rounded-l-lg h-full">
+        <img
+          className="max-w-full max-h-full object-cover rounded-l-lg"
           src="https://i.ibb.co/jvpyC0p/login-mdr.jpg"
           alt="login-mdr"
         />
-      <h1 className="text-2xl font-bold text-gray-900 bg-yellow-50 h-full">Create an Account</h1>
+      </div>
+      <h1 className="text-2xl font-bold text-gray-600 pl-5 pt-5">
+        Register
+      </h1>
     </div>
   );
 }
@@ -15,6 +19,7 @@ export default Register
 
 /*<div className="container rounded-lg">
         <img
+          className="max-w-full object-cover"
           src="https://i.ibb.co/jvpyC0p/login-mdr.jpg"
           alt="login-mdr"
         />
