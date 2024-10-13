@@ -41,7 +41,7 @@ model room {
 model user {
   userId     Int      @id @unique(map: "userId") @default(autoincrement())
   fullname   String   @db.VarChar(255)
-  email      String   @db.VarChar(255)
+  email      String   @db.VarChar(255) @unique
   password   String   @db.VarChar(255)
   phoneNum   String   @db.VarChar(255)
   department String   @db.VarChar(255)

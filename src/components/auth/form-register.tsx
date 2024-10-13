@@ -4,21 +4,26 @@ import Link from "next/link"
 import { signUpCredentials } from "@/lib/action"
 import { useFormState } from "react-dom"
 import toast from "react-hot-toast"
-import { useEffect } from "react"
+import { redirect } from "next/navigation"
+import { useEffect, useTransition } from "react"
 
 
 const FormRegister = () => {
 
     const [state, formAction] = useFormState(signUpCredentials, null);
+    const [, startTransition] = useTransition();
 
+    //usEffect to monitor changes of message state from formAction 
     useEffect(() => {
         if(state?.message == "Registration failed"){
-            toast.error(state.message)
+            toast.error(state.message);
         }
         else if((state?.message == "Registration successfull")){
-            toast.success("Registration succcessful")
+          toast.success("Registration succcessful");
         }
     }, [state?.message]);
+
+    
 
   return (
     
