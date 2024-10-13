@@ -1,5 +1,10 @@
 import { object, string } from "zod";
 
+export const loginSchema = object({
+    email: string().email("Invalid email"),
+    password: string().min(6,"Password must be more than 6 characters").max(15, "Password must be less than 15 characters"),
+});
+
 export const registerSchema = object({
     fullname: string().min(1,"No name inserted"),
     email: string().email("Invalid email"),

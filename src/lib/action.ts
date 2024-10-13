@@ -1,10 +1,12 @@
 "use server";
 
 import { prisma } from "./prisma";
-import { registerSchema } from "./zod";
+import { loginSchema, registerSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
-import { redirect } from "next/navigation";
+import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
 
+//Sign Up Form Action
 export const signUpCredentials = async (
   prevState: unknown,
   formData: FormData
@@ -40,3 +42,32 @@ export const signUpCredentials = async (
 
   return {code: 200, message: "Registration successfull"}
 };
+
+//Sign In Form Action
+export const signInCredentials = async (prevState: unknown ,formData: FormData) => {
+  const validatedFields = loginSchema.safeParse(
+    Object.fromEntries(formData.entries())
+  );
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  const { email, password } = validatedFields.data;
+
+  try {
+    await signIn("credentials", {email, password, redirectTo:"/dashboard"})
+  } catch (error) {
+    if(error instanceof AuthError){
+      switch(error.type) {
+        case "CredentialsSignin":
+          return {message: "Invalid login credentials"}
+        default:
+          return {message: "Oh no, something went wrong, please try again."}
+      }
+    }
+    throw error;
+  }
+}

@@ -11,19 +11,16 @@ import { useEffect, useTransition } from "react"
 const FormRegister = () => {
 
     const [state, formAction] = useFormState(signUpCredentials, null);
-    const [, startTransition] = useTransition();
 
-    //usEffect to monitor changes of message state from formAction 
+    //useEffect to monitor changes of code returned from formAction 
     useEffect(() => {
-        if(state?.message == "Registration failed"){
+        if(state?.code == 500){
             toast.error(state.message);
         }
-        else if((state?.message == "Registration successfull")){
-          toast.success("Registration succcessful");
+        else if((state?.code == 200)){
+          toast.success(state.message);
         }
-    }, [state?.message]);
-
-    
+    }, [state?.code]);
 
   return (
     
@@ -31,7 +28,7 @@ const FormRegister = () => {
 
         <div className="mt-4">
             <label htmlFor="fullname" className="block mb-2 text-md font-medium text-gray-600">Full Name</label>
-            <input type="text" name="fullname" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
+            <input id="fullname" type="text" name="fullname" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">
                 <span className="text-sm text-red-500">{state?.error?.fullname}</span>
             </div>
@@ -39,7 +36,7 @@ const FormRegister = () => {
 
         <div className="mt-4">
             <label htmlFor="email" className=" block mb-2 text-md font-medium text-gray-600">Email</label>
-            <input type="email" name="email" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
+            <input id="email" type="email" name="email" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">
                 <span className=" text-sm text-red-500 mt-2">{state?.error?.email}</span>
             </div>
@@ -47,7 +44,7 @@ const FormRegister = () => {
 
         <div className="mt-4">
             <label htmlFor="phone" className=" block mb-2 text-md font-medium text-gray-600">Phone Number</label>
-            <input type="tel" name="phone" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
+            <input id="phone" type="tel" name="phone" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">
                 <span className=" text-sm text-red-500 mt-2">{state?.error?.phone}</span>
             </div>
@@ -55,7 +52,7 @@ const FormRegister = () => {
 
         <div className="mt-4">
             <label htmlFor="department" className=" block mb-2 text-md font-medium text-gray-600">Department</label>
-            <input type="text" name="department" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
+            <input id="department" type="text" name="department" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">
                 <span className=" text-sm text-red-500 mt-2">{state?.error?.department}</span>
             </div>
@@ -63,7 +60,7 @@ const FormRegister = () => {
 
         <div className="mt-4">
             <label htmlFor="password" className=" block mb-2 text-md font-medium text-gray-600">Password</label>
-            <input type="password" name="password" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
+            <input id="password" type="password" name="password" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">
                 <span className=" text-sm text-red-500 mt-2">{state?.error?.password}</span>
             </div>
@@ -71,7 +68,7 @@ const FormRegister = () => {
 
         <div className="mt-4">
             <label htmlFor="confirmPass" className=" block mb-2 text-md font-medium text-gray-600">Confirm Password</label>
-            <input type="password" name="confirmPass" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
+            <input id="confirmPass" type="password" name="confirmPass" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">
                 <span className="text-sm text-red-500 mt-2">{state?.error?.confirmPass}</span>
             </div>
