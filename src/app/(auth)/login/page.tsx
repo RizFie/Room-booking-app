@@ -2,8 +2,8 @@ import FormLogin from "@/components/auth/form-login"
 
 const Login = () => {
   return (
-    <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-5">
-      <div className="container rounded-lg h-[90%] self-center w-full mx-7 bg-purple-500">
+    <div className="grid grid-cols-2 overflow-hidden grid-flow-col w-full gap-1">
+      <div className="container rounded-lg h-[90%] self-center w-full justify-self-center ml-7">
         <img
           className="max-w-full h-full max-h-full w-full object-cover rounded-lg"
           src="https://i.ibb.co/jvpyC0p/login-mdr.jpg"

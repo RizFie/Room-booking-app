@@ -7,7 +7,7 @@ const AuthLayout = ( {children}:{children: React.ReactNode} ) => {
                     mx-auto h-screen"
       >
         <div id="authShadow"
-          className="w-[60%] bg-white rounded-lg mt-0"
+          className="max-w-[50%] bg-white rounded-lg mt-0"
         >
           {children}
         </div>
