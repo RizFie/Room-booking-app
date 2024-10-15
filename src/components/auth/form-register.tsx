@@ -4,7 +4,6 @@ import Link from "next/link"
 import { signUpCredentials } from "@/lib/action"
 import { useFormState } from "react-dom"
 import toast from "react-hot-toast"
-import { redirect } from "next/navigation"
 import { useEffect, useTransition } from "react"
 
 
@@ -20,7 +19,7 @@ const FormRegister = () => {
         else if((state?.code == 200)){
           toast.success(state.message);
         }
-    }, [state?.code]);
+    });
 
   return (
     

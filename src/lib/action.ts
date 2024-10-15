@@ -37,10 +37,10 @@ export const signUpCredentials = async (
       },
     });
   } catch (error) {
-    return { code: 500, message: "Registration failed" };
+    return { code: 500, message: "Registration failed, email may have been registered." };
   }
 
-  return {code: 200, message: "Registration successfull"}
+  return {code: 200, message: "Registration successfull."}
 };
 
 //Sign In Form Action
@@ -58,7 +58,7 @@ export const signInCredentials = async (prevState: unknown ,formData: FormData) 
   const { email, password } = validatedFields.data;
 
   try {
-    await signIn("credentials", {email, password, redirectTo:"/dashboard"})
+    await signIn("credentials", {email, password, redirectTo:"/main"})
   } catch (error) {
     if(error instanceof AuthError){
       switch(error.type) {

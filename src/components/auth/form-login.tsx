@@ -16,7 +16,7 @@ const FormLogin = () => {
         if(state?.message){
             toast.error(state.message);
         }
-    }, [state?.message]);
+    });
 
   return (
     

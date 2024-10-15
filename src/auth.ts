@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma"
 import Credentials from "next-auth/providers/credentials"
 import { loginSchema } from "./lib/zod"
 import { compareSync } from "bcrypt-ts"
+import { NextResponse } from "next/server"
  
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -40,4 +41,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
     })
   ],
+  //callback
+  callbacks:{
+    authorized({auth,request: {nextUrl}}){
+      const isLoggedIn = !!auth?.user;
+      const ProtectedRoutes = ["/main",];
+
+      if(!isLoggedIn && ProtectedRoutes.includes(nextUrl.pathname)){
+        return NextResponse.redirect(new URL("/login",nextUrl));
+      }
+
+      if(isLoggedIn && nextUrl.pathname.startsWith("/login")){
+        return NextResponse.redirect(new URL("/main",nextUrl));
+      }
+
+      return true;
+    }
+  }
 })
