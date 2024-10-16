@@ -37,6 +37,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
         if(!passwordMatch) return null;
 
+        console.log(user);
+        console.log("User Object: ", user); // Inspect the user object
+        console.log("User Email: ", user.email); // Check if email exists
         return user;
       }
     })
@@ -56,6 +59,21 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
 
       return true;
+    },
+
+    jwt({ token, user }) {
+      if (user) {
+        token.email = user.email ?? "";
+        token.role = user.role;
+      }
+      return token;
+    },
+
+    session({ session, token }) {
+      session.user.id = token.sub;
+      session.user.email = token.email;
+      session.user.role = token.role;
+      return session;
     }
   }
 })
