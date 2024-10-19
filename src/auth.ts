@@ -38,8 +38,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         if(!passwordMatch) return null;
 
         console.log(user);
-        console.log("User Object: ", user); // Inspect the user object
-        console.log("User Email: ", user.email); // Check if email exists
         return user;
       }
     })
