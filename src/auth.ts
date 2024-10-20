@@ -61,6 +61,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
     jwt({ token, user }) {
       if (user) {
+        token.picture = user.avatar;
         token.name = user.fullname;
         token.role = user.role;
       }
@@ -68,6 +69,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     session({ session, token }) {
+      session.user.image = token.picture;
       session.user.id = token.sub;
       session.user.name = token.name;
       session.user.role = token.role;

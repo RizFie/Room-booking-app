@@ -1,14 +1,20 @@
 import Link from "next/link"
 import Image from "next/image"
 
-const Navbar = () => {
+interface User {
+  name: string | undefined
+  avatar: string | null | undefined
+}
+
+const Navbar = ({avatar, name}: User) => {
+
   return (
     <nav className="bg-white border-b-2 border-b-blue-700 shadow-md">
       <div className="max-w-full flex items-center justify-between p-2">
         <div className="flex items-center gap-3">
-          <div className="container bg-gray-400 w-[40px] h-[40px] rounded-full border-blue-700 border-2">
+          <div className="container bg-gray-400 w-[40px] h-[40px] rounded-full border-blue-700 border-2 ">
             <Image
-              src=""
+              src={avatar || "https://i.ibb.co/V3Pd7T3/avatar.png"}
               alt="avatar"
               width={40}
               height={40}
@@ -17,7 +23,7 @@ const Navbar = () => {
             />
           </div>
           <h2 className="font-semibold justify-self-center text-blue-950">
-            Username
+            {name}
           </h2>
         </div>
         <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
