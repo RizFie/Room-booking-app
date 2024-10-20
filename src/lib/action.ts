@@ -34,6 +34,7 @@ export const signUpCredentials = async (
         department: department,
         password: hashedPassword,
         role: "user",
+        avatar: "",
       },
     });
   } catch (error) {
