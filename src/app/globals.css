@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    background-color: rgb(243 244 246);
+    background-color: rgb(212, 212, 212);
 }
 
 #authShadow{

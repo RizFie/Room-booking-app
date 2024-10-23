@@ -28,7 +28,7 @@ const Navbar = ({avatar, name}: User) => {
         </div>
         <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
           <li className="hover:border-b-4 hover:border-blue-700">
-            <Link href="/main">Home</Link>
+            <Link href="/main/home">Home</Link>
           </li>
           <li className="hover:border-b-4 hover:border-blue-700">Cancelled</li>
           <li className="hover:border-b-4 hover:border-blue-700">Bookings</li>

@@ -1,8 +1,7 @@
 import { auth } from "@/auth"
 import Navbar from "@/components/navbar";
-import { prisma } from "@/lib/prisma";
 
-const Main = async () => {
+const MainLayout = async ({children}:{children: React.ReactNode}) => {
 
     const session = await auth();
     const fullname = session?.user.name;
@@ -13,13 +12,11 @@ const Main = async () => {
     console.log(secName);
 
   return (
-    <>
-      <Navbar avatar={avatar} name={secName}/>
-      <div className="bg-yellow-100">
-          Welcome back: <span>{session?.user.name}</span>
-      </div>
-    </>
+    <div>
+        <Navbar avatar={avatar} name={secName}/>
+        {children}
+    </div>
   )
 }
 
-export default Main
+export default MainLayout
