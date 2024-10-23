@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import { auth,signOut } from "@/auth"
 
 interface User {
   name: string | undefined
@@ -8,9 +9,13 @@ interface User {
 
 const Navbar = ({avatar, name}: User) => {
 
+  const session = auth();
+
   return (
     <nav className="bg-white border-b-2 border-b-blue-700 shadow-md">
       <div className="max-w-full flex items-center justify-between p-2">
+
+        {/*Item 1*/}
         <div className="flex items-center gap-3">
           <div className="container bg-gray-400 w-[40px] h-[40px] rounded-full border-blue-700 border-2 ">
             <Image
@@ -26,6 +31,8 @@ const Navbar = ({avatar, name}: User) => {
             {name}
           </h2>
         </div>
+
+        {/*Item 2*/}
         <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
           <li className="hover:border-b-4 hover:border-blue-700">
             <Link href="/main/home">Home</Link>
@@ -33,6 +40,14 @@ const Navbar = ({avatar, name}: User) => {
           <li className="hover:border-b-4 hover:border-blue-700">Cancelled</li>
           <li className="hover:border-b-4 hover:border-blue-700">Bookings</li>
         </ul>
+
+        {/*Item 3*/}
+        <form action={ async () => {
+          "use server"
+          await signOut({redirectTo:"/login"});
+        }}>
+          <button type="submit" className="border-2 border-red-500 transition-all text-black text-base font-medium px-4 py-2 rounded-md hover:bg-red-700 hover:text-white">Logout</button>
+        </form>
       </div>
     </nav>
   );
