@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { auth,signOut } from "@/auth"
+import { signOut } from "@/auth"
 
 interface User {
   name: string | undefined
@@ -8,8 +8,6 @@ interface User {
 }
 
 const Navbar = ({avatar, name}: User) => {
-
-  const session = auth();
 
   return (
     <nav className="bg-white border-b-2 border-b-blue-700 shadow-md">
