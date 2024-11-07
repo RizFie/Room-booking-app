@@ -29,12 +29,12 @@ model cancellation {
   @@id([cancelId, userId, bookingId])
 }
 
-model room {
-  roomId       Int    @id @unique(map: "roomId") @default(autoincrement())
-  roomName     String @db.VarChar(255)
-  roomDesc     String @db.VarChar(255)
-  roomCapacity Int
-  roomType     String @db.VarChar(255)
+model place {
+  placeId       Int    @id @unique(map: "placeId") @default(autoincrement())
+  placeName     String @db.VarChar(255)
+  placeDesc     String @db.VarChar(255)
+  placeCapacity Int
+  placeType     String @db.VarChar(255)
   picLink      String @db.VarChar(255)
 }
 
