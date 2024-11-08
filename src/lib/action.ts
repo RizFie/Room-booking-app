@@ -66,7 +66,7 @@ export const signInCredentials = async (prevState: unknown ,formData: FormData) 
         case "CredentialsSignin":
           return {message: "Invalid login credentials"}
         default:
-          return {message: "Oh no, something went wrong, please try again."}
+          return {message: "Invalid login credentials"}
       }
     }
     throw error;
