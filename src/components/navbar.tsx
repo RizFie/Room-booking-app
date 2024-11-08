@@ -10,7 +10,7 @@ interface User {
 const Navbar = ({avatar, name}: User) => {
 
   return (
-    <nav className="bg-white border-b-2 border-b-blue-700 shadow-md">
+    <nav className="bg-white border-b-2 border-black shadow-md">
       <div className="max-w-full flex items-center justify-between p-2">
 
         {/*Item 1*/}

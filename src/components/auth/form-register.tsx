@@ -2,24 +2,25 @@
 
 import Link from "next/link"
 import { signUpCredentials } from "@/lib/action"
-import { useFormState } from "react-dom"
 import toast from "react-hot-toast"
-import { useEffect, useTransition } from "react"
+import { useActionState, useEffect, useTransition } from "react"
 
 
 const FormRegister = () => {
 
-    const [state, formAction] = useFormState(signUpCredentials, null);
+    const [state, formAction] = useActionState(signUpCredentials, null);
 
     //useEffect to monitor changes of code returned from formAction 
     useEffect(() => {
         if(state?.code == 500){
             toast.error(state.message);
+            state.code = 0;
         }
         else if((state?.code == 200)){
           toast.success(state.message);
+          state.code = 0;
         }
-    });
+    },[state?.code]);
 
   return (
     

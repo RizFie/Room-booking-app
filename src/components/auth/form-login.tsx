@@ -2,21 +2,21 @@
 
 import Link from "next/link"
 import { signInCredentials } from "@/lib/action"
-import { useFormState } from "react-dom"
 import toast from "react-hot-toast"
-import { useEffect } from "react"
+import { useActionState, useEffect } from "react"
 
 
 const FormLogin = () => {
 
-    const [state, formAction] = useFormState(signInCredentials, null);
+    const [state, formAction] = useActionState(signInCredentials, null);
 
     //useEffect to monitor changes of code returned from formAction 
     useEffect(() => {
         if(state?.message){
             toast.error(state.message);
+            state.message = "";
         }
-    });
+    },[state?.message]);
 
   return (
     
