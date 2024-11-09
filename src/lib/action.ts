@@ -3,7 +3,7 @@
 import { prisma } from "./prisma";
 import { loginSchema, registerSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 
 //Sign Up Form Action
@@ -56,10 +56,23 @@ export const signInCredentials = async (prevState: unknown ,formData: FormData) 
     };
   }
 
-  const { email, password } = validatedFields.data;
+  console.log(validatedFields)
+  const { email, password} = validatedFields.data;
+
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+    select: {
+      role: true,
+    }
+  })
+
+  console.log(user);
+  const redirectUrl = user && user.role === "admin" ? "/admin" : "/main/home";
 
   try {
-    await signIn("credentials", {email, password, redirectTo:"/main/home"})
+    await signIn("credentials", {email, password, redirectTo: redirectUrl})
   } catch (error) {
     if(error instanceof AuthError){
       switch(error.type) {
@@ -72,3 +85,10 @@ export const signInCredentials = async (prevState: unknown ,formData: FormData) 
     throw error;
   }
 }
+
+//Sign Out Action
+const SignOut = async () => {
+  await signOut({redirectTo:"/login"});
+}
+
+export default SignOut

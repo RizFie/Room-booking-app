@@ -1,7 +1,11 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
-import { signOut } from "@/auth"
-import logo from "../../public/logo/etempah.png"
+import logoEtempah from "../../public/logo/etempah.png"
+import SignOut from "@/lib/action"
+import { usePathname } from "next/navigation"
+import logoMdr from "../../public/logo/Mdr.svg"
 
 interface User {
   name: string | undefined
@@ -11,27 +15,41 @@ interface User {
 
 const Navbar = ({avatar, name, role}: User) => {
 
+  const pathname = usePathname();
+
   return (
-    <nav className="bg-white border-b-2 border-black shadow-md">
+    <nav className="bg-white border-b-2 border-blue-600 shadow-md">
       <div className="max-w-full flex items-center justify-between p-2">
 
         {/*Item 1*/}
-          <div className="flex-0 container w-[180px] h-[60px] overflow-hidden flex justify-center items-center">
+          <div className="flex-0 container w-[180px] h-[60px] overflow-hidden flex justify-center ">
             <Image
-              src={logo}
+              src={logoEtempah}
               alt="e-tempah"
-              className="object-contain w-full h-auto"
+              className="object-cover w-full h-auto"
+              priority
+            />
+          </div>
+          <div className="flex-0 container w-[60px] h-[60px] flex justify-center ">
+            <Image
+              src={logoMdr}
+              alt="Logo Majlis Daerah Raub"
+              className="w-full h-auto scale-[1.7]"
               priority
             />
           </div>
 
         {/*Item 2*/}
         <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
-          <li id="li1" className="hover:cursor-pointer hover:text-blue-700 transition-all">
+          <li id="li1" className={`${pathname === "/main/home" ? "text-blue-800" : ""}`}>
             <Link href="/main/home">Home</Link>
           </li>
-          <li id="li2" className="">Cancelled</li>
-          <li id="li3" className="">Bookings</li>
+          <li id="li2" className={`${pathname === "/main/reserve" ? "text-blue-800" : ""}`}>
+            <Link href="/main/reserve">Reserve</Link>
+          </li>
+          <li id="li3" className={`${pathname === "/main/cancel" ? "text-blue-800" : ""}`}>
+            <Link href="/main/cancel">Cancel</Link>
+          </li>
         </ul>
 
         {/*Item 3 LOGOUT BUTTON*/}
@@ -41,6 +59,7 @@ const Navbar = ({avatar, name, role}: User) => {
             {name}<br/>
             {role}
           </h2>
+          
           <div className="container w-[40px] h-[40px] rounded-full border-blue-700 border-2 ">
             <Image
               src={avatar || "https://i.ibb.co/V3Pd7T3/avatar.png"}
@@ -52,11 +71,8 @@ const Navbar = ({avatar, name, role}: User) => {
             />
           </div>
 
-          <form action={ async () => {
-            "use server"
-            await signOut({redirectTo:"/login"});
-          }}>
-            <button type="submit" className="border-2 border-red-500 transition-all text-black text-base font-medium px-4 py-2 rounded-md hover:bg-red-600 hover:text-white">Logout</button>
+          <form action={SignOut}>
+            <button type="submit" className="border-2 border-red-500 transition-all text-black text-base font-medium px-2 py-1 rounded-md hover:bg-red-600 hover:text-white">Logout</button>
           </form>
         </div>
         
