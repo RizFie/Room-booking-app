@@ -82,18 +82,20 @@ const Navbar = ({name, role}: User) => {
         
       </div>
 
-      <dialog ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[400px]">
+      <dialog ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
         <div className="container w-full h-[160px] mt-9">
           <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-full h-[160px]"/>
         </div>
         <div className="my-6">
-          <h1 className="font-bold text-2xl text-center mb-3 mt-0">Hang On a Sec!</h1>
-          <h2 className="font-semibold text-center mb-9">Are you sure you want to log out?</h2>
+          <h1 className="font-bold text-3xl text-center mb-3 mt-0">Hang On a Sec!</h1>
+          <h2 className="font-semibold text-center mb-6 text-gray-700">Are you sure you want to log out?<br/>
+          Have you made a reservation yet?
+          </h2>
           <div className="grid grid-flow-col justify-evenly">
             <form action={SignOut}>
-              <button type="submit">logout</button>
+              <button type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white font-semibold rounded-xl hover:bg-red-700">Logout</button>
             </form>
-            <button onClick={handleClose}>Cancel</button>
+            <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-grey-700 font-semibold rounded-xl">Cancel</button>
           </div>
         </div>
       </dialog>
