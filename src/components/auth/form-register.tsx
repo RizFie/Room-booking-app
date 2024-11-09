@@ -53,14 +53,6 @@ const FormRegister = () => {
         </div>
 
         <div className="mt-4">
-            <label htmlFor="department" className=" block mb-2 text-md font-medium text-gray-600">Department</label>
-            <input id="department" type="text" name="department" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
-            <div aria-live="polite" aria-atomic="true">
-                <span className=" text-sm text-red-500 mt-2">{state?.error?.department}</span>
-            </div>
-        </div>
-
-        <div className="mt-4">
             <label htmlFor="password" className=" block mb-2 text-md font-medium text-gray-600">Password</label>
             <input id="password" type="password" name="password" className="p-1 text-sm bg-blue-100 rounded-sm text-gray-600 w-full focus:outline-blue-400"/>
             <div aria-live="polite" aria-atomic="true">

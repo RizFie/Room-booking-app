@@ -21,7 +21,7 @@ export const signUpCredentials = async (
     };
   }
 
-  const { fullname, email, phone, department, password } = validatedFields.data;
+  const { fullname, email, phone, password } = validatedFields.data;
 
   const hashedPassword = hashSync(password, 10);
 
@@ -31,7 +31,6 @@ export const signUpCredentials = async (
         fullname: fullname,
         email: email,
         phoneNum: phone,
-        department: department,
         password: hashedPassword,
         role: "user",
         avatar: "",
