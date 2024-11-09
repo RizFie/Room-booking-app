@@ -50,8 +50,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const userRole = auth?.user.role;
 
       //add more routes here
-      const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main",""];
-      const adminProtectedRoutes = ["/admin"];
+      const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main","/"];
+      const adminProtectedRoutes = ["/admin","/"];
 
       if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname) || adminProtectedRoutes.includes(nextUrl.pathname))){
         return NextResponse.redirect(new URL("/login",nextUrl));
@@ -71,7 +71,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
     jwt({ token, user }) {
       if (user) {
-        token.picture = user.avatar;
         token.name = user.fullname;
         token.role = user.role;
       }
@@ -79,7 +78,6 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
 
     session({ session, token }) {
-      session.user.image = token.picture;
       session.user.id = token.sub;
       session.user.name = token.name;
       session.user.role = token.role;

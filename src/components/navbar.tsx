@@ -6,16 +6,29 @@ import logoEtempah from "../../public/logo/etempah.png"
 import SignOut from "@/lib/action"
 import { usePathname } from "next/navigation"
 import logoMdr from "../../public/logo/Mdr.svg"
+import { useRef, useState } from "react"
+import exclamation from "../../public/icons/exclamation.png"
 
 interface User {
   name: string | undefined
-  avatar: string | null | undefined
   role: string | undefined
 }
 
-const Navbar = ({avatar, name, role}: User) => {
+const Navbar = ({name, role}: User) => {
 
   const pathname = usePathname();
+
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+
+  const [modalState, setModalState] = useState<string>("hidden");
+
+  const handleOpen = () => {
+    dialogRef.current?.showModal();
+  }
+
+  const handleClose = () => {
+    dialogRef.current?.close();
+  }
 
   return (
     <nav className="bg-white border-b-2 border-blue-600 shadow-md">
@@ -50,33 +63,40 @@ const Navbar = ({avatar, name, role}: User) => {
           <li id="li3" className={`${pathname === "/main/cancel" ? "text-blue-800" : ""}`}>
             <Link href="/main/cancel">Cancel</Link>
           </li>
+          <li id="li4" className={`${pathname === "/main/profile" ? "text-blue-800" : ""}`}>
+            <Link href="/main/profile">Profile</Link>
+          </li>
         </ul>
 
         {/*Item 3 LOGOUT BUTTON*/}
         <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3">
 
-          <h2 className="font-bold justify-self-center text-blue-950 text-right">
-            {name}<br/>
-            {role}
-          </h2>
-          
-          <div className="container w-[40px] h-[40px] rounded-full border-blue-700 border-2 ">
-            <Image
-              src={avatar || "https://i.ibb.co/V3Pd7T3/avatar.png"}
-              alt="avatar"
-              width={40}
-              height={40}
-              className="rounded-full"
-              priority
-            />
+          <div className="flex flex-col justify-self-center text-blue-950 text-right border-r-2 pr-2 border-gray-300">
+            <h2 className="flex-0 font-bold">{name}</h2>
+            <h2 className="flex-1 font-semibold text-gray-800">{role}</h2>
           </div>
 
-          <form action={SignOut}>
-            <button type="submit" className="border-2 border-red-500 transition-all text-black text-base font-medium px-2 py-1 rounded-md hover:bg-red-600 hover:text-white">Logout</button>
-          </form>
+        <button onClick={handleOpen} className="border-2 border-red-500 transition-all text-black text-base font-medium px-2 py-1 rounded-md hover:bg-red-600 hover:text-white">Logout</button>
+
         </div>
         
       </div>
+
+      <dialog ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[400px]">
+        <div className="container w-full h-[160px] mt-9">
+          <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-full h-[160px]"/>
+        </div>
+        <div className="my-6">
+          <h1 className="font-bold text-2xl text-center mb-3 mt-0">Hang On a Sec!</h1>
+          <h2 className="font-semibold text-center mb-9">Are you sure you want to log out?</h2>
+          <div className="grid grid-flow-col justify-evenly">
+            <form action={SignOut}>
+              <button type="submit">logout</button>
+            </form>
+            <button onClick={handleClose}>Cancel</button>
+          </div>
+        </div>
+      </dialog>
     </nav>
   );
 }

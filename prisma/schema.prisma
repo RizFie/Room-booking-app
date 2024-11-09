@@ -55,7 +55,6 @@ model user {
   password     String         @db.VarChar(255)
   phoneNum     String         @db.VarChar(255)
   role         String         @default("user") @db.VarChar(255)
-  avatar       String         @db.VarChar(255)
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   booking      booking[]

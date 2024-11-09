@@ -11,9 +11,8 @@ body{
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
 }
 
-#li1:hover, #li2:hover, #li3:hover{
+#li1:hover, #li2:hover, #li3:hover, #li4:hover{
     cursor: pointer;
     color: #2189ff;
 }
 
-/*className="hover:cursor-pointer hover:text-blue-700 transition-all"*/

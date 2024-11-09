@@ -33,7 +33,6 @@ export const signUpCredentials = async (
         phoneNum: phone,
         password: hashedPassword,
         role: "user",
-        avatar: "",
       },
     });
   } catch (error) {
