@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 08, 2024 at 12:06 AM
+-- Generation Time: Nov 09, 2024 at 03:55 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -54,6 +54,18 @@ CREATE TABLE `cancellation` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `picture`
+--
+
+CREATE TABLE `picture` (
+  `picId` int(11) NOT NULL,
+  `picLink` varchar(255) NOT NULL,
+  `placeId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `place`
 --
 
@@ -62,8 +74,7 @@ CREATE TABLE `place` (
   `placeName` varchar(255) NOT NULL,
   `placeDesc` varchar(255) NOT NULL,
   `placeCapacity` int(11) NOT NULL,
-  `placeType` varchar(255) NOT NULL,
-  `picLink` varchar(255) NOT NULL
+  `placeType` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -90,7 +101,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userId`, `fullname`, `email`, `password`, `phoneNum`, `department`, `role`, `avatar`, `createdAt`, `updatedAt`) VALUES
-(1, 'test testing', 'test@test.com', '$2a$10$s.Aig10THM/bZ/dB/K7YE.8ILKJMPK2sffmlDfkpLQVq..dGWMkn2', '01124573014', 'Info Tech', 'user', '', '2024-10-20 07:33:08.911', '2024-10-20 07:33:08.911');
+(1, 'test testing', 'test@test.com', '$2a$10$s.Aig10THM/bZ/dB/K7YE.8ILKJMPK2sffmlDfkpLQVq..dGWMkn2', '01124573014', 'Info Tech', 'user', '', '2024-10-20 07:33:08.911', '2024-10-20 07:33:08.911'),
+(2, 'Hariz Rafie', 'harizrafie86@gmail.com', '$2a$10$7AtA6kkL7U9YLp7ceqo7ousTFreBHUBdpb0M5PnHZeBK0oD9KvKki', '01124573013', 'Info Tech', 'user', '', '2024-11-08 09:44:45.084', '2024-11-08 09:44:45.084');
 
 -- --------------------------------------------------------
 
@@ -113,14 +125,25 @@ CREATE TABLE `verificationtokens` (
 --
 ALTER TABLE `booking`
   ADD PRIMARY KEY (`bookingId`,`placeId`,`userId`),
-  ADD UNIQUE KEY `bookingId` (`bookingId`);
+  ADD UNIQUE KEY `bookingId` (`bookingId`),
+  ADD KEY `placeId` (`placeId`),
+  ADD KEY `userId` (`userId`);
 
 --
 -- Indexes for table `cancellation`
 --
 ALTER TABLE `cancellation`
   ADD PRIMARY KEY (`cancelId`,`userId`,`bookingId`),
-  ADD UNIQUE KEY `cancelId` (`cancelId`);
+  ADD UNIQUE KEY `cancelId` (`cancelId`),
+  ADD KEY `bookingId` (`bookingId`),
+  ADD KEY `userId` (`userId`);
+
+--
+-- Indexes for table `picture`
+--
+ALTER TABLE `picture`
+  ADD PRIMARY KEY (`picId`),
+  ADD KEY `placeId` (`placeId`);
 
 --
 -- Indexes for table `place`
@@ -160,6 +183,12 @@ ALTER TABLE `cancellation`
   MODIFY `cancelId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `picture`
+--
+ALTER TABLE `picture`
+  MODIFY `picId` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `place`
 --
 ALTER TABLE `place`
@@ -169,7 +198,31 @@ ALTER TABLE `place`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `booking`
+--
+ALTER TABLE `booking`
+  ADD CONSTRAINT `booking_ibfk_1` FOREIGN KEY (`placeId`) REFERENCES `place` (`placeId`),
+  ADD CONSTRAINT `booking_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+
+--
+-- Constraints for table `cancellation`
+--
+ALTER TABLE `cancellation`
+  ADD CONSTRAINT `cancellation_ibfk_1` FOREIGN KEY (`bookingId`) REFERENCES `booking` (`bookingId`),
+  ADD CONSTRAINT `cancellation_ibfk_2` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`);
+
+--
+-- Constraints for table `picture`
+--
+ALTER TABLE `picture`
+  ADD CONSTRAINT `picture_ibfk_1` FOREIGN KEY (`placeId`) REFERENCES `place` (`placeId`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
