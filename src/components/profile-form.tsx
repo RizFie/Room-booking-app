@@ -18,15 +18,13 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
         throw Error("User ID is invalid");
     }
 
-    const UpdateProfileWithId = UpdateProfile.bind(null,userData.userId);
-
-    const [state, formAction] = useActionState(UpdateProfileWithId,null);
+    const [state, formAction] = useActionState(UpdateProfile,null);
 
   return (
     <div className='flex flex-col'>
         <form action={formAction}>
 
-            <p>{state?.message}</p>
+            <input name='id' type='hidden' defaultValue={userData.userId}/>
             
             <div className="mt-4">
                 <label htmlFor="fullname" className="block mb-2 text-md font-medium text-gray-600">Full Name</label>
