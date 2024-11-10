@@ -3,8 +3,8 @@ import { prisma } from "@/lib/prisma";
 const Home = async () => {
 
   return (
-    <div className="h-screen w-full">
-      <div className="grid grid-rows-2 my-10 mx-auto max-w-[90%] bg-white rounded-lg p-3 shadow-md">
+    <div className="h-auto w-full">
+      <div className="grid grid-rows-2 my-10 mx-auto max-w-[70%] bg-white rounded-lg p-3 shadow-md">
         {/*row 1*/}
         <h1 className="font-bold text-xl mb-2">Room Status Currently</h1>
         {/*row 2*/}

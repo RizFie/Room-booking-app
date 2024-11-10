@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-    background: rgba(200, 232, 255, 0.658);
+    background: rgb(222, 240, 255);
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -22,3 +22,7 @@ body{
     transition: transform 200ms;
   }
   
+#innerBg {
+    background: rgb(82,164,255);
+    background: linear-gradient(0deg, rgba(82,164,255,1) 0%, rgba(125,198,255,1) 50%, rgba(0,212,255,1) 100%);
+}
