@@ -38,6 +38,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const passwordMatch = compareSync(password, user.password);
 
         if(!passwordMatch) return null;
+        console.log("user info",user);
         return user;
       }
     })
@@ -50,7 +51,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const userRole = auth?.user.role;
 
       //add more routes here
-      const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main","/"];
+      const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main","/","/main/profile"];
       const adminProtectedRoutes = ["/admin","/"];
 
       if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname) || adminProtectedRoutes.includes(nextUrl.pathname))){
@@ -71,6 +72,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
     jwt({ token, user }) {
       if (user) {
+        //console.log("userJWT: ",user)
+        token.sub = user.userId || '';
         token.name = user.fullname;
         token.role = user.role;
       }

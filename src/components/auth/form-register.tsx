@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { signUpCredentials } from "@/lib/action"
 import toast from "react-hot-toast"
-import { useActionState, useEffect, useTransition } from "react"
+import { useActionState, useEffect} from "react"
 import { redirect } from "next/navigation"
 
 

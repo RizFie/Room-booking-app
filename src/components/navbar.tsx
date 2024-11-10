@@ -31,7 +31,7 @@ const Navbar = ({name, role}: User) => {
   }
 
   return (
-    <nav className="bg-white border-b-2 border-blue-600 shadow-md">
+    <nav className="bg-white border-b-2 border-blue-700 shadow-md">
       <div className="max-w-full flex items-center justify-between p-2">
 
         {/*Item 1*/}
@@ -82,7 +82,7 @@ const Navbar = ({name, role}: User) => {
         
       </div>
 
-      <dialog ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
+      <dialog id="dialog" ref={dialogRef} className=" bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
         <div className="container w-full h-[160px] mt-9">
           <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-full h-[160px]"/>
         </div>
@@ -95,7 +95,7 @@ const Navbar = ({name, role}: User) => {
             <form action={SignOut}>
               <button type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white font-semibold rounded-xl hover:bg-red-700">Logout</button>
             </form>
-            <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-grey-700 font-semibold rounded-xl">Cancel</button>
+            <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-grey-400 font-semibold rounded-xl hover:border-blue-950 hover:text-blue-950">Cancel</button>
           </div>
         </div>
       </dialog>

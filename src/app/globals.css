@@ -16,3 +16,9 @@ body{
     cursor: pointer;
     color: #2189ff;
 }
+
+#dialog {
+    transform: scale(0.95);
+    transition: transform 200ms;
+  }
+  

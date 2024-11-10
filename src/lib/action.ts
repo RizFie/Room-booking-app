@@ -90,3 +90,36 @@ const SignOut = async () => {
 }
 
 export default SignOut
+
+//Update Profile Action
+export const UpdateProfile = async (userId: string, prevState: any ,formData: FormData) => {
+  const validatedFields = registerSchema.safeParse(
+    Object.fromEntries(formData.entries())
+  );
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  console.log("userId profile action:",userId);
+  const { fullname, email, phone} = validatedFields.data;
+  console.log(fullname, email, phone);
+
+  try {
+    await prisma.user.update({
+      where: {
+        userId: userId,
+      },
+      data: {
+        fullname: fullname,
+        email: email,
+        phoneNum: phone,
+      },
+    })
+    return {message: "Update Successfull"}
+  } catch (error) {
+    return {message: "Update user profile fail, please try again" };
+  }
+}

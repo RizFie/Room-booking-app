@@ -8,13 +8,13 @@ datasource db {
 }
 
 model booking {
-  bookingId    Int            @unique(map: "bookingId") @default(autoincrement())
+  bookingId    String         @unique(map: "bookingId") @default(uuid())
   startTime    DateTime       @db.Time(0)
   endTime      DateTime       @db.Time(0)
   date         DateTime       @db.Date
   purpose      String         @db.VarChar(255)
-  userId       Int
-  placeId      Int
+  userId       String
+  placeId      String
   place        place          @relation(fields: [placeId], references: [placeId], onUpdate: Restrict, map: "booking_ibfk_1")
   user         user           @relation(fields: [userId], references: [userId], onUpdate: Restrict, map: "booking_ibfk_2")
   cancellation cancellation[]
@@ -25,11 +25,11 @@ model booking {
 }
 
 model cancellation {
-  cancelId   Int      @unique(map: "cancelId") @default(autoincrement())
+  cancelId   String   @unique(map: "cancelId") @default(uuid())
   reason     String   @db.VarChar(255)
   cancelDate DateTime @db.Date
-  userId     Int
-  bookingId  Int
+  userId     String
+  bookingId  String
   booking    booking  @relation(fields: [bookingId], references: [bookingId], onUpdate: Restrict, map: "cancellation_ibfk_1")
   user       user     @relation(fields: [userId], references: [userId], onUpdate: Restrict, map: "cancellation_ibfk_2")
 
@@ -39,7 +39,7 @@ model cancellation {
 }
 
 model place {
-  placeId       Int       @id @unique(map: "placeId") @default(autoincrement())
+  placeId       String    @id @unique(map: "placeId") @default(uuid())
   placeName     String    @db.VarChar(255)
   placeDesc     String    @db.VarChar(255)
   placeCapacity Int
@@ -49,7 +49,7 @@ model place {
 }
 
 model user {
-  userId       Int            @id @unique(map: "userId") @default(autoincrement())
+  userId       String         @id @unique(map: "userId") @default(uuid())
   fullname     String         @db.VarChar(255)
   email        String         @unique @db.VarChar(255)
   password     String         @db.VarChar(255)
@@ -71,9 +71,9 @@ model verificationToken {
 }
 
 model picture {
-  picId   Int    @id @default(autoincrement())
+  picId   String @id @default(uuid())
   picLink String @db.VarChar(255)
-  placeId Int
+  placeId String
   place   place  @relation(fields: [placeId], references: [placeId], onUpdate: Restrict, map: "picture_ibfk_1")
 
   @@index([placeId], map: "placeId")
