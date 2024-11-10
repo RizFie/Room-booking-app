@@ -15,3 +15,9 @@ export const registerSchema = object({
     path:["confirmPass"],
     message: "Password does not match"
 });
+
+export const profileSchema = object({
+    fullname: string().min(1,"No name inserted"),
+    email: string().email("Invalid email"),
+    phone: string().min(11,"Phone number must be more than 10 characters").max(20,"You've exceeded maximum characters for phone number"),
+});

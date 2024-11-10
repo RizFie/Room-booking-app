@@ -52,7 +52,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       //add more routes here
       const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main","/","/main/profile"];
-      const adminProtectedRoutes = ["/admin","/"];
+      const adminProtectedRoutes = ["/main","/admin","/"];
 
       if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname) || adminProtectedRoutes.includes(nextUrl.pathname))){
         return NextResponse.redirect(new URL("/login",nextUrl));

@@ -1,12 +1,13 @@
 "use server";
 
 import { prisma } from "./prisma";
-import { loginSchema, registerSchema } from "./zod";
+import { loginSchema, profileSchema, registerSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
+import { revalidatePath } from "next/cache";
 
-//Sign Up Form Action
+//SIGN UP FORM ACTION
 export const signUpCredentials = async (
   prevState: unknown,
   formData: FormData
@@ -42,7 +43,7 @@ export const signUpCredentials = async (
   return {code: 200, message: "Registration successfull."}
 };
 
-//Sign In Form Action
+//SIGN IN FORM ACTION
 export const signInCredentials = async (prevState: unknown ,formData: FormData) => {
   const validatedFields = loginSchema.safeParse(
     Object.fromEntries(formData.entries())
@@ -84,16 +85,16 @@ export const signInCredentials = async (prevState: unknown ,formData: FormData) 
   }
 }
 
-//Sign Out Action
+//SIGN OUT ACTION
 const SignOut = async () => {
   await signOut({redirectTo:"/login"});
 }
 
 export default SignOut
 
-//Update Profile Action
-export const UpdateProfile = async (prevState: unknown ,formData: FormData) => {
-  const validatedFields = registerSchema.safeParse(
+//UPDATE PROFILE ACTION
+export const updateProfile = async (userId: string, prevState: unknown ,formData: FormData) => {
+  const validatedFields = profileSchema.safeParse(
     Object.fromEntries(formData.entries())
   );
 
@@ -111,7 +112,7 @@ export const UpdateProfile = async (prevState: unknown ,formData: FormData) => {
   try {
     const user = await prisma.user.update({
       where: {
-        userId: formData.get("id") as string,
+        userId: userId,
       },
       data: {
         fullname: fullname,
@@ -119,8 +120,9 @@ export const UpdateProfile = async (prevState: unknown ,formData: FormData) => {
         phoneNum: phone,
       }
     });
-    return {message: "Update Successfull"}
+    revalidatePath("/main/profile");
+    return {code: 200, message: "Update Successfull"}
   } catch (error) {
-    return {message: "Update user profile fail, please try again" };
+    return {code: 500 ,message: "Update user profile fail, please try again" };
   }
 }
