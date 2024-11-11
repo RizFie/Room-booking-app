@@ -18,7 +18,8 @@ const ProfilePage = async () => {
   return (
     <div className="grid grid-cols-2 bg-white shadow-lg mx-auto max-w-[70%] my-10 rounded-lg">
       <div className="p-5">
-        <h1 className="font-bold text-xl border-b-2 border-b-blue-200 pb-2 text-blue-950">My Profile</h1>
+        <h1 className="font-bold text-xl text-blue-950">My Profile</h1>
+        <p className="border-b-blue-200 border-b-2 pb-2 text-sm font-medium text-gray-700 mt-2">You may edit your account information here</p>
         <ProfileForm userData={userData}/>
       </div>
       <div id="innerBg" className="rounded-r-lg w-full h-auto">

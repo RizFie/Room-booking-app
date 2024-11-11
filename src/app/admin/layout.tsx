@@ -1,6 +1,4 @@
-import { auth } from "@/auth"
-import Sidebar from "@/components/sidebar";
-
+import { auth } from "@/auth";
 const AdminLayout = async ({children}:{children: React.ReactNode}) => {
 
   const session = await auth();
@@ -9,8 +7,7 @@ const AdminLayout = async ({children}:{children: React.ReactNode}) => {
 
   return (
     <div>
-        <Sidebar name={fullname} role={role} children={children}/>
-        {children}
+      {children}
     </div>
   )
 }
