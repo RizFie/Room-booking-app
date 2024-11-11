@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 09, 2024 at 03:55 AM
+-- Generation Time: Nov 11, 2024 at 03:16 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `booking` (
-  `bookingId` int(11) NOT NULL,
+  `bookingId` varchar(191) NOT NULL,
   `startTime` time NOT NULL,
   `endTime` time NOT NULL,
   `date` date NOT NULL,
   `purpose` varchar(255) NOT NULL,
-  `userId` int(11) NOT NULL,
-  `placeId` int(11) NOT NULL
+  `userId` varchar(191) NOT NULL,
+  `placeId` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -44,11 +44,11 @@ CREATE TABLE `booking` (
 --
 
 CREATE TABLE `cancellation` (
-  `cancelId` int(11) NOT NULL,
+  `cancelId` varchar(191) NOT NULL,
   `reason` varchar(255) NOT NULL,
   `cancelDate` date NOT NULL,
-  `userId` int(11) NOT NULL,
-  `bookingId` int(11) NOT NULL
+  `userId` varchar(191) NOT NULL,
+  `bookingId` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -58,9 +58,9 @@ CREATE TABLE `cancellation` (
 --
 
 CREATE TABLE `picture` (
-  `picId` int(11) NOT NULL,
+  `picId` varchar(191) NOT NULL,
   `picLink` varchar(255) NOT NULL,
-  `placeId` int(11) NOT NULL
+  `placeId` varchar(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -70,7 +70,7 @@ CREATE TABLE `picture` (
 --
 
 CREATE TABLE `place` (
-  `placeId` int(11) NOT NULL,
+  `placeId` varchar(191) NOT NULL,
   `placeName` varchar(255) NOT NULL,
   `placeDesc` varchar(255) NOT NULL,
   `placeCapacity` int(11) NOT NULL,
@@ -84,14 +84,12 @@ CREATE TABLE `place` (
 --
 
 CREATE TABLE `user` (
-  `userId` int(11) NOT NULL,
+  `userId` varchar(191) NOT NULL,
   `fullname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `phoneNum` varchar(255) NOT NULL,
-  `department` varchar(255) NOT NULL,
   `role` varchar(255) NOT NULL DEFAULT 'user',
-  `avatar` varchar(255) NOT NULL,
   `createdAt` datetime(3) NOT NULL DEFAULT current_timestamp(3),
   `updatedAt` datetime(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -100,9 +98,9 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userId`, `fullname`, `email`, `password`, `phoneNum`, `department`, `role`, `avatar`, `createdAt`, `updatedAt`) VALUES
-(1, 'test testing', 'test@test.com', '$2a$10$s.Aig10THM/bZ/dB/K7YE.8ILKJMPK2sffmlDfkpLQVq..dGWMkn2', '01124573014', 'Info Tech', 'user', '', '2024-10-20 07:33:08.911', '2024-10-20 07:33:08.911'),
-(2, 'Hariz Rafie', 'harizrafie86@gmail.com', '$2a$10$7AtA6kkL7U9YLp7ceqo7ousTFreBHUBdpb0M5PnHZeBK0oD9KvKki', '01124573013', 'Info Tech', 'user', '', '2024-11-08 09:44:45.084', '2024-11-08 09:44:45.084');
+INSERT INTO `user` (`userId`, `fullname`, `email`, `password`, `phoneNum`, `role`, `createdAt`, `updatedAt`) VALUES
+('27e6541e-70e3-4b3d-85c3-798fb04f28a9', 'Testing Account Tester', 'test@test.com', '$2a$10$Mv7sLU71EzJyDKyxNwLcc.cgwdHz2wH6ESqw.e/XwxTR7aPwTwcYO', '01124573013', 'user', '2024-11-11 00:44:08.587', '2024-11-11 02:06:25.452'),
+('abbf594b-f0fa-4206-9abf-8b9dedf9c6b1', 'Hariz Rafie', 'harizrafie86@gmail.com', '$2a$10$gy84uqpfMm4NqyB3dHKOEejmCKZzkBBEJQv0yqJwA0Uf49E/uhB4q', '01124573013', 'admin', '2024-11-11 02:07:47.600', '2024-11-11 02:07:47.600');
 
 -- --------------------------------------------------------
 
@@ -114,6 +112,23 @@ CREATE TABLE `verificationtokens` (
   `identifier` varchar(191) NOT NULL,
   `token` varchar(191) NOT NULL,
   `expires` datetime(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `_prisma_migrations`
+--
+
+CREATE TABLE `_prisma_migrations` (
+  `id` varchar(36) NOT NULL,
+  `checksum` varchar(64) NOT NULL,
+  `finished_at` datetime(3) DEFAULT NULL,
+  `migration_name` varchar(255) NOT NULL,
+  `logs` text DEFAULT NULL,
+  `rolled_back_at` datetime(3) DEFAULT NULL,
+  `started_at` datetime(3) NOT NULL DEFAULT current_timestamp(3),
+  `applied_steps_count` int(10) UNSIGNED NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -167,38 +182,10 @@ ALTER TABLE `verificationtokens`
   ADD UNIQUE KEY `verificationtokens_identifier_token_key` (`identifier`,`token`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `_prisma_migrations`
 --
-
---
--- AUTO_INCREMENT for table `booking`
---
-ALTER TABLE `booking`
-  MODIFY `bookingId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `cancellation`
---
-ALTER TABLE `cancellation`
-  MODIFY `cancelId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `picture`
---
-ALTER TABLE `picture`
-  MODIFY `picId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `place`
---
-ALTER TABLE `place`
-  MODIFY `placeId` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `_prisma_migrations`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Constraints for dumped tables

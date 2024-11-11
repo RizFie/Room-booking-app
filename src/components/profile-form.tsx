@@ -1,19 +1,27 @@
 "use client"
 
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { userDataType } from '@/lib/types/types'
 import { useActionState } from 'react'
 import { updateProfile } from '@/lib/action'
 import toast from 'react-hot-toast'
 import { MdEmail } from "react-icons/md";
 import { IoPersonCircle } from "react-icons/io5";
-import { FaPhone } from "react-icons/fa6";
+import { FaPhone, FaLock, FaLockOpen } from "react-icons/fa6";
 
 interface ProfileFormProps {
     userData: userDataType
 }
 
 const ProfileForm = ({userData}: ProfileFormProps) => {
+
+    const [open, setOpen] = useState<boolean>(false);
+    const [disable, setDisable] = useState<boolean>(true);
+
+    const handleOpen = () => {
+      setOpen(!open);
+      setDisable(!disable)
+    }
 
     console.log("prop id:",userData?.userId);
 
@@ -49,6 +57,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             <IoPersonCircle className="text-gray-600 scale-125" />
           </div>
           <input
+            disabled={disable}
             defaultValue={userData?.fullname}
             id="fullname"
             type="text"
@@ -73,6 +82,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             <MdEmail className="text-gray-600" />
           </div>
           <input
+            disabled={disable}
             defaultValue={userData?.email}
             id="email"
             type="email"
@@ -97,6 +107,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             <FaPhone className="text-gray-600 scale-95" />
           </div>
           <input
+            disabled={disable}
             defaultValue={userData?.phoneNum}
             id="phone"
             type="tel"
@@ -110,12 +121,38 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
           </div>
         </div>
 
-        <button
-          type="submit"
-          className="my-6 bg-blue-500 p-2 w-full mx-auto rounded-xl text-lg text-white font-semibold hover:border-blue-950 hover:bg-blue-700"
-        >
-          Update
-        </button>
+        <div className='grid grid-cols-2 gap-3'>
+          {open == false ? (
+            <button onClick={handleOpen} type='button' className="my-6 bg-red-300 p-2 w-full mx-auto rounded-xl text-lg text-red-700 font-semibold flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white">
+              <FaLock />
+              Edit Profile
+            </button>
+          ) : (
+            <button onClick={handleOpen} type='button' className="my-6 bg-green-300 p-2 w-full mx-auto rounded-xl text-lg text-green-700 font-semibold flex items-center justify-center gap-2 hover:bg-green-700 hover:text-white">
+              <FaLockOpen />
+              Edit Profile
+            </button>
+          )}
+          
+          { disable==true ? (
+            <button
+            disabled={disable}
+            type="submit"
+            className="my-6 bg-gray-400 p-2 w-full mx-auto rounded-xl text-lg text-gray-700 font-semibold"
+          >
+            Update
+          </button>
+          ) : (
+          <button
+            disabled={disable}
+            type="submit"
+            className="my-6 bg-blue-500 p-2 w-full mx-auto rounded-xl text-lg text-white font-semibold hover:bg-blue-700"
+          >
+            Update
+          </button>
+          )}
+        </div>
+        
       </form>
     </div>
   );
