@@ -68,7 +68,7 @@ export const signInCredentials = async (prevState: unknown ,formData: FormData) 
   })
 
   console.log(user);
-  const redirectUrl = user && user.role === "admin" ? "/admin" : "/main/home";
+  const redirectUrl = user && user.role === "admin" ? "/admin/dashboards" : "/main/home";
 
   try {
     await signIn("credentials", {email, password, redirectTo: redirectUrl})

@@ -14,43 +14,35 @@ interface User {
   role: string | undefined
 }
 
-//ADD MORE NAVBAR ITEMS
-const items = [
-  {
-    id: 1,
-    title: "Dashboard",
-    url: "/admin/dashboard",
-  },
-  {
-    id: 2,
-    title: "Bookings",
-    url: "/admin/bookings",
-  },
-  {
-    id: 3,
-    title: "Rooms",
-    url: "/admin/rooms",
-  },
-  {
-    id: 4,
-    title: "Users",
-    url: "/admin/users",
-  },
-]
+
 
 const AdminNavbar = ({name, role}: User) => {
 
+  //ADD MORE NAVBAR ITEMS
+  const items = [
+    {
+      id: 1,
+      title: "Dashboard",
+      url: "/admin/dashboards",
+    },
+    {
+      id: 2,
+      title: "Bookings",
+      url: "/admin/bookings",
+    },
+    {
+      id: 3,
+      title: "Rooms",
+      url: "/admin/rooms",
+    },
+    {
+      id: 4,
+      title: "Users",
+      url: "/admin/users",
+    },
+  ]
+
   const pathname = usePathname();
-
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
-
-  const handleOpen = () => {
-    dialogRef.current?.showModal();
-  }
-
-  const handleClose = () => {
-    dialogRef.current?.close();
-  }
 
   return (
     <nav className="bg-white border-b-2 border-blue-700 shadow-md">

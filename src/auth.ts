@@ -48,11 +48,14 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     authorized({auth,request: {nextUrl}}){
 
       const isLoggedIn = !!auth?.user;
+      //console.log("Logged In?",isLoggedIn);
       const userRole = auth?.user.role;
+      //console.log("Auth role:",userRole);
 
       //add more routes here
       const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main","/","/main/profile","/admin"];
-      const adminProtectedRoutes = ["/main","/admin","/","/admin/dashboard"];
+      const adminProtectedRoutes = ["/main","/admin","/","/admin/dashboards"];
+      console.log("Current pathname: ",nextUrl.pathname);
 
       if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname) || adminProtectedRoutes.includes(nextUrl.pathname))){
         return NextResponse.redirect(new URL("/login",nextUrl));
@@ -60,7 +63,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       if(isLoggedIn){
         if(userRole === "admin" && (nextUrl.pathname.startsWith("/login") || ProtectedRoutes.includes(nextUrl.pathname))){
-          return NextResponse.redirect(new URL("/admin/dashboard",nextUrl));
+          return NextResponse.redirect(new URL("/admin/dashboards",nextUrl));
         }
         else if(userRole === "user" && (nextUrl.pathname.startsWith("/login") || adminProtectedRoutes.includes(nextUrl.pathname))){
           return NextResponse.redirect(new URL("/main/home",nextUrl));
