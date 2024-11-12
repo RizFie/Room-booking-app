@@ -11,8 +11,7 @@ yarn install
 ```
 
 Then, setup the environment file:
-Create a
-```bash
+```
 .env
 # and
 .env.local
