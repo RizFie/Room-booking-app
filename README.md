@@ -1,5 +1,37 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
+If you cloned this repository,
+
+First, install all the package that are on the package.json file:
+
+```bash
+npm install
+# or
+yarn install
+```
+
+Then, setup the environment file:
+Create a
+```bash
+.env
+# and
+.env.local
+```
+.env file will hold the [`DATABASE_URL`](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-mysql) variable while .env.local will hold the AUTH_SECRET
+
+To generate a secret automatically, run:
+```bash
+npx auth secret
+```
+
+Then, generate the prisma client:
+```bash
+npx prisma generate
+```
+
+The repository currently uses Next JS 15 with React 19 that are still in RC (Release Candidate) stage, some dependencies might interfere with installation and will throw error in the terminal.
+If that occur, run the command again with ```--legacy-peer-deps ```
+
 ## Getting Started
 
 First, run the development server:
