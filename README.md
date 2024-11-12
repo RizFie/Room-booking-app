@@ -10,12 +10,9 @@ npm install
 yarn install
 ```
 
-Then, setup the environment file:
-```
-.env
-# and
-.env.local
-```
+Then, create the environment file at the root of your project:
+```.env``` and ```.env.local```
+
 .env file will hold the [`DATABASE_URL`](https://www.prisma.io/docs/getting-started/setup-prisma/add-to-existing-project/relational-databases/connect-your-database-typescript-mysql) variable while .env.local will hold the AUTH_SECRET
 
 To generate a secret automatically, run:
