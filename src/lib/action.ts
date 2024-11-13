@@ -126,3 +126,4 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
     return {code: 500 ,message: "Update user profile fail, please try again" };
   }
 }
+

@@ -8,7 +8,7 @@ const Register = () => {
       <div className="h-[100px] rounded-lg bg-none max-w-[30%]">
         <Image src={logo} alt="e-tempah" className="h-[100px] object-cover overflow-hidden"/>
       </div>
-      <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-5 max-w-[50%] bg-white rounded-lg shadow-xl max-h-[50%]">
+      <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-5 max-w-[50%] bg-white rounded-lg max-h-[50%] shadow-[0px_4px_54px_-18px_#73a8ff]">
         <div className="container rounded-lg h-[90%] self-center w-full mx-7">
           <img
             className="max-w-full h-full max-h-full w-full object-cover rounded-lg"
