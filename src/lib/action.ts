@@ -6,6 +6,7 @@ import { hashSync } from "bcrypt-ts";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
+import toast from "react-hot-toast";
 
 //SIGN UP FORM ACTION
 export const signUpCredentials = async (
@@ -127,3 +128,22 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
   }
 }
 
+//DELETE ACCOUNT ACTION
+export const deleteUser = async (id:string) => {
+
+  try {
+    await prisma.user.delete({
+      where: {
+        userId: id
+      }
+    });
+    return {message: "Account Deletion Successful", code: 200};
+  } catch (error) {
+    return {message: error, code: 400};
+  }
+}
+
+//REFRESH USERS LIST IN ADMIN
+export async function revalidateAdminUsers() {
+  revalidatePath("/admin/users");
+}
