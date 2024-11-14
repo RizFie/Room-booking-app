@@ -54,7 +54,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 
       //add more routes here
       const ProtectedRoutes = ["/main/home","/main/reserve","/main/cancel","/main","/","/main/profile","/admin"];
-      const adminProtectedRoutes = ["/main","/admin","/","/admin/dashboards","/admin/users"];
+      const adminProtectedRoutes = ["/main","/admin","/","/admin/dashboards","/admin/users","/admin/users/add"];
       //console.log("Current pathname: ",nextUrl.pathname);
 
       if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname) || adminProtectedRoutes.includes(nextUrl.pathname))){

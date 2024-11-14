@@ -12,14 +12,14 @@ const Users = async () => {
         <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between">
             <div>
                 <h1 className="font-bold text-xl text-blue-950">List of users</h1>
-                <p className="text-gray-600 text-sm font-medium">A list of all the users that registered including their full name, email, 
+                <p className="text-gray-600 text-sm font-medium">A list of all the users that had registered including their full name, email, 
                     phone number, role and creation date.</p>
             </div>
             <div>
                 <Link href="/admin/users/add">
-                    <button className="bg-white font-medium text-sm text-blue-700 p-1 rounded-md 
-                    border-blue-600 border-2 hover:bg-blue-400 hover:text-white hover:border-blue-400
-                    transition-all shadow-md">Add New</button>
+                    <button className="font-semibold text-sm p-1 rounded-md 
+                     border-2 bg-blue-400 text-white border-blue-400
+                    transition-all shadow-md hover:scale-110">Add New</button>
                 </Link>
             </div>
             
@@ -28,12 +28,12 @@ const Users = async () => {
         <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff] overflow-auto">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
-                    <tr className="text-left bg-gray-200 text-gray-600 border-b-[1px] border-gray-300">
+                    <tr className="text-left bg-blue-200 text-blue-950 border-b-[1px] border-gray-300">
                         <th className="p-3">Full Name</th>
                         <th className="p-3">Email</th>
                         <th className="p-3">Phone Number</th>
                         <th className="p-3">Role</th>
-                        <th className="p-3">Created At</th>
+                        <th className="p-3 w-[200px]">Created At</th>
                         <th className="p-3 text-center">Action</th>
                     </tr>
                 </thead>
@@ -44,7 +44,7 @@ const Users = async () => {
                             <td className="p-3">{user.email}</td>
                             <td className="p-3">{user.phoneNum}</td>
                             <td className="p-3">{user.role}</td>
-                            <td className="p-3">{user.createdAt.toLocaleDateString()}</td>
+                            <td className="p-3">{`${user.createdAt.toLocaleDateString()}, ${user.createdAt.toLocaleTimeString()}`}</td>
                             <td className="p-3">
                                 <UserButton role={user.role} id={user.userId}/>
                             </td>

@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useActionState, useEffect, useRef } from "react";
 import Image from "next/image";
 import toast from "react-hot-toast";
-import { revalidatePath } from "next/cache";
+import trashIcon from "../../public/icons/Deletion Alert.png"
 
 interface UserButtonProps {
     id: string;
@@ -55,15 +55,15 @@ const UserButton: React.FC<UserButtonProps> = ({id,role}) => {
     <>
         { role == "admin" ? (
           <div className="flex flex-col">
-            <button onClick={handleRedirect} className="bg-blue-100 text-blue-700 rounded-sm m-1 p-[0.5px] 
-            shadow-sm border-blue-700 border-[1.5px] hover:bg-blue-200">Edit</button>
+            <button onClick={handleRedirect} className="bg-blue-100 rounded-md m-1 p-[0.5px] 
+            shadow-sm hover:bg-blue-200 text-blue-800 hover:text-blue-600 transition-all">Edit</button>
           </div>
         ) : (
           <div className="flex flex-col">
-            <button onClick={handleRedirect} className="bg-blue-100 text-blue-700 rounded-sm m-1 p-[0.5px] 
-            shadow-sm border-blue-700 border-[1.5px]">Edit</button>
-            <button onClick={handleOpen} className="bg-red-100 text-red-700 rounded-sm m-1 p-[0.5px] shadow-sm 
-            border-red-700 border-[1.5px] hover:bg-red-200">Delete</button>
+            <button onClick={handleRedirect} className="bg-blue-100 rounded-md m-1 p-[0.5px] 
+            shadow-sm hover:bg-blue-200 text-blue-800 hover:text-blue-600 transition-all">Edit</button>
+            <button onClick={handleOpen} className="bg-red-100 rounded-md m-1 p-[0.5px] shadow-sm 
+            text-red-800 hover:bg-red-200 hover:text-red-600 transition-all">Delete</button>
           </div>
         )}
         
@@ -72,7 +72,7 @@ const UserButton: React.FC<UserButtonProps> = ({id,role}) => {
 
       <dialog id="dialog" ref={dialogRef} className=" bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
         <div className="container w-full h-[160px] mt-9">
-          
+          <Image src={trashIcon} alt={"trash bin icon"} className="object-contain w-full h-[160px]"/>
         </div>
         <div className="my-6">
           <h1 className="font-bold text-2xl text-center mb-3 mt-0">Confirm User Account Deletion?</h1>
