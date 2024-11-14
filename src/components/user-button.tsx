@@ -56,14 +56,14 @@ const UserButton: React.FC<UserButtonProps> = ({id,role}) => {
         { role == "admin" ? (
           <div className="flex flex-col">
             <button onClick={handleRedirect} className="bg-blue-100 text-blue-700 rounded-sm m-1 p-[0.5px] 
-            shadow-sm border-blue-700 border-[1.5px]">Edit</button>
+            shadow-sm border-blue-700 border-[1.5px] hover:bg-blue-200">Edit</button>
           </div>
         ) : (
           <div className="flex flex-col">
             <button onClick={handleRedirect} className="bg-blue-100 text-blue-700 rounded-sm m-1 p-[0.5px] 
             shadow-sm border-blue-700 border-[1.5px]">Edit</button>
             <button onClick={handleOpen} className="bg-red-100 text-red-700 rounded-sm m-1 p-[0.5px] shadow-sm 
-            border-red-700 border-[1.5px]">Delete</button>
+            border-red-700 border-[1.5px] hover:bg-red-200">Delete</button>
           </div>
         )}
         

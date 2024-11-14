@@ -52,16 +52,16 @@ const Navbar = ({name, role}: User) => {
 
         {/*Item 2*/}
         <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
-          <li id="li1" className={`hover:cursor-pointer hover:text-blue-400 ${pathname === "/main/home" ? "text-blue-800" : ""}`}>
+          <li id="li1" className={`hover:cursor-pointer hover:text-blue-400 ${pathname.startsWith("/main/home") ? "text-blue-800" : ""}`}>
             <Link href="/main/home">Home</Link>
           </li>
-          <li id="li2" className={`hover:cursor-pointer hover:text-blue-400 ${pathname === "/main/reserve" ? "text-blue-800" : ""}`}>
+          <li id="li2" className={`hover:cursor-pointer hover:text-blue-400 ${pathname.startsWith("/main/reserve") ? "text-blue-800" : ""}`}>
             <Link href="/main/reserve">Reserve</Link>
           </li>
-          <li id="li3" className={`hover:cursor-pointer hover:text-blue-400 ${pathname === "/main/cancel" ? "text-blue-800" : ""}`}>
+          <li id="li3" className={`hover:cursor-pointer hover:text-blue-400 ${pathname.startsWith("/main/cancel") ? "text-blue-800" : ""}`}>
             <Link href="/main/cancel">Cancel</Link>
           </li>
-          <li id="li4" className={`hover:cursor-pointer hover:text-blue-400 ${pathname === "/main/profile" ? "text-blue-800" : ""}`}>
+          <li id="li4" className={`hover:cursor-pointer hover:text-blue-400 ${pathname.startsWith("/main/profile") ? "text-blue-800" : ""}`}>
             <Link href="/main/profile">Profile</Link>
           </li>
         </ul>

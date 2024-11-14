@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { prisma } from "../../../lib/prisma";
 import UserButton from "@/components/user-button";
 
@@ -7,10 +8,23 @@ const Users = async () => {
     //console.log("fetched users:",users);
 
   return (
-    <>
-        <h1 className="font-bold text-xl text-blue-950 mx-auto max-w-[80%] mt-10">List of users</h1>
-        <p className="mx-auto max-w-[80%] text-gray-600 text-sm font-medium">A list of all the users that registered including their full name, email, 
-            phone number, role and creation date.</p>
+    <>  
+        <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between">
+            <div>
+                <h1 className="font-bold text-xl text-blue-950">List of users</h1>
+                <p className="text-gray-600 text-sm font-medium">A list of all the users that registered including their full name, email, 
+                    phone number, role and creation date.</p>
+            </div>
+            <div>
+                <Link href="/admin/users/add">
+                    <button className="bg-white font-medium text-sm text-blue-700 p-1 rounded-md 
+                    border-blue-600 border-2 hover:bg-blue-400 hover:text-white hover:border-blue-400
+                    transition-all shadow-md">Add New</button>
+                </Link>
+            </div>
+            
+        </div>
+        
         <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff] overflow-auto">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
@@ -25,7 +39,7 @@ const Users = async () => {
                 </thead>
                 <tbody>
                     { users.map( (user) => (
-                        <tr className="border-b-[1px] hover:bg-gray-100" key={user.userId}>
+                        <tr className="border-b-[1px] hover:bg-gray-100 transition-all" key={user.userId}>
                             <td className="p-3">{user.fullname}</td>
                             <td className="p-3">{user.email}</td>
                             <td className="p-3">{user.phoneNum}</td>
