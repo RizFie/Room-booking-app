@@ -56,14 +56,14 @@ const UserButton: React.FC<UserButtonProps> = ({id,role}) => {
         { role == "admin" ? (
           <div className="flex flex-col">
             <button onClick={handleRedirect} className="bg-blue-100 rounded-md m-1 p-[0.5px] 
-            shadow-sm hover:bg-blue-200 text-blue-800 hover:text-blue-600 transition-all">Edit</button>
+            shadow-sm hover:bg-blue-200 text-blue-800 hover:text-blue-600 transition-all active:scale-95">Edit</button>
           </div>
         ) : (
           <div className="flex flex-col">
             <button onClick={handleRedirect} className="bg-blue-100 rounded-md m-1 p-[0.5px] 
-            shadow-sm hover:bg-blue-200 text-blue-800 hover:text-blue-600 transition-all">Edit</button>
+            shadow-sm hover:bg-blue-200 text-blue-800 hover:text-blue-600 transition-all active:scale-95">Edit</button>
             <button onClick={handleOpen} className="bg-red-100 rounded-md m-1 p-[0.5px] shadow-sm 
-            text-red-800 hover:bg-red-200 hover:text-red-600 transition-all">Delete</button>
+            text-red-800 hover:bg-red-200 hover:text-red-600 transition-all active:scale-95">Delete</button>
           </div>
         )}
         
@@ -71,12 +71,13 @@ const UserButton: React.FC<UserButtonProps> = ({id,role}) => {
 
 
       <dialog id="dialog" ref={dialogRef} className=" bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
-        <div className="container w-full h-[160px] mt-9">
-          <Image src={trashIcon} alt={"trash bin icon"} className="object-contain w-full h-[160px]"/>
+        <div className="flex items-center justify-center container h-[160px] mt-9">
+          <Image src={trashIcon} alt={"trash bin icon"} className="object-contain w-auto h-[160px]"/>
         </div>
         <div className="my-6">
           <h1 className="font-bold text-2xl text-center mb-3 mt-0">Confirm User Account Deletion?</h1>
-          <h2 className="font-semibold text-center mb-6 text-gray-700">Are you sure you want to delete the user account?<br/>
+          <h2 className="font-semibold text-center mb-6 text-gray-700">Are you sure you want to delete the user account?
+            This action cannot be undone<br/>
           </h2>
           <div className="grid grid-flow-col justify-evenly">
             <form action={formAction}>

@@ -1,6 +1,7 @@
 import FormLogin from "@/components/auth/form-login"
 import logo from "../../../../public/logo/etempah.png"
 import Image from "next/image"
+import loginLogo from "../../../../public/illustration/login-mdr.jpg"
 
 const Login = () => {
   return (
@@ -10,9 +11,9 @@ const Login = () => {
       </div>
       <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-1 rounded-lg bg-white max-w-[40%] shadow-[0px_4px_54px_-18px_#73a8ff]">
         <div className="container rounded-lg h-[90%] self-center w-full justify-self-center ml-7">
-          <img
+          <Image
             className="max-w-full h-full max-h-full w-full object-cover rounded-lg"
-            src="https://i.ibb.co/jvpyC0p/login-mdr.jpg"
+            src={loginLogo}
             alt="login-mdr"
           />
         </div>
