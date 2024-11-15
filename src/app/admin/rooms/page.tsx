@@ -1,16 +1,11 @@
+import { auth } from "@/auth";
+import RoomCard from "@/components/room-card";
 import Link from "next/link";
-import { prisma } from "@/lib/prisma";
-import Image from "next/image";
 
 const RoomsPage = async () => {
 
-    const places = await prisma.place.findMany({
-        include: {
-            picture: true,
-        }
-    });
-
-    //console.log("Retrieved Places: ",places);
+    const session = await auth();
+    const role = session?.user.role;
 
   return (
     <>
@@ -30,20 +25,9 @@ const RoomsPage = async () => {
             </div>
         </div>
 
-        <div className="bg-yellow-100 mx-auto max-w-[80%] mb-10 mt-6 flex">
-            {places.map( (place) => (
-                <div key={place.placeId} className="bg-white rounded-xl shadow-[0px_4px_54px_-18px_#73a8ff] hover:scale-110 
-                hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all">
-                    <div className="container aspect-video rounded-xl">
-                        {place.picture.map( (singlePic) => (
-                            <Image src={singlePic.picLink} height={169} width={300} alt="Room Picture" className="rounded-xl"/>
-                        ))}
-                    </div>
-                </div>
-            ))}
+        <RoomCard role={role}/>
 
-            
-        </div>
+
     </>
     
   )
