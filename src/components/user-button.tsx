@@ -76,7 +76,7 @@ const UserButton: React.FC<UserButtonProps> = ({id,role}) => {
         </div>
         <div className="my-6">
           <h1 className="font-bold text-2xl text-center mb-3 mt-0">Confirm User Account Deletion?</h1>
-          <h2 className="font-semibold text-center mb-6 text-gray-700">Are you sure you want to delete the user account?
+          <h2 className="font-semibold text-center mb-6 text-gray-700">Are you sure you want to delete the user account?<br/>
             This action cannot be undone<br/>
           </h2>
           <div className="grid grid-flow-col justify-evenly">
