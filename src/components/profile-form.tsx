@@ -124,12 +124,12 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
         <div className='grid grid-cols-2 gap-3'>
           {open == false ? (
             <button onClick={handleOpen} type='button' className="my-6 bg-red-300 p-2 w-full mx-auto rounded-xl text-lg text-red-700 font-semibold 
-            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95">
+            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all">
               <FaLock />
               Edit Profile
             </button>
           ) : (
-            <button onClick={handleOpen} type='button' className="my-6 bg-green-300 p-2 w-full mx-auto rounded-xl text-lg 
+            <button onClick={handleOpen} type='button' className="my-6 bg-green-300 p-2 w-full mx-auto rounded-xl text-lg transition-all
             active:scale-95 text-green-700 font-semibold flex items-center justify-center gap-2 hover:bg-green-700 hover:text-white">
               <FaLockOpen />
               Edit Profile
@@ -140,7 +140,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             <button
             disabled={disable}
             type="submit"
-            className="my-6 bg-gray-400 p-2 w-full mx-auto rounded-xl text-lg text-gray-700 font-semibold"
+            className="my-6 bg-gray-400 p-2 w-full mx-auto rounded-xl text-lg text-gray-700 font-semibold transition-all"
           >
             Update
           </button>
@@ -148,7 +148,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
           <button
             disabled={disable}
             type="submit"
-            className="my-6 bg-blue-500 p-2 w-full mx-auto rounded-xl text-lg text-white font-semibold 
+            className="my-6 bg-blue-500 p-2 w-full mx-auto rounded-xl text-lg text-white font-semibold transition-all 
             hover:bg-blue-700 active:scale-95"
           >
             Update

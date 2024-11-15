@@ -67,7 +67,7 @@ const AdminNavbar = ({name, role}: User) => {
         {/*Item 2*/}
         <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
           {items.map( (item) => (
-            <li key={item.id} className={`hover:cursor-pointer hover:text-blue-400 ${pathname.startsWith(item.url) ? "text-blue-800" : ""}`}>
+            <li key={item.id} className={`transition-all hover:cursor-pointer hover:text-blue-400 ${pathname.startsWith(item.url) ? "text-blue-800" : ""}`}>
               <Link href={item.url}>{item.title}</Link>
             </li>
           ) )}
