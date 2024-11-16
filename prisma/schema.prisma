@@ -13,7 +13,6 @@ model booking {
   endTime      DateTime       @db.Time(0)
   date         DateTime       @db.Date
   purpose      String         @db.VarChar(255)
-  confirmed    Boolean        @default(false)
   userId       String
   placeId      String
   place        place          @relation(fields: [placeId], references: [placeId], onUpdate: Restrict, map: "booking_ibfk_1")
@@ -42,7 +41,7 @@ model cancellation {
 model place {
   placeId       String    @id @unique(map: "placeId") @default(uuid())
   placeName     String    @db.VarChar(255)
-  placeDesc     String    @db.VarChar(500)
+  placeDesc     String    @db.VarChar(255)
   placeCapacity Int
   placeType     String    @db.VarChar(255)
   booking       booking[]
@@ -73,7 +72,7 @@ model verificationToken {
 
 model picture {
   picId   String @id @default(uuid())
-  picLink String @db.VarChar(255)
+  picLink String @db.VarChar(500)
   placeId String
   place   place  @relation(fields: [placeId], references: [placeId], onUpdate: Restrict, map: "picture_ibfk_1")
 
