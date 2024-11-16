@@ -17,16 +17,23 @@ const RoomCard = async (role: prop) => {
     //console.log("Retrieved Places: ",places);
 
   return (
-    <div className="bg-yellow-100 mx-auto max-w-[80%] mb-10 mt-6 flex justify-between flex-wrap">
+    <div className="mx-auto max-w-[80%] mb-10 mt-6 flex justify-between flex-wrap">
         {places.map( (place) => (
             <div key={place.placeId} className="bg-white rounded-xl shadow-[0px_4px_54px_-18px_#73a8ff] hover:scale-110 
             hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all w-[300px]">
 
-                {place.picture.map( (singlePic) => (
-                    <div key={singlePic.picId} className="container rounded-xl rounded-b-none">
-                        <Image src={singlePic.picLink} height={169} width={300} alt="Room Picture" className="rounded-xl rounded-b-none" priority/>
+                {place.picture.length > 0 && (
+                    <div className="container rounded-xl rounded-b-none w-[300px] h-[169px] overflow-hidden">
+                        <Image
+                            priority
+                            src={place.picture[1].picLink}
+                            width={300}
+                            height={169}
+                            alt="Room Picture"
+                            className="w-[300px] h-[169px] rounded-xl rounded-b-none object-cover"
+                        />
                     </div>
-                ))}
+                )}
                 
                 <div className="w-full p-3 pb-0">
                     <h1 className="text-lg font-bold text-blue-950 border-l-2 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
