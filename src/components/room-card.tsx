@@ -17,13 +17,13 @@ const RoomCard = async (role: prop) => {
     //console.log("Retrieved Places: ",places);
 
   return (
-    <div className="bg-yellow-100 mx-auto max-w-[80%] mb-10 mt-6 flex justify-between">
+    <div className="bg-yellow-100 mx-auto max-w-[80%] mb-10 mt-6 flex justify-between flex-wrap">
         {places.map( (place) => (
             <div key={place.placeId} className="bg-white rounded-xl shadow-[0px_4px_54px_-18px_#73a8ff] hover:scale-110 
             hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all w-[300px]">
 
                 {place.picture.map( (singlePic) => (
-                    <div key={singlePic.picId} className="container aspect-video rounded-xl rounded-b-none">
+                    <div key={singlePic.picId} className="container rounded-xl rounded-b-none">
                         <Image src={singlePic.picLink} height={169} width={300} alt="Room Picture" className="rounded-xl rounded-b-none" priority/>
                     </div>
                 ))}
@@ -48,11 +48,10 @@ const RoomCard = async (role: prop) => {
                     </div>
 
                     <div className="flex flex-col flex-3 w-[80px] p-3 items-center justify-center">
-                        <Link href={}>
+                        <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
                             <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700 
                             transition-all text-white">Edit</button>
-                        </Link>
-                        
+                        </Link> 
                     </div>
 
                 </div>

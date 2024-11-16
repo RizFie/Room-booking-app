@@ -30,8 +30,8 @@ const AdminNavbar = ({name, role}: User) => {
     },
     {
       id: 3,
-      title: "Rooms",
-      url: "/admin/rooms",
+      title: "Places",
+      url: "/admin/places",
     },
     {
       id: 4,
