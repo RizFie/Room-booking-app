@@ -44,7 +44,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
   return (
     <>
 
-        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
+        <div className="bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
 
             <div className="relative w-full h-[400px] overflow-hidden">
 
@@ -53,13 +53,14 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 alt={`Slide ${currentIndex + 1}`}
                 fill
                 className="object-cover rounded-lg"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 priority
                 />
 
                 {/* Left Arrow */}
                 <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full"
+                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full transition-all hover:bg-blue-800 hover:shadow-md"
                 >
                 &#8592;
                 </button>
@@ -67,7 +68,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 {/* Right Arrow */}
                 <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full"
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full transition-all hover:bg-blue-800 hover:shadow-md"
                 >
                 &#8594;
                 </button>
@@ -75,11 +76,11 @@ const RoomFormUpdate = ({ placeData }: Props) => {
             </div>
         </div>
     
-        <div className="p-5 bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
+        <div className="p-5 bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
             <form>
                 <label
                 htmlFor="placeName"
-                className="text-md font-medium text-gray-800 mr-2 text-xl"
+                className="text-md font-medium text-gray-700 text-2xl font-sans block"
                 >
                 Place Name
                 </label>
@@ -88,9 +89,59 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 id="placeName"
                 type="text"
                 name="placeName"
-                className="text-lg font-bold text-blue-950 border-l-2 border-l-blue-900 py-1 px-2  
-                bg-blue-50 rounded-md rounded-l-none w-full mt-1 h-14 focus:outline-none focus:border-l-green-600
-                focus:bg-green-50"/>
+                className="text-lg font-bold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
+                focus:bg-green-50 focus:text-green-950"/>
+
+                <label
+                htmlFor="placeDesc"
+                className="text-md font-medium text-gray-700 text-2xl font-sans mt-5 block"
+                >
+                Description
+                </label>
+                <textarea
+                defaultValue={placeData?.placeDesc}
+                maxLength={150}
+                id="placeDesc"
+                name="placeDesc"
+                className="text-lg font-bold text-blue-950 border-[2px] border-blue-900 py-1 px-2  
+                bg-blue-50 rounded-md w-full mt-2 h-20 focus:outline-green-600 focus:text-green-950
+                focus:bg-green-50 transition-all"/>
+
+                <div className="flex flex-row gap-3 mt-5">
+                    <div>
+                        <label
+                        htmlFor="placeCapacity"
+                        className="text-md font-medium text-gray-700 text-2xl font-sans block"
+                        >
+                        Capacity
+                        </label>
+                        <input
+                        defaultValue={placeData?.placeCapacity}
+                        id="placeCapacity"
+                        type="text"
+                        name="placeCapacity"
+                        className="text-lg font-bold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                        bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
+                        focus:bg-green-50 focus:text-green-950"/>
+                    </div>
+                    <div>
+                        <label
+                        htmlFor="placeType"
+                        className="text-md font-medium text-gray-700 text-2xl font-sans block"
+                        >
+                        Type
+                        </label>
+                        <input
+                        defaultValue={placeData?.placeType}
+                        id="placeType"
+                        type="text"
+                        name="placeType"
+                        className="text-lg font-bold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                        bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
+                        focus:bg-green-50 focus:text-green-950"/>
+                    </div>
+                </div>
             </form>
         </div>
     </>

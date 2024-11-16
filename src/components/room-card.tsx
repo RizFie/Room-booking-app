@@ -6,7 +6,7 @@ interface prop {
     role: string | undefined
 }
 
-const RoomCard = async (role: prop) => {
+const RoomCard = async ({role}: prop) => {
 
     const places = await prisma.place.findMany({
         include: {
@@ -54,12 +54,22 @@ const RoomCard = async (role: prop) => {
                         </div>
                     </div>
 
-                    <div className="flex flex-col flex-3 w-[80px] p-3 items-center justify-center">
+                    { role == "admin" ? (
+                        <div className="flex flex-col flex-3 w-[80px] p-3 items-center justify-center">
                         <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
                             <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700 
-                            transition-all text-white">Edit</button>
+                            transition-all text-white active:scale-90">Edit</button>
                         </Link> 
-                    </div>
+                        </div>
+                    ) : (
+                        <div className="flex flex-col flex-3 w-[80px] p-3 items-center justify-center">
+                        <Link className="w-full h-full" href={`/main/reserve/${place.placeId}`}>
+                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700 
+                            transition-all text-white active:scale-90">Book</button>
+                        </Link> 
+                        </div>
+                    )}
+                    
 
                 </div>
             </div>
