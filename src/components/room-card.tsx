@@ -40,11 +40,11 @@ const RoomCard = async ({role}: prop) => {
                 
                 <div className="w-full p-3 pb-0">
                     <h1 className="text-xl font-bold text-blue-950 border-l-2 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
-                    <p className="text-sm font-normal text-gray-700 mt-2 text-justify">{place.placeDesc}</p>
+                    <p className="text-sm font-normal text-gray-700 mt-2 text-justify mb-2">{place.placeDesc}</p>
                 </div>
                 
                 
-                <div className="flex justify-between">
+                <div className="flex justify-between border-t-[1px]">
                     <div className="w-auto flex flex-row p-3 gap-1">
                         <div>
                             <div className="font-semibold text-left flex flex-row items-center justify-left gap-2">
@@ -62,8 +62,8 @@ const RoomCard = async ({role}: prop) => {
                     { role == "admin" ? (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
-                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700 
-                            transition-all text-white active:scale-90 shadow-md font-semibold">Edit</button>
+                            <button className="w-full h-full rounded-lg bg-gradient-to-r from-blue-700 to-blue-500
+                            transition-all text-white active:scale-90 shadow-md font-semibold hover:from-green-700 hover:to-green-500">Edit</button>
                         </Link> 
                         </div>
                     ) : (

@@ -26,7 +26,7 @@ const Users = async () => {
             
         </div>
         
-        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-xl overflow-auto">
+        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-md overflow-auto">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
                     <tr className="text-left bg-blue-200 text-blue-950 border-b-[1px] border-gray-300">
