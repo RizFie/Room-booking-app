@@ -17,11 +17,12 @@ const RoomCard = async ({role}: prop) => {
     });
 
     //console.log("Retrieved Places: ",places);
+    //shadow-[0px_4px_54px_-18px_#73a8ff]
 
   return (
     <div className="mx-auto max-w-[80%] my-12 flex justify-between flex-wrap">
         {places.map( (place) => (
-            <div key={place.placeId} className="bg-white rounded-xl shadow-[0px_4px_54px_-18px_#73a8ff] hover:scale-105 
+            <div key={place.placeId} className="bg-white rounded-xl shadow-xl hover:scale-105 
             hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all max-w-[320px]">
 
                 {place.picture.length > 0 && (
