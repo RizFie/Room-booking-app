@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Picture {
   picId: string;
@@ -89,7 +90,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 id="placeName"
                 type="text"
                 name="placeName"
-                className="text-lg font-bold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
                 bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
                 focus:bg-green-50 focus:text-green-950"/>
 
@@ -101,14 +102,14 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 </label>
                 <textarea
                 defaultValue={placeData?.placeDesc}
-                maxLength={150}
+                maxLength={500}
                 id="placeDesc"
                 name="placeDesc"
-                className="text-lg font-bold text-blue-950 border-[2px] border-blue-900 py-1 px-2  
+                className="text-md font-semibold text-blue-950 border-[1.5px] border-blue-900 py-1 px-2  
                 bg-blue-50 rounded-md w-full mt-2 h-20 focus:outline-green-600 focus:text-green-950
                 focus:bg-green-50 transition-all"/>
 
-                <div className="flex flex-row gap-3 mt-5">
+                <div className="flex flex-row gap-3 mt-5 justify-between">
                     <div>
                         <label
                         htmlFor="placeCapacity"
@@ -121,7 +122,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                         id="placeCapacity"
                         type="text"
                         name="placeCapacity"
-                        className="text-lg font-bold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                        className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
                         bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
                         focus:bg-green-50 focus:text-green-950"/>
                     </div>
@@ -137,9 +138,18 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                         id="placeType"
                         type="text"
                         name="placeType"
-                        className="text-lg font-bold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                        className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
                         bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
                         focus:bg-green-50 focus:text-green-950"/>
+                    </div>
+
+                    <div className="grid grid-rows-2 justify-center items-center w-[110px] gap-2">
+                      <button className="w-full border-2 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
+                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all">UPDATE</button>
+                      <Link href={"/admin/places"}>
+                        <button className="w-full border-2 border-gray-500 p-2 rounded-md text-gray-600 hover:bg-gray-700
+                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all">BACK</button>
+                      </Link>
                     </div>
                 </div>
             </form>

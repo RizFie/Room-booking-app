@@ -27,7 +27,7 @@ const EditPlace = async ({ params }: { params: { id: string } }) => {
             <TbAlertOctagonFilled className="ml-3 w-[26px] h-[26px] text-red-700 scale-150"/>
             <p className="font-semibold text-gray-700
             ">In this page, you may update the places information.<br/>
-            However, place picture are not allowed to be changed or updated. <br/>
+            However, places picture are not allowed to be changed or updated. <br/>
             </p>
         </div>
         
