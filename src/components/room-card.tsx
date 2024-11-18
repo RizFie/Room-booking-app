@@ -44,12 +44,12 @@ const RoomCard = async ({role}: prop) => {
                 
                 <div className="flex justify-between">
                     <div className="w-auto flex flex-row p-3 gap-1">
-                        <div className="text-sm font-semibold text-left p-2 flex flex-row items-center justify-center gap-1">
-                            <MdMeetingRoom className="text-gray-500 scale-150"/>
+                        <div className="text-sm font-semibold text-left p-2 flex flex-row items-center border-2 border-gray-500 justify-center">
+                            <MdMeetingRoom className="text-gray-500 scale-150 m-1"/>
                             <p className="text-gray-500">{place.placeType}</p>
                         </div>
                         
-                        <div className="text-sm font-semibold text-left bg-blue-800 p-2">
+                        <div className="text-sm font-semibold text-left p-2 flex flex-row items-center border-2 border-gray-500 justify-center">
                             <h3 className="text-white font-bold">Capacity:</h3>
                             <p className="text-white text-xs">{place.placeCapacity} people</p>
                         </div>
