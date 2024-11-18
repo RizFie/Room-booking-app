@@ -11,7 +11,7 @@ const RoomsPage = async () => {
     <>
         <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between h-16 border-b-2 border-b-blue-500 pb-10">
             <div>
-                <h1 className="font-bold text-xl text-blue-950">Room/Place</h1>
+                <h1 className="font-bold text-3xl text-blue-950">Room/Place</h1>
                 <p className="text-gray-600 text-sm font-medium">View all the room and place that are in the system.<br/>
                 More room can be added</p>
             </div>

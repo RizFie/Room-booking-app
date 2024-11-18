@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import Image from "next/image";
 import Link from "next/link";
+import { MdMeetingRoom } from "react-icons/md";
 
 interface prop {
     role: string | undefined
@@ -37,20 +38,20 @@ const RoomCard = async ({role}: prop) => {
                 
                 <div className="w-full p-3 pb-0">
                     <h1 className="text-lg font-bold text-blue-950 border-l-2 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
-                    <p className="text-sm font-medium text-gray-700 mt-2 text-justify">{place.placeDesc}</p>
+                    <p className="text-sm font-normal text-gray-700 mt-2 text-justify">{place.placeDesc}</p>
                 </div>
                 
                 
                 <div className="flex justify-between">
-                    <div className="w-auto flex flex-row p-3">
-                        <div className="text-sm font-semibold border-[2px] border-blue-200 border-r-[1.4px] bg-blue-50 p-2 rounded-l-sm">
-                            <h3 className="text-blue-500">Place Type</h3>
-                            <p className="text-gray-600">{place.placeType}</p>
+                    <div className="w-auto flex flex-row p-3 gap-1">
+                        <div className="text-sm font-semibold text-left p-2 flex flex-row items-center justify-center gap-1">
+                            <MdMeetingRoom className="text-gray-500 scale-150"/>
+                            <p className="text-gray-500">{place.placeType}</p>
                         </div>
                         
-                        <div className="text-sm font-semibold border-[2px] border-blue-200 border-l-[1.2px] text-left bg-blue-50 p-2 pl-3 rounded-r-sm">
-                            <h3 className="text-blue-500">Capacity</h3>
-                            <p className="text-gray-600">{place.placeCapacity} people</p>
+                        <div className="text-sm font-semibold text-left bg-blue-800 p-2">
+                            <h3 className="text-white font-bold">Capacity:</h3>
+                            <p className="text-white text-xs">{place.placeCapacity} people</p>
                         </div>
                     </div>
 
@@ -58,7 +59,7 @@ const RoomCard = async ({role}: prop) => {
                         <div className="flex flex-col flex-3 w-[84px] p-3 items-center justify-center">
                         <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
                             <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700 
-                            transition-all text-white active:scale-90">Edit</button>
+                            transition-all text-white active:scale-90 shadow-md">Edit</button>
                         </Link> 
                         </div>
                     ) : (
