@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState, useActionState } from "react";
+import React, { useState, useActionState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { updatePlace } from "@/lib/action";
+import toast from "react-hot-toast";
 
 interface Picture {
   picId: string;
@@ -24,6 +25,7 @@ interface Props {
 }
 
 const RoomFormUpdate = ({ placeData }: Props) => {
+
   const pictures = placeData?.picture || [];
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -31,8 +33,21 @@ const RoomFormUpdate = ({ placeData }: Props) => {
     throw new Error("Place ID is undefined");
   }
 
-  const updatePlaceWithId = updatePlace.bind(null,placeData?.placeId);
+  //console.log("place ID",placeData.placeId);
+
+  const updatePlaceWithId = updatePlace.bind(null,placeData.placeId);
   const [state, formAction] = useActionState(updatePlaceWithId,null);
+
+  useEffect(() => {
+    if(state?.code == 200){
+        toast.success(state.message);
+        state.code = 0;
+    }
+    else if(state?.code == 500){
+        toast.error(state?.message);
+        state.code = 0;
+    }
+  },[state]);
 
   //NEXT
   const nextSlide = () => {
@@ -126,9 +141,10 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                         Capacity
                         </label>
                         <input
+                        type="number"
+                        min={1}
                         defaultValue={placeData?.placeCapacity}
                         id="placeCapacity"
-                        type="text"
                         name="placeCapacity"
                         className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
                         bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600

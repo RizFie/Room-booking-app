@@ -1,4 +1,4 @@
-import { number, object, string } from "zod";
+import { coerce, number, object, string } from "zod";
 
 export const loginSchema = object({
     email: string().email("Invalid email"),
@@ -25,6 +25,6 @@ export const profileSchema = object({
 export const placeSchema = object({
     placeName: string().min(1,"No Place Name inserted"),
     placeDesc: string().min(1,"No Place Description inserted"),
-    placeCapacity: number().min(1,"No Capacity Added"),
+    placeCapacity: string().transform((value) => parseInt(value, 10)).refine((value) => !isNaN(value), "Capacity must be a valid number"),
     placeType: string().min(1,"No place type added"),
-})
+});

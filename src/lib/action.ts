@@ -107,7 +107,6 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
 
   console.log(validatedFields);
   const { fullname, email, phone} = validatedFields.data;
-  console.log(fullname, email, phone);
 
   
   try {
@@ -171,9 +170,11 @@ export const updatePlace = async (id: string, prevState: unknown ,formData: Form
         placeType: placeType,
       }
     });
-    return {code: 200, message: "Room updated successfully"}
-  } catch (error) {
-    return {code: 500, message: error};
-  }
 
+    revalidatePath(`/admin/places/${id}`)
+    return {code: 200, message: "Room updated successfully"}
+
+  } catch (error) {
+    return {code: 500, message: "Something went wrong"};
+  }
 }
