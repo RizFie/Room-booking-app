@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import {Roboto, Inter} from 'next/font/google'
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const roboto_init = Roboto({
+  subsets: ['latin'],
+  weight: ['100','300','400','500','700','900'],
+  variable: "--font-roboto",
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+
+const inter_init = Inter({
+  subsets: ["latin"],
+  weight: ['100','300','400','500','700','900'],
+  variable: "--font-inter",
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${roboto_init.variable} ${inter_init.variable} font-inter antialiased`}
       >
         <Toaster/>
         {children}
