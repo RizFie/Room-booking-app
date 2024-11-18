@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import RoomCard from "@/components/room-card";
 import Link from "next/link";
+import { FaCircleExclamation } from "react-icons/fa6";
 
 const RoomsPage = async () => {
 
@@ -9,11 +10,15 @@ const RoomsPage = async () => {
 
   return (
     <>
-        <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between h-16 border-b-2 border-b-blue-500 pb-10">
+        <div className="flex flex-row mx-auto max-w-[80%] mt-14 items-center justify-between h-16 pb-10">
             <div>
-                <h1 className="font-bold text-3xl text-blue-950">Room/Place</h1>
-                <p className="text-gray-600 text-sm font-medium">View all the room and place that are in the system.<br/>
-                More room can be added</p>
+                <h1 className="font-bold text-3xl text-blue-950 mt-12">Room/Place</h1>
+                <div className="flex gap-2 items-center my-2 border-2 p-2 rounded-md bg-blue-100 border-blue-500 z-10">
+                    <FaCircleExclamation className="text-2xl text-blue-500"/>
+                    <p className="text-blue-600 text-sm font-medium">View all the room and place that are in the system.<br/>
+                    More room can be added</p>
+                </div>
+                
             </div>
             <div className="h-full">
                 <Link href="/admin/rooms/add">

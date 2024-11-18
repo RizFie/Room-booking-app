@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 body{
-    background: rgb(248, 248, 248);
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: rgb(241, 241, 241);
 }
 
 #authShadow{
