@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "./prisma";
-import { loginSchema, profileSchema, registerSchema } from "./zod";
+import { loginSchema, placeSchema, profileSchema, registerSchema } from "./zod";
 import { hashSync } from "bcrypt-ts";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
@@ -146,4 +146,34 @@ export const deleteUser = async (id:string) => {
 //REFRESH USERS LIST IN ADMIN
 export async function revalidateAdminUsers() {
   revalidatePath("/admin/users");
+}
+
+//UPDATE PLACE ACTION
+export const updatePlace = async (id: string, prevState: unknown ,formData: FormData) => {
+  
+  const validatedFields = placeSchema.safeParse(Object.fromEntries(formData.entries()));
+
+  if (!validatedFields.success) {
+    return {
+      error: validatedFields.error.flatten().fieldErrors,
+    };
+  }
+
+  const {placeName, placeDesc, placeCapacity, placeType} = validatedFields.data;
+
+  try {
+    await prisma.place.update({
+      where: {placeId: id},
+      data: {
+        placeName: placeName,
+        placeDesc: placeDesc,
+        placeCapacity: placeCapacity,
+        placeType: placeType,
+      }
+    });
+    return {code: 200, message: "Room updated successfully"}
+  } catch (error) {
+    return {code: 500, message: error};
+  }
+
 }

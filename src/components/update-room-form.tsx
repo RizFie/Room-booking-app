@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useActionState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { updatePlace } from "@/lib/action";
 
 interface Picture {
   picId: string;
@@ -25,6 +26,13 @@ interface Props {
 const RoomFormUpdate = ({ placeData }: Props) => {
   const pictures = placeData?.picture || [];
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  if(!placeData?.placeId){
+    throw new Error("Place ID is undefined");
+  }
+
+  const updatePlaceWithId = updatePlace.bind(null,placeData?.placeId);
+  const [state, formAction] = useActionState(updatePlaceWithId,null);
 
   //NEXT
   const nextSlide = () => {
@@ -78,7 +86,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
         </div>
     
         <div className="p-5 bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
-            <form>
+            <form action={formAction}>
                 <label
                 htmlFor="placeName"
                 className="text-md font-medium text-gray-700 text-2xl font-sans block"
@@ -144,7 +152,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                     </div>
 
                     <div className="grid grid-rows-2 justify-center items-center w-[110px] gap-2">
-                      <button className="w-full border-2 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
+                      <button type="submit" className="w-full border-2 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
                       hover:text-white font-medium hover:scale-110 active:scale-95 transition-all">UPDATE</button>
                       <Link href={"/admin/places"}>
                         <button className="w-full border-2 border-gray-500 p-2 rounded-md text-gray-600 hover:bg-gray-700
