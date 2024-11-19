@@ -26,10 +26,10 @@ const Users = async () => {
             
         </div>
         
-        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-md overflow-auto">
+        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-sm overflow-auto">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
-                    <tr className="text-left bg-blue-200 text-blue-950 border-b-[1px] border-gray-300">
+                    <tr className="text-left bg-blue-300 text-blue-950 border-b-[1px] border-gray-300">
                         <th className="p-3 w-[280px]">Full Name</th>
                         <th className="p-3">Email</th>
                         <th className="p-3">Phone Number</th>

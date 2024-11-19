@@ -168,11 +168,11 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                     </div>
 
                     <div className="grid grid-rows-2 justify-center items-center w-[110px] gap-2">
-                      <button type="submit" className="w-full border-2 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
-                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all">UPDATE</button>
+                      <button type="submit" className="w-full border-2 bg-blue-100 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
+                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all shadow-md">UPDATE</button>
                       <Link href={"/admin/places"}>
-                        <button className="w-full border-2 border-gray-500 p-2 rounded-md text-gray-600 hover:bg-gray-700
-                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all">BACK</button>
+                        <button className="w-full border-2 bg-gray-100 border-gray-500 p-2 rounded-md text-gray-600 hover:bg-gray-700
+                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all shadow-md">BACK</button>
                       </Link>
                     </div>
                 </div>

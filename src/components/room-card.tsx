@@ -20,7 +20,7 @@ const RoomCard = async ({role}: prop) => {
     //shadow-[0px_4px_54px_-18px_#73a8ff]
 
   return (
-    <div className="mx-auto max-w-[80%] my-12 flex justify-between flex-wrap">
+    <div className="mx-auto max-w-[80%] mt-5 flex justify-between flex-wrap">
         {places.map( (place) => (
             <div key={place.placeId} className="bg-white rounded-xl shadow-xl hover:scale-105 
             hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all max-w-[320px]">
@@ -38,9 +38,9 @@ const RoomCard = async ({role}: prop) => {
                     </div>
                 )}
                 
-                <div className="w-full p-3 pb-0">
+                <div className="w-full p-3 pb-0 text-ellipsis">
                     <h1 className="text-xl font-bold text-blue-950 border-l-2 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
-                    <p className="text-sm font-normal text-gray-700 mt-2 text-justify mb-2">{place.placeDesc}</p>
+                    <p className="text-sm font-normal text-gray-700 mt-2 text-justify mb-2 max-h-[140px]">{place.placeDesc}</p>
                 </div>
                 
                 

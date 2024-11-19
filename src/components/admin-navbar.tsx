@@ -81,8 +81,8 @@ const AdminNavbar = ({name, role}: User) => {
             <h2 className="flex-1 font-semibold text-gray-800">{role}</h2>
           </div>
 
-        <button onClick={SignOut} className="border-2 border-red-500 transition-all text-black text-base font-medium px-2 py-1 rounded-md 
-        hover:bg-red-600 hover:text-white active:scale-95">Logout</button>
+        <button onClick={SignOut} className="border-2 border-red-500 transition-all text-base font-medium px-2 py-1 rounded-md 
+        hover:bg-red-600 hover:text-white active:scale-95 text-red-500">Logout</button>
 
         </div>
         
