@@ -16,7 +16,7 @@ const ProfilePage = async () => {
     });
 
   return (
-    <div className="grid grid-cols-2 bg-white mx-auto max-w-[80%] my-10 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
+    <div className="grid grid-cols-2 bg-white mx-auto max-w-[80%] my-10 rounded-lg shadow-lg">
       <div className="p-5">
         <div className="flex flex-row justify-between border-b-blue-200 border-b-2">
           <div className="flex-2">

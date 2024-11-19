@@ -42,7 +42,7 @@ const AdminNavbar = ({name, role}: User) => {
 
   return (
     <nav className="bg-white border-b-2 border-blue-700 shadow-[0px_4px_21px_0px_rgba(59,_130,_246,_0.5)]">
-      <div className="max-w-full flex items-center justify-between p-2">
+      <div className="max-w-full flex items-center justify-between p-2 ">
 
         {/*Item 1*/}
           <div className="flex-0 container w-[180px] h-[60px] overflow-hidden flex justify-center ">
