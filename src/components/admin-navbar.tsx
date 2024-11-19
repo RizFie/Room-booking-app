@@ -12,8 +12,6 @@ interface User {
   role: string | undefined
 }
 
-
-
 const AdminNavbar = ({name, role}: User) => {
 
   //ADD MORE NAVBAR ITEMS

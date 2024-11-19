@@ -20,9 +20,9 @@ const RoomCard = async ({role}: prop) => {
     //shadow-[0px_4px_54px_-18px_#73a8ff]
 
   return (
-    <div className="mx-auto max-w-[80%] mt-5 flex justify-between flex-wrap">
+    <div className="mx-auto max-w-[80%] mt-5 mb-10 flex justify-between flex-wrap">
         {places.map( (place) => (
-            <div key={place.placeId} className="bg-white rounded-xl shadow-xl hover:scale-105 
+            <div key={place.placeId} className="bg-gradient-to-t from-gray-50 to-white rounded-xl shadow-2xl hover:scale-105 
             hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all max-w-[320px]">
 
                 {place.picture.length > 0 && (
@@ -39,12 +39,12 @@ const RoomCard = async ({role}: prop) => {
                 )}
                 
                 <div className="w-full p-3 pb-0 text-ellipsis">
-                    <h1 className="text-xl font-bold text-blue-950 border-l-2 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
-                    <p className="text-sm font-normal text-gray-700 mt-2 text-justify mb-2 max-h-[140px]">{place.placeDesc}</p>
+                    <h1 className="text-xl font-bold text-blue-950 border-l-4 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
+                    <p className="text-sm font-medium text-gray-700 mt-2 text-justify mb-2 max-h-[140px]">{place.placeDesc}</p>
                 </div>
                 
                 
-                <div className="flex justify-between border-t-[1px]">
+                <div className="flex justify-between border-t-[2px]">
                     <div className="w-auto flex flex-row p-3 gap-1">
                         <div>
                             <div className="font-semibold text-left flex flex-row items-center justify-left gap-2">
@@ -69,8 +69,8 @@ const RoomCard = async ({role}: prop) => {
                     ) : (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/main/reserve/${place.placeId}`}>
-                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700 
-                            transition-all text-white active:scale-90 shadow-md font-semibold">Book</button>
+                            <button className="w-full h-full rounded-lg bg-blue-500 bg-gradient-to-r from-blue-700 to-blue-500
+                            transition-all text-white active:scale-90 shadow-md font-semibold hover:from-green-700 hover:to-green-500">Book</button>
                         </Link> 
                         </div>
                     )}

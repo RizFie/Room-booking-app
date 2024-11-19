@@ -69,7 +69,10 @@ const config: Config = {
 		fontFamily: {
 			roboto: ['var(--font-roboto)'],
 			inter: ['var(--font-inter)']
-		}
+		},
+		backgroundImage: {
+			wave: "url('/illustration/wave.svg')",
+		},
   	}
   },
   plugins: [require("tailwindcss-animate")],

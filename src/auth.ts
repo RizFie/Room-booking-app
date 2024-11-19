@@ -60,7 +60,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const isAdminRoutes = nextUrl.pathname.startsWith("/admin");
       //console.log("Current pathname: ",nextUrl.pathname);
 
-      if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname) || adminProtectedRoutes.includes(nextUrl.pathname))){
+      if(!isLoggedIn && (isUserRoutes || isAdminRoutes)){
         return NextResponse.redirect(new URL("/login",nextUrl));
       }
 

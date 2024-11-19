@@ -12,7 +12,7 @@ const MainLayout = async ({children}:{children: React.ReactNode}) => {
     console.log(secName);
 
   return (
-    <div>
+    <div className="min-h-full">
         <Navbar name={secName} role={role}/>
         {children}
     </div>

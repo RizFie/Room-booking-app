@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 body{
-    background: rgb(244, 251, 255);
+  background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+  background-size: cover;
 }
 
 #authShadow{
@@ -19,7 +20,6 @@ body{
     background: rgb(82,164,255);
     background: linear-gradient(0deg, rgba(82,164,255,1) 0%, rgba(125,198,255,1) 50%, rgba(0,212,255,1) 100%);
 }
-  
 
 @layer base {
   :root {
