@@ -23,7 +23,7 @@ const RoomCard = async ({role}: prop) => {
     <div className="mx-auto max-w-[80%] mt-5 mb-10 flex justify-around flex-wrap w-auto">
         {places.map( (place) => (
             <div key={place.placeId} className="bg-gradient-to-t from-gray-50 to-white rounded-xl shadow-2xl hover:scale-105 
-            hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all max-w-[320px]">
+            hover:shadow-[0px_4px_63px_-12px_#5e9bff] transition-all max-w-[320px] max-h-[483px] h-[483px]">
 
                 {place.picture.length > 0 && (
                     <div className="container rounded-xl rounded-b-none w-[320px] h-[169px] overflow-hidden">

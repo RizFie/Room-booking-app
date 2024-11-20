@@ -82,8 +82,8 @@ const Navbar = ({name, role}: User) => {
       </div>
 
       <dialog id="dialog" ref={dialogRef} className=" bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
-        <div className="container w-full h-[160px] mt-9">
-          <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-full h-[160px]"/>
+        <div className="container w-[160px] h-[160px] mt-9 mx-auto">
+          <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-auto h-[160px]"/>
         </div>
         <div className="my-6">
           <h1 className="font-bold text-3xl text-center mb-3 mt-0">Hang On a Sec!</h1>
