@@ -125,7 +125,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 </label>
                 <textarea
                 defaultValue={placeData?.placeDesc}
-                maxLength={500}
+                maxLength={275}
                 id="placeDesc"
                 name="placeDesc"
                 className="text-md font-semibold text-blue-950 border-[1.5px] border-blue-900 py-1 px-2  

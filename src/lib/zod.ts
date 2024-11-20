@@ -24,7 +24,7 @@ export const profileSchema = object({
 
 export const placeSchema = object({
     placeName: string().min(1,"No Place Name inserted"),
-    placeDesc: string().min(1,"No Place Description inserted"),
+    placeDesc: string().min(1,"No Place Description inserted").max(275,"Maximum of 275 characters allowed"),
     placeCapacity: string().transform((value) => parseInt(value, 10)).refine((value) => !isNaN(value), "Capacity must be a valid number"),
     placeType: string().min(1,"No place type added"),
 });
