@@ -14,7 +14,7 @@ const EditPlace = async ({ params }: { params: { id: string } }) => {
         include: {
             picture: true,
         }
-    })
+    });
 
   return (
     <>

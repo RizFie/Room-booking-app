@@ -9,18 +9,19 @@ const ReservePage = async () => {
 
   return (
     <>
-    <div className='mx-auto w-full mt-10 text-center mb-7  p-3 text-white'>
+    <div className='mx-auto w-full mt-10 text-center mb-7 p-3 text-white'>
       <h1 className="font-bold text-3xl"><span className='text-transparent bg-clip-text bg-gradient-to-r 
       from-blue-700 via-purple-700 to-red-600'>Haven't reserve a room yet?</span></h1>
-      <p className='text-blue-950 mt-2 font-medium'>Start your booking process now and secure your spot!</p>
+      <p className='text-gray-600 mt-2 font-semibold'>Start your booking process now and secure your spot!</p>
     </div>
 
-    <div className='mb-10 flex flex-row justify-center items-center gap-2'>
-      <h2 className='text-center text-2xl font-semibold rounded-full bg-gradient-to-r from-purple-700 to-red-600 
-      w-80 p-3 shadow-md'>
-      <span className='text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-300 to-white'>
-        Select your room/place
-      </span></h2>
+    <div className='mb-10 flex flex-row justify-center items-center gap-7'>
+      <h2 className='text-center text-lg font-semibold bg-gradient-to-r from-purple-700 to-red-600 
+      w-auto p-3 shadow-md text-white'>1. Select your room/place</h2>
+      <h2 className='text-center text-lg font-semibold bg-gradient-to-r from-purple-700 to-red-600 
+      w-auto p-3 shadow-md text-white'>2. Select your reservation date</h2>
+      <h2 className='text-center text-lg font-semibold bg-gradient-to-r from-purple-700 to-red-600 
+      w-auto p-3 shadow-md text-white'>3. Done, your booking will be confirmed</h2>
     </div>
     
 
