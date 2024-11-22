@@ -30,7 +30,7 @@ const RoomCard = async ({role}: prop) => {
     <div className={`mx-auto max-w-[80%] mt-5 mb-10 flex gap-7 ${justify} flex-wrap`}>
         {places.map( (place) => (
             <div key={place.placeId} className="bg-gradient-to-t from-gray-50 to-white rounded-xl shadow-2xl hover:scale-105 
-            hover:shadow-[0px_4px_20px_0px_rgba(34,_197,_94,_0.5)] transition-all max-w-[320px] max-h-[483px] h-[483px]">
+            hover:shadow-[0px_1px_26px_-3px_#4073ff] transition-all max-w-[320px] max-h-[483px] h-[483px]">
 
                 {place.picture.length > 0 && (
                     <div className="container rounded-xl rounded-b-none w-[320px] h-[169px] overflow-hidden">
@@ -69,15 +69,15 @@ const RoomCard = async ({role}: prop) => {
                     { role == "admin" ? (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
-                            <button className="w-full h-full rounded-lg bg-gradient-to-r from-blue-700 to-blue-500
-                            transition-all text-white active:scale-90 shadow-md font-semibold hover:from-green-700 hover:to-green-500">Edit</button>
+                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700
+                            transition-all text-white active:scale-75 shadow-md font-semibold hover:from-green-700 hover:to-green-500">Edit</button>
                         </Link> 
                         </div>
                     ) : (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/main/reserve/${place.placeId}`}>
-                            <button className="w-full h-full rounded-lg bg-blue-500 bg-gradient-to-r from-blue-700 to-blue-500
-                            transition-all text-white active:scale-90 shadow-md font-semibold hover:from-green-700 hover:to-green-500">Book</button>
+                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700
+                            transition-all text-white active:scale-75 shadow-md font-semibold">Book</button>
                         </Link> 
                         </div>
                     )}

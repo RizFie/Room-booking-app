@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { updatePlace } from "@/lib/action";
 import toast from "react-hot-toast";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 interface Picture {
   picId: string;
@@ -81,20 +82,22 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 priority
                 />
 
-                {/* Left Arrow */}
+                {/* LEFT ARROW BUTTON */}
                 <button
                 onClick={prevSlide}
-                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full transition-all hover:bg-blue-800 hover:shadow-md"
+                className="absolute top-1/2 left-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full transition-all hover:bg-blue-800 hover:shadow-md
+                bg-opacity-70"
                 >
-                &#8592;
+                <FaArrowLeft/>
                 </button>
 
-                {/* Right Arrow */}
+                {/* RIGHT ARROW BUTTON */}
                 <button
                 onClick={nextSlide}
-                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full transition-all hover:bg-blue-800 hover:shadow-md"
+                className="absolute top-1/2 right-4 transform -translate-y-1/2 bg-blue-950 text-white p-2 rounded-full transition-all hover:bg-blue-800 hover:shadow-md
+                bg-opacity-70"
                 >
-                &#8594;
+                <FaArrowRight/>
                 </button>
 
             </div>
