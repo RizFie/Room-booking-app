@@ -27,7 +27,7 @@ const Carousel = ({ placePic }: { placePic: Picture[] }) => {
     };
 
   return (
-    <div className="bg-white mx-auto max-w-full mb-10 mt-4 rounded-lg shadow-lg">
+    <div className="bg-white mx-auto max-w-full mb-5 mt-4 rounded-lg shadow-xl">
 
             <div className="relative w-full h-[400px] overflow-hidden">
 

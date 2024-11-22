@@ -20,7 +20,7 @@ const RoomCard = async ({role}: prop) => {
     if(role=="admin"){
         justify = "justify-left";
     } else if(role == "user"){
-        justify = "justify-evenly";
+        justify = "justify-center";
     }
 
     //console.log("Retrieved Places: ",places);
@@ -70,14 +70,14 @@ const RoomCard = async ({role}: prop) => {
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
                             <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700
-                            transition-all text-white active:scale-75 shadow-md font-semibold hover:from-green-700 hover:to-green-500">Edit</button>
+                            transition-all text-white active:scale-75 font-semibold">Edit</button>
                         </Link> 
                         </div>
                     ) : (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/main/reserve/${place.placeId}`}>
                             <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700
-                            transition-all text-white active:scale-75 shadow-md font-semibold">Book</button>
+                            transition-all text-white active:scale-75 font-semibold">Book</button>
                         </Link> 
                         </div>
                     )}
