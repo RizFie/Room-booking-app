@@ -35,10 +35,11 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
             <Carousel placePic={placePic || []}/>
 
             <div className=''>
-                <h2 className='font-semibold text-xl text-blue-950 border-t-2 border-l-2 border-blue-500 py-1 pl-[5px]
+                <h2 className='font-semibold text-2xl text-blue-950 border-t-2 border-l-2 border-blue-500 py-1 pl-[5px]
                 bg-white rounded-tl-sm rounded-br-sm mb-5'>{placeData?.placeName}</h2>
-                <h2>Room Type:</h2>
-                <h3 className='font-semibold text-base text-blue-950 '>{placeData?.placeType}</h3>
+                <h3 className='font-semibold text-xl text-blue-950 '>{placeData?.placeType}</h3>
+                <h2 className='font-medium text-xs bg-blue-950 w-20 text-center p-1 text-white rounded-md mt-1'>Room Type</h2>
+                
             </div>
 
 
