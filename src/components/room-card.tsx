@@ -69,15 +69,15 @@ const RoomCard = async ({role}: prop) => {
                     { role == "admin" ? (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/admin/places/${place.placeId}`}>
-                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700
+                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-800
                             transition-all text-white active:scale-75 font-semibold">Edit</button>
                         </Link> 
                         </div>
                     ) : (
                         <div className="flex flex-col flex-3 h-auto w-[80px] p-3 items-center justify-center aspect-square">
                         <Link className="w-full h-full" href={`/main/reserve/${place.placeId}`}>
-                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-700
-                            transition-all text-white active:scale-75 font-semibold">Book</button>
+                            <button className="w-full h-full rounded-lg bg-blue-500 hover:bg-blue-800
+                            transition-all text-white active:scale-75 font-semibold hover:shadow-md">Book</button>
                         </Link> 
                         </div>
                     )}
