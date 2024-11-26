@@ -1,5 +1,6 @@
 
 import { auth } from '@/auth';
+import DateTimeForm from '@/components/dateTime-form';
 import Carousel from '@/components/user-carousel';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
@@ -56,27 +57,9 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
                 border-gray-400 text-white font-medium hover:scale-110 active:scale-95 transition-all'>Back</button></Link>
             </div>
             
-            <form className='w-full mt-4 text-blue-950'>
+            <DateTimeForm/>
 
-                <div className='flex flex-col'>
-                    <label htmlFor='date' className='text-lg font-medium block mb-2'>Reservation Date</label>
-                    <input name='date' type='date' className='p-2 border-2 rounded-sm border-blue-950 shadow-inner active:outline-1
-                    outline-blue-500'/>
-                </div>
-
-                <div className='flex flex-col mt-6'>
-                    <label htmlFor='startTime' className='text-lg font-medium block mb-2'>Start Time</label>
-                    <input name='startTime' type='time' className='p-2 border-2 rounded-sm border-blue-950 shadow-inner active:outline-1
-                    outline-blue-500'/>
-                </div>
-
-                <div className='flex flex-col mt-6'>
-                    <label htmlFor='endTime' className='text-lg font-medium block mb-2'>End Time</label>
-                    <input name='endTime' type='time' className='p-2 border-2 rounded-sm border-blue-950 shadow-inner active:outline-1
-                    outline-blue-500'/>
-                </div>
-                
-            </form>
+            
         </div>
     </div>
     
@@ -84,3 +67,5 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
 }
 
 export default CompleteBooking
+
+//<audio loop autoPlay src='/audio/onon.mp3'/>
