@@ -9,7 +9,9 @@ import React from 'react';
 const CompleteBooking = async ({ params }: { params: { id: string } }) => {
 
     const session = await auth();
-    const userId = session?.user.userId;
+    const userId = session?.user.id;
+
+    console.log(userId);
 
     const {id} = await params;
     
@@ -23,6 +25,7 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
     });
 
     const placePic = placeData?.picture;
+    const placeId = id;
 
   return (
     <div className='mx-auto max-w-[80%] my-10 flex flex-row gap-4'>
@@ -57,7 +60,7 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
                 border-gray-400 text-white font-medium hover:scale-110 active:scale-95 transition-all'>Back</button></Link>
             </div>
             
-            <DateTimeForm/>
+            <DateTimeForm placeId={placeId || ""} userId={userId || ""}/>
 
             
         </div>

@@ -178,3 +178,15 @@ export const updatePlace = async (id: string, prevState: unknown ,formData: Form
     return {code: 500, message: "Something went wrong"};
   }
 }
+
+//BOOKING ACTION
+export const createBooking = async ( ids: string, prevState: unknown, formData: FormData) => {
+
+  const bookDate = formData.get("date");
+  const bookStartTime = formData.get("startTime");
+  const bookEndTime = formData.get("endTime");
+
+  
+  //Check if the booking time already exist
+
+}
