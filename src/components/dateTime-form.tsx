@@ -1,5 +1,7 @@
 "use client"
-import React, {useActionState} from 'react'
+import { createBooking } from '@/lib/action';
+import React, {useActionState, useEffect} from 'react';
+import toast from 'react-hot-toast';
 
 interface props {
   userId: string | "";
@@ -11,32 +13,45 @@ const DateTimeForm = ({userId,placeId}:props) => {
   //console.log("Date Time userId: ",userId);
   //console.log("Date Time placeId: ",placeId);
 
+  const createBookingWithIds = createBooking.bind(null,{
+    place: placeId,
+    user: userId,
+  })
+  const [state,formAction] = useActionState(createBookingWithIds,null);
 
+  useEffect(() => {
+    if(state?.code==200){
+      toast.success(state.message);
+    }
+    else if(state?.code==500){
+      toast.error(state.message,{duration: 6000});
+    }
+  },[state]);
 
   return (
-    <form className='w-full mt-4 text-blue-950'>
+    <form action={formAction} className='w-full mt-4 text-blue-950'>
 
         <div className='flex flex-col'>
             <label htmlFor='date' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Reservation Date</label>
-            <input name='date' id='date' type='date' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <input required name='date' id='date' type='date' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='startTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Start Time</label>
-            <input name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <input required name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='endTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>End Time</label>
-            <input name='endTime' id='endTime' type='time' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <input required name='endTime' id='endTime' type='time' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='purpose' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Purpose</label>
-            <textarea name='purpose' id='purpose' maxLength={150} className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <textarea required name='purpose' id='purpose' maxLength={150} className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 

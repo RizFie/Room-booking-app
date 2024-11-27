@@ -62,7 +62,6 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
             
             <DateTimeForm placeId={placeId || ""} userId={userId || ""}/>
 
-            
         </div>
     </div>
     

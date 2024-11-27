@@ -180,13 +180,51 @@ export const updatePlace = async (id: string, prevState: unknown ,formData: Form
 }
 
 //BOOKING ACTION
-export const createBooking = async ( ids: string, prevState: unknown, formData: FormData) => {
+export const createBooking = async ( ids: {place: string, user: string}, prevState: unknown, formData: FormData) => {
 
-  const bookDate = formData.get("date");
-  const bookStartTime = formData.get("startTime");
-  const bookEndTime = formData.get("endTime");
+  const bookDate = formData.get("date") as string;
+  const bookStartTime = formData.get("startTime") as string;
+  const bookEndTime = formData.get("endTime") as string;
+  const purpose = formData.get("purpose") as string | null;
 
+  if(!purpose){
+    throw Error("Purpose is null")
+  }
+
+  const bookDateStartTime = new Date(`${bookDate}T${bookStartTime}`);
+  const bookDateEndTime = new Date(`${bookDate}T${bookEndTime}`);
   
   //Check if the booking time already exist
+  const conflicts = await prisma.booking.findMany({
+    where: {
+      placeId: ids.place,
+      date: new Date(bookDate),
+      AND: [{
+        startTime: bookDateStartTime,
+        endTime: bookDateEndTime,
+      }]
+    }
+  });
+
+  if(conflicts.length > 0){
+    return {code: 500, message: "A booking within your timeframe already created, please change your time or consider selecting another date"};
+  }
+
+  try {
+    await prisma.booking.create({
+      data: {
+        startTime: bookDateStartTime,
+        endTime: bookDateEndTime,
+        date: new Date(bookDate),
+        purpose: purpose,
+        userId: ids.user,
+        placeId: ids.place,
+      }
+    });
+
+    return {code: 200, message: "Booking successfully placed"}
+  } catch (error) {
+    return {code: 500, message: "Something went wrong, please try again"}
+  }
 
 }
