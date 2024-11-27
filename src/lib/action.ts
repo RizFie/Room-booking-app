@@ -6,7 +6,6 @@ import { hashSync } from "bcrypt-ts";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
-import toast from "react-hot-toast";
 
 //SIGN UP FORM ACTION
 export const signUpCredentials = async (
