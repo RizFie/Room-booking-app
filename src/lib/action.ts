@@ -194,15 +194,34 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
   const bookDateStartTime = new Date(`${bookDate}T${bookStartTime}`);
   const bookDateEndTime = new Date(`${bookDate}T${bookEndTime}`);
   
-  //Check if the booking time already exist
+  //Check for overlaps timeframe with existing record
   const conflicts = await prisma.booking.findMany({
     where: {
       placeId: ids.place,
       date: new Date(bookDate),
-      AND: [{
-        startTime: {lt: bookDateStartTime},
-        endTime: {gt: bookDateEndTime},
-      }]
+      OR: [
+        // New booking starts during an existing booking (PASSED)
+        {
+          AND: [
+            { startTime: { lte: bookDateStartTime } },
+            { endTime: { gt: bookDateStartTime } }
+          ]
+        },
+        // New booking ends during an existing booking (PASSED)
+        {
+          AND: [
+            { startTime: { lt: bookDateEndTime } },
+            { endTime: { gte: bookDateEndTime } }
+          ]
+        },
+        // New booking completely within or is the same with an existing booking (PASSED)
+        {
+          AND: [
+            { startTime: { gte: bookDateStartTime } },
+            { endTime: { lte: bookDateEndTime } }
+          ]
+        }
+      ]
     }
   });
 
@@ -221,6 +240,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
         placeId: ids.place,
       }
     });
+
 
     return {code: 200, message: "Booking successfully placed"}
   } catch (error) {
