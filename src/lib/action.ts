@@ -200,8 +200,8 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
       placeId: ids.place,
       date: new Date(bookDate),
       AND: [{
-        startTime: bookDateStartTime,
-        endTime: bookDateEndTime,
+        startTime: {lt: bookDateStartTime},
+        endTime: {gt: bookDateEndTime},
       }]
     }
   });
