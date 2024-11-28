@@ -15,6 +15,7 @@ model booking {
   purpose      String         @db.VarChar(255)
   userId       String
   placeId      String
+  confirm      Boolean        @default(false)
   place        place          @relation(fields: [placeId], references: [placeId], onUpdate: Restrict, map: "booking_ibfk_1")
   user         user           @relation(fields: [userId], references: [userId], onUpdate: Restrict, map: "booking_ibfk_2")
   cancellation cancellation[]

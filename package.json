@@ -12,6 +12,7 @@
     "@auth/core": "^0.37.3",
     "@auth/prisma-adapter": "^2.7.3",
     "@prisma/client": "^5.22.0",
+    "@syncfusion/ej2-react-schedule": "^27.2.3",
     "bcrypt-ts": "^5.0.2",
     "dayjs": "^1.11.13",
     "next": "15.0.3",
