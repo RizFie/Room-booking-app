@@ -6,8 +6,18 @@ import {
   TimelineViews
 } from '@syncfusion/ej2-react-schedule';
 import { registerLicense } from '@syncfusion/ej2-base';
+import { IoPerson } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { FaLocationDot } from "react-icons/fa6";
 
 registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX9SdE1jWH5WdH1VQGZd');
+
+interface User {
+  userId: string;
+  fullname: string;
+  email: string;
+  phoneNum: string;
+}
 
 interface Place {
   placeId: string;
@@ -25,7 +35,9 @@ interface BookingProps {
   purpose: string;
   userId: string;
   placeId: string;
+  past: boolean;
   place: Place;
+  user: User;
 }
 
 interface CalendarProps {
@@ -53,6 +65,9 @@ const Calendar = ({ data, role }: CalendarProps) => {
       StartTime: new Date(`${splitDate}T${splitStartTime}`),
       EndTime: new Date(`${splitDate}T${splitEndTime}`),
       placeName: booking.place.placeName,
+      fullname: booking.user.fullname,
+      email: booking.user.email,
+      past: booking.past,
     };
   });
 
@@ -70,8 +85,10 @@ const Calendar = ({ data, role }: CalendarProps) => {
   //Header template
   const headerTemplate = (props: any) => {
     return(
-      <div className="bg-gradient-to-r from-fuchsia-600 to-blue-800 rounded-t-md">
-        <h1 className="p-2 text-xl font-medium text-white">{props.placeName}</h1>
+      <div className="bg-gradient-to-r from-blue-800 to-indigo-900 rounded-t-md text-lg flex flex-row gap-1 text-left
+      items-center p-2">
+        <FaLocationDot className="p-1 scale-[2] text-white"/>
+        <h1 className="p-2 font-medium text-white">{props.placeName}</h1>
       </div>
     )
   }
@@ -79,8 +96,25 @@ const Calendar = ({ data, role }: CalendarProps) => {
   //Content template
   const contentTemplate = (props: any) => {
     return(
-      <div className="">
-        <p className="text-lg text-gray-600">{props.placeName}</p>
+      <div className="mt-3">
+        { role == "admin" ? (
+          <h2 className="text-[16px] bg-blue-950 p-1 rounded-sm text-white text-justify">{props.Subject}</h2>
+        ) : (
+          <h2 className="text-[16px] bg-blue-950 p-1 rounded-sm text-white text-justify">Only admin may view the agenda/purpose of
+          the booking</h2>
+        )}
+        
+        <div className="text-blue-950 flex justify-between mt-2">
+          <div className="flex flex-row gap-2 items-center">
+            <IoPerson/>
+            <h2 className="text-[14px]">{props.fullname}</h2>
+          </div>
+          <div className="flex flex-row gap-2 justify-left items-center">
+            <MdEmail />
+            <a className="text-[14px]" href={`mailto:${props.email}`}>{props.email}</a>
+          </div>
+        </div>
+        
       </div>
     )
   }
