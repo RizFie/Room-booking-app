@@ -124,13 +124,13 @@ const Calendar = ({ data, role }: CalendarProps) => {
         )}
         
         <div className="flex flex-row justify-between">
-          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 border-[1px] w-auto px-2
-          rounded-sm border-blue-950 bg-gray-100">
+          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 w-auto px-2
+          rounded-sm bg-gray-100">
             <MdDateRange/>
             <h2 className="font-semibold">{props.date.toString()}</h2>
           </div>
-          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 border-[1px] w-auto px-2
-          rounded-sm border-blue-950 bg-gray-100">
+          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 w-auto px-2
+          rounded-sm bg-gray-100">
             <IoMdTimer/>
             <h2 className="font-semibold">{props.start.toString().split(" ")[4]} - {props.end.toString().split(" ")[4]}</h2>
           </div>
