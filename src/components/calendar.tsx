@@ -3,13 +3,15 @@
 import React from "react";
 import {
   Week, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, EventSettingsModel, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop,
-  TimelineViews
+  TimelineViews,
+  Day
 } from '@syncfusion/ej2-react-schedule';
 import { registerLicense } from '@syncfusion/ej2-base';
 import { IoPerson } from "react-icons/io5";
 import { MdEmail, MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTimer } from "react-icons/io";
+import { FaPhoneAlt } from "react-icons/fa";
 
 registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX9SdE1jWH5WdH1VQGZd');
 
@@ -58,7 +60,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
     const splitStartTime = booking.startTime.toISOString().split('T')[1];
     const splitEndTime = booking.endTime.toISOString().split('T')[1];
 
-    //console.log(splitEndTime)
+    //console.log(booking.startTime)
 
     return {
       Id: booking.bookingId,
@@ -70,8 +72,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
       email: booking.user.email,
       past: booking.past,
       date: splitDate,
-      start: booking.startTime,
-      end: booking.endTime
+      phone: booking.user.phoneNum
     };
   });
 
@@ -105,8 +106,6 @@ const Calendar = ({ data, role }: CalendarProps) => {
   //Content template
   const contentTemplate = (props: any) => {
 
-    const start = props.start
-
     return(
       <div className="mt-3">
         
@@ -132,7 +131,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
           <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 w-auto px-2
           rounded-sm bg-gray-100">
             <IoMdTimer/>
-            <h2 className="font-semibold">{props.start.toString().split(" ")[4]} - {props.end.toString().split(" ")[4]}</h2>
+            <h2 className="font-semibold">{props.StartTime.toString().split(" ")[4]} - {props.EndTime.toString().split(" ")[4]}</h2>
           </div>
         </div>
         
@@ -143,18 +142,29 @@ const Calendar = ({ data, role }: CalendarProps) => {
           </div>
           <div className="flex flex-row gap-2 justify-left items-center">
             <MdEmail />
-            <a className="text-[14px]" href={`mailto:${props.email}`}>{props.email}</a>
+            <a className="text-[14px] underline text-blue-500" href={`mailto:${props.email}`}>{props.email}</a>
           </div>
+        </div>
+
+        <div className="flex flex-row gap-2 justify-left items-center mt-1">
+          <FaPhoneAlt />
+          <p className="text-[14px] text-blue-950">{props.phone}</p>
         </div>
         
       </div>
     )
   }
 
+  //Footer template
+  const footerTemplate = () => {
+
+  }
+
   //quick info template object
   const quickTemplate = {
     header: headerTemplate,
     content: contentTemplate,
+    footer: footerTemplate,
   }
 
   const eventSettings: EventSettingsModel = { dataSource: schedulerData, allowAdding: false, allowEditing: false, template: template }
@@ -164,12 +174,13 @@ const Calendar = ({ data, role }: CalendarProps) => {
       <ScheduleComponent className="border-none rounded-lg" width='100%' height='550px' currentView='Month' selectedDate={dateVariable} eventSettings={eventSettings}
       quickInfoTemplates={quickTemplate}>
         <ViewsDirective>
+          <ViewDirective option='Day' />
           <ViewDirective option='Week' />
           <ViewDirective option='Month' />
           <ViewDirective option='Agenda' />
         </ViewsDirective>
         
-        <Inject services={[Week, Month, Agenda]} />
+        <Inject services={[Day ,Week, Month, Agenda]} />
       </ScheduleComponent>
     </div>
   )
