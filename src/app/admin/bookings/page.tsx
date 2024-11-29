@@ -8,13 +8,12 @@ const BookingPageAdmin = async () => {
   const role = session?.user.role;
 
   const today = new Date();
-  const todayDate = today.toISOString()
-  //console.log(todayDate);
+  const todayStartOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString();
 
   try {
     await prisma.booking.updateMany({
       where: {
-        date: {lt: todayDate}
+        date: {lt: todayStartOfDay}
       },
       data: {
         past: true,

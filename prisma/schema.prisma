@@ -17,26 +17,12 @@ model booking {
   placeId      String
   confirm      Boolean        @default(false)
   past         Boolean        @default(false)
+  cancel       Boolean        @default(false)
   place        place          @relation(fields: [placeId], references: [placeId], onUpdate: Restrict, map: "booking_ibfk_1")
   user         user           @relation(fields: [userId], references: [userId], onUpdate: Restrict, map: "booking_ibfk_2")
-  cancellation cancellation[]
 
   @@id([bookingId, placeId, userId])
   @@index([placeId], map: "placeId")
-  @@index([userId], map: "userId")
-}
-
-model cancellation {
-  cancelId   String   @unique(map: "cancelId") @default(uuid())
-  reason     String   @db.VarChar(255)
-  cancelDate DateTime @db.Date
-  userId     String
-  bookingId  String
-  booking    booking  @relation(fields: [bookingId], references: [bookingId], onUpdate: Restrict, map: "cancellation_ibfk_1")
-  user       user     @relation(fields: [userId], references: [userId], onUpdate: Restrict, map: "cancellation_ibfk_2")
-
-  @@id([cancelId, userId, bookingId])
-  @@index([bookingId], map: "bookingId")
   @@index([userId], map: "userId")
 }
 
@@ -60,7 +46,6 @@ model user {
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   booking      booking[]
-  cancellation cancellation[]
 }
 
 model verificationToken {

@@ -7,8 +7,9 @@ import {
 } from '@syncfusion/ej2-react-schedule';
 import { registerLicense } from '@syncfusion/ej2-base';
 import { IoPerson } from "react-icons/io5";
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
+import { IoMdTimer } from "react-icons/io";
 
 registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX9SdE1jWH5WdH1VQGZd');
 
@@ -68,6 +69,9 @@ const Calendar = ({ data, role }: CalendarProps) => {
       fullname: booking.user.fullname,
       email: booking.user.email,
       past: booking.past,
+      date: splitDate,
+      start: booking.startTime,
+      end: booking.endTime
     };
   });
 
@@ -75,7 +79,12 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
   //cell template
   const template = (props: any) => {
-    return (
+    return props.past === true ? (
+      <div className="p-[0.4px] h-[18px] w-auto overflow-hidden mt-1 flex flex-row gap-1 items-center">
+        <h3 className="text-xs font-medium truncate w-[104px]">{props.placeName}</h3>
+        <h3 className="text-[10px] p-[1px] bg-red-600 rounded-sm w-6 text-center">Past</h3>
+      </div>
+    ) : (
       <div className="p-[0.4px] h-full w-auto overflow-hidden mt-1">
         <h3 className="text-xs font-medium truncate w-32">{props.placeName}</h3>
       </div>
@@ -95,8 +104,18 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
   //Content template
   const contentTemplate = (props: any) => {
+
+    const start = props.start
+
     return(
       <div className="mt-3">
+        
+        { props.past == true ? (
+          <h2 className="p-1 bg-red-100 text-red-600 font-medium border-l-red-600 border-l-4 my-2 rounded-sm">This booking is already past</h2>
+        ) : (
+          <h2></h2>
+        )}
+
         { role == "admin" ? (
           <h2 className="text-[16px] bg-blue-950 p-1 rounded-sm text-white text-justify">{props.Subject}</h2>
         ) : (
@@ -104,7 +123,20 @@ const Calendar = ({ data, role }: CalendarProps) => {
           the booking</h2>
         )}
         
-        <div className="text-blue-950 flex justify-between mt-2">
+        <div className="flex flex-row justify-between">
+          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 border-[1px] w-auto px-2
+          rounded-sm border-blue-950 bg-gray-100">
+            <MdDateRange/>
+            <h2 className="font-semibold">{props.date.toString()}</h2>
+          </div>
+          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 border-[1px] w-auto px-2
+          rounded-sm border-blue-950 bg-gray-100">
+            <IoMdTimer/>
+            <h2 className="font-semibold">{props.start.toString().split(" ")[4]} - {props.end.toString().split(" ")[4]}</h2>
+          </div>
+        </div>
+        
+        <div className="text-blue-950 flex justify-between mt-1">
           <div className="flex flex-row gap-2 items-center">
             <IoPerson/>
             <h2 className="text-[14px]">{props.fullname}</h2>
