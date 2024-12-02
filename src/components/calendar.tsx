@@ -15,7 +15,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTimer } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import { TiTick, TiCancel  } from "react-icons/ti";
-import { confirmReserve } from "@/lib/action";
+import { cancelBooking, confirmReserve } from "@/lib/action";
 
 registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX9SdE1jWH5WdH1VQGZd');
 
@@ -187,6 +187,18 @@ const Calendar = ({ data, role }: CalendarProps) => {
         }
       });
     };
+
+    const handleCancel = async () => {
+      startTransition(async () => {
+        const result = await cancelBooking(props.Id);
+        if (result.code === 200) {
+          toast.success(result.message);
+          router.refresh();
+        } else {
+          toast.error(result.message);
+        }
+      });
+    };
   
     return (
       <div>
@@ -202,10 +214,10 @@ const Calendar = ({ data, role }: CalendarProps) => {
             ) : (
 
               <div className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600 ${animations}`}>
-                <button disabled={props.past}>
+                <button disabled={props.past || isPending} onClick={handleCancel}>
                   <TiCancel className="text-xl scale-105 text-center text-red-500"/>
                 </button>
-                <h2 className="font-medium text-center">Cancel</h2>
+                <h2 className="font-medium text-center">{isPending ? 'Cancelling...' : 'Cancel'}</h2>
               </div>
 
             )}
@@ -234,7 +246,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
               </div>
 
             )}
-            
+
           </div>
         )}
       </div>

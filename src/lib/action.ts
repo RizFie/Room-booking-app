@@ -128,7 +128,6 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
 
 //DELETE ACCOUNT ACTION
 export const deleteUser = async (id:string) => {
-
   try {
     await prisma.user.delete({
       where: {
@@ -137,7 +136,7 @@ export const deleteUser = async (id:string) => {
     });
     return {message: "Account Deletion Successful", code: 200};
   } catch (error) {
-    return {message: error, code: 400};
+    return {message: "Something went wrong, please try again", code: 400};
   }
 }
 
@@ -225,7 +224,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
   });
 
   if(conflicts.length > 0){
-    return {code: 500, message: "A booking within your timeframe already created, please change your time or consider selecting another date"};
+    return {code: 500, message: "A reservation within your timeframe already created, please change your time or consider selecting another date"};
   }
 
   try {
@@ -240,8 +239,8 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
       }
     });
 
-
-    return {code: 200, message: "Booking successfully placed"}
+    revalidatePath("/admin/bookings")
+    return {code: 200, message: "Reservation successfully placed"}
   } catch (error) {
     return {code: 500, message: "Something went wrong, please try again"}
   }
@@ -260,10 +259,21 @@ export const confirmReserve = async ( id: string) => {
         confirm: true,
       }
     });
-    return {code: 200, message: "Booking has been confirmed"}
+    return {code: 200, message: "Reservation has been confirmed"}
   } catch (error) {
     return {code: 500, message: "Oh no, something went wrong. Please try again"}
   }
 }
 
 //CANCEL BOOKING SERVER ACTION
+export const cancelBooking = async (id:string) => {
+  try {
+    await prisma.booking.update({
+      where: {bookingId: id},
+      data: {cancel: true},
+    });
+    return {code: 200, message: "Reservation has been deleted"}
+  } catch (error) {
+    return {code: 500, message: "Something broke, please try again"}
+  }
+}
