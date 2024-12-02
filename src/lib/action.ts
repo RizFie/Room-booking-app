@@ -250,7 +250,6 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
 
 //CONFIRM RESERVATION SERVER ACTION
 export const confirmReserve = async ( id: string, prevState: unknown, formData: FormData) => {
-
   try {
     console.log("Confirming reservation for ID:", id);
     await prisma.booking.update({
