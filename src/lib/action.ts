@@ -272,6 +272,18 @@ export const cancelBooking = async (id:string) => {
       where: {bookingId: id},
       data: {cancel: true},
     });
+    return {code: 200, message: "Reservation has been cancelled"}
+  } catch (error) {
+    return {code: 500, message: "Something broke, please try again"}
+  }
+}
+
+//CANCEL BOOKING SERVER ACTION
+export const deleteBooking = async (id:string) => {
+  try {
+    await prisma.booking.delete({
+      where: {bookingId: id},
+    });
     return {code: 200, message: "Reservation has been deleted"}
   } catch (error) {
     return {code: 500, message: "Something broke, please try again"}

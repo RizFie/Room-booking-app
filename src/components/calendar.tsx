@@ -15,7 +15,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTimer } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
 import { TiTick, TiCancel  } from "react-icons/ti";
-import { cancelBooking, confirmReserve } from "@/lib/action";
+import { cancelBooking, confirmReserve, deleteBooking } from "@/lib/action";
 
 registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX9SdE1jWH5WdH1VQGZd');
 
@@ -199,6 +199,18 @@ const Calendar = ({ data, role }: CalendarProps) => {
         }
       });
     };
+
+    const handleDelete = async () => {
+      startTransition(async () => {
+        const result = await deleteBooking(props.Id);
+        if (result.code === 200) {
+          toast.success(result.message);
+          router.refresh();
+        } else {
+          toast.error(result.message);
+        }
+      });
+    };
   
     return (
       <div>
@@ -208,7 +220,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
             {props.cancel ? (
               <div className="w-full bg-red-100 border-l-[3px] border-l-red-500 text-red-500 p-1 text-left">
-                <h2 className="font-medium">This booking has been cancelled</h2>
+                <h2 onClick={handleDelete} className="font-medium cursor-pointer">{isPending ? "Deleting..." : "This booking has been cancelled, click to delete"}</h2>
               </div>
 
             ) : (
