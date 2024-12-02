@@ -1,17 +1,21 @@
 "use client";
 
-import React from "react";
+import React, {useActionState, useEffect, useTransition,} from "react";
+import { useRouter } from "next/navigation";
 import {
   Week, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, EventSettingsModel, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop,
   TimelineViews,
   Day
 } from '@syncfusion/ej2-react-schedule';
+import toast from "react-hot-toast";
 import { registerLicense } from '@syncfusion/ej2-base';
 import { IoPerson } from "react-icons/io5";
 import { MdEmail, MdDateRange } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdTimer } from "react-icons/io";
 import { FaPhoneAlt } from "react-icons/fa";
+import { TiTick, TiCancel  } from "react-icons/ti";
+import { confirmReserve } from "@/lib/action";
 
 registerLicense('ORg4AjUWIQA/Gnt2UlhhQlVMfV5AQmBIYVp/TGpJfl96cVxMZVVBJAtUQF1hTX9SdE1jWH5WdH1VQGZd');
 
@@ -38,7 +42,9 @@ interface BookingProps {
   purpose: string;
   userId: string;
   placeId: string;
+  confirm: boolean;
   past: boolean;
+  cancel: boolean;
   place: Place;
   user: User;
 }
@@ -72,7 +78,9 @@ const Calendar = ({ data, role }: CalendarProps) => {
       email: booking.user.email,
       past: booking.past,
       date: splitDate,
-      phone: booking.user.phoneNum
+      phone: booking.user.phoneNum,
+      confirm: booking.confirm,
+      cancel: booking.cancel
     };
   });
 
@@ -110,7 +118,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
       <div className="mt-3">
         
         { props.past == true ? (
-          <h2 className="p-1 bg-red-100 text-red-600 font-medium border-l-red-600 border-l-4 my-2 rounded-sm">This booking is already past</h2>
+          <h2 className="p-1 bg-red-100 text-red-600 font-medium border-l-red-600 border-l-4 my-2 rounded-sm">This booking already passed</h2>
         ) : (
           <h2></h2>
         )}
@@ -138,7 +146,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
         <div className="text-blue-950 flex justify-between mt-1">
           <div className="flex flex-row gap-2 items-center">
             <IoPerson/>
-            <h2 className="text-[14px]">{props.fullname}</h2>
+            <h2 className="max-w-40 text-[14px]">{props.fullname}</h2>
           </div>
           <div className="flex flex-row gap-2 justify-left items-center">
             <MdEmail />
@@ -156,9 +164,66 @@ const Calendar = ({ data, role }: CalendarProps) => {
   }
 
   //Footer template
-  const footerTemplate = () => {
-
-  }
+  const footerTemplate = (props: any) => {
+    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
+  
+    const handleConfirm = async () => {
+      startTransition(async () => {
+        const result = await confirmReserve(props.Id, null, new FormData());
+        if (result.code === 200) {
+          toast.success(result.message);
+          router.refresh();
+        } else {
+          toast.error(result.message);
+        }
+      });
+    };
+  
+    return (
+      <div className="container flex flex-row justify-end items-center gap-2">
+        {props.cancel ? (
+          <div className="w-full bg-red-100 border-l-[3px] border-l-red-500 text-red-500 p-1 text-left">
+            <h2 className="font-medium">This booking has been cancelled</h2>
+          </div>
+        ) : (
+          <div className="flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600
+          hover:scale-105 cursor-pointer transition-all active:scale-95">
+            <button>
+              <TiCancel className="text-xl scale-105 text-center text-red-500"/>
+            </button>
+            <h2 className="font-medium text-center">Cancel</h2>
+          </div>
+        )}
+  
+        {role === "admin" && (
+          <div>
+            {props.confirm ? (
+              <div className="flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-700 text-green-600 bg-green-700">
+                <button disabled>
+                  <TiTick className="text-xl scale-105 text-center text-white"/>
+                </button>
+                <h2 className="font-medium text-center text-white">Confirmed</h2>
+              </div>
+            ) : (
+              <div>
+                <button
+                  onClick={handleConfirm}
+                  disabled={isPending}
+                  className="flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
+                  hover:scale-105 cursor-pointer transition-all active:scale-95"
+                >
+                  <TiTick className="text-xl scale-105 text-center text-green-600"/>
+                  <h2 className="font-medium text-center">{isPending ? 'Confirming...' : 'Confirm'}</h2>
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  };
+  
 
   //quick info template object
   const quickTemplate = {
