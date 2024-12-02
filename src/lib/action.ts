@@ -249,7 +249,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
 }
 
 //CONFIRM RESERVATION SERVER ACTION
-export const confirmReserve = async ( id: string, prevState: unknown, formData: FormData) => {
+export const confirmReserve = async ( id: string) => {
   try {
     console.log("Confirming reservation for ID:", id);
     await prisma.booking.update({
@@ -260,11 +260,10 @@ export const confirmReserve = async ( id: string, prevState: unknown, formData: 
         confirm: true,
       }
     });
-    return {code: 200, message: "Booking has been confirmed, make sure to refresh your page if auto refresh doesnt work"}
+    return {code: 200, message: "Booking has been confirmed"}
   } catch (error) {
     return {code: 500, message: "Oh no, something went wrong. Please try again"}
   }
-
-  
-
 }
+
+//CANCEL BOOKING SERVER ACTION
