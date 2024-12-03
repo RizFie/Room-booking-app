@@ -84,8 +84,6 @@ const Calendar = ({ data, role }: CalendarProps) => {
     };
   });
 
-  //console.log(schedulerData)
-
   //cell template
   const template = (props: any) => {
     return props.past === true ? (
@@ -131,15 +129,15 @@ const Calendar = ({ data, role }: CalendarProps) => {
         )}
         
         <div className="flex flex-row justify-between">
-          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 w-auto px-2
+          <div className="my-3 flex flex-row items-center text-[14px] text-blue-950 gap-3 w-auto px-2
           rounded-sm bg-gray-100">
             <MdDateRange/>
             <h2 className="font-semibold">{props.date.toString()}</h2>
           </div>
-          <div className="my-3 flex flex-row items-center text-[16px] text-blue-950 gap-3 w-auto px-2
+          <div className="my-3 flex flex-row items-center text-[14px] text-blue-950 gap-3 w-auto px-2
           rounded-sm bg-gray-100">
             <IoMdTimer/>
-            <h2 className="font-semibold">{props.StartTime.toString().split(" ")[4]} - {props.EndTime.toString().split(" ")[4]}</h2>
+            <h2 className="font-semibold">{props.StartTime.toLocaleTimeString()} - {props.EndTime.toLocaleTimeString()}</h2>
           </div>
         </div>
         
@@ -276,7 +274,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
   const eventSettings: EventSettingsModel = { dataSource: schedulerData, allowAdding: false, allowEditing: false, template: template }
   
   return (
-    <div className="w-[80%] mx-auto my-10 p-3 rounded-md bg-white flex items-center justify-center shadow-lg border-t-8 rounded-t-md border-t-blue-700">
+    <div className="w-[80%] mx-auto my-4 p-3 rounded-md bg-white flex items-center justify-center shadow-lg border-t-8 rounded-t-md border-t-blue-700">
       <ScheduleComponent className="border-none rounded-lg" width='100%' height='550px' currentView='Month' selectedDate={dateVariable} eventSettings={eventSettings}
       quickInfoTemplates={quickTemplate}>
         <ViewsDirective>

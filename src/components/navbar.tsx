@@ -92,7 +92,7 @@ const Navbar = ({name, role}: User) => {
           </h2>
           <div className="grid grid-flow-col justify-evenly">
             <form action={SignOut}>
-              <button type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white font-semibold rounded-xl hover:bg-red-700">Logout</button>
+              <button type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white font-semibold rounded-xl hover:bg-red-700 active:scale-95 transition-all">Logout</button>
             </form>
             <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-grey-400 font-semibold rounded-xl hover:border-blue-950 hover:text-blue-950">Cancel</button>
           </div>
