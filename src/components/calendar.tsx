@@ -166,13 +166,6 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
     const router = useRouter();
     const [isPending, startTransition] = useTransition();
-
-    let animations: string = "";
-    if(props.past == true){
-      animations = "";
-    }else if(props.past == false){
-      animations = "hover:scale-105 cursor-pointer transition-all active:scale-95";
-    }
   
     const handleConfirm = async () => {
       startTransition(async () => {
@@ -223,12 +216,26 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
             ) : (
 
-              <div className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600 ${animations}`}>
-                <button disabled={props.past || isPending} onClick={handleCancel}>
-                  <TiCancel className="text-xl scale-105 text-center text-red-500"/>
-                </button>
-                <h2 className="font-medium text-center">{isPending ? 'Cancelling...' : 'Cancel'}</h2>
-              </div>
+              props.past ?
+                  (
+                    <div className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600
+                    hover:scale-105 cursor-pointer transition-all active:scale-95`}>
+                      <button disabled={isPending} onClick={handleDelete}>
+                        <TiCancel className="text-xl scale-105 text-center text-red-500"/>
+                      </button>
+                      <h2 className="font-medium text-center">{isPending ? 'Deleting...' : 'Delete'}</h2>
+                    </div>
+                  )
+                :
+                  (
+                  <div className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600
+                  hover:scale-105 cursor-pointer transition-all active:scale-95`}>
+                    <button disabled={isPending} onClick={handleCancel}>
+                      <TiCancel className="text-xl scale-105 text-center text-red-500"/>
+                    </button>
+                    <h2 className="font-medium text-center">{isPending ? 'Cancelling...' : 'Cancel'}</h2>
+                  </div>
+                  )
 
             )}
 
@@ -246,9 +253,9 @@ const Calendar = ({ data, role }: CalendarProps) => {
               <div>
                 <button
                   onClick={handleConfirm}
-                  disabled={isPending}
-                  className="flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
-                  hover:scale-105 cursor-pointer transition-all active:scale-95"
+                  disabled={isPending || props.past}
+                  className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
+                  ${props.past ? '' : 'hover:scale-105 cursor-pointer transition-all active:scale-95'}`}
                 >
                   <TiTick className="text-xl scale-105 text-center text-green-600"/>
                   <h2 className="font-medium text-center">{isPending ? 'Confirming...' : 'Confirm'}</h2>
