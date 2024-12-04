@@ -12,7 +12,7 @@ const Users = async () => {
         <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between">
             <div>
                 <h1 className="font-bold text-3xl text-blue-950">List of users</h1>
-                <p className="text-gray-600 text-sm font-medium">A list of all the users that had registered including their full name, email, 
+                <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-75 p-2">A list of all the users that had registered including their full name, email, 
                     phone number, role and creation date.</p>
             </div>
             <div>

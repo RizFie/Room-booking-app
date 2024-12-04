@@ -21,15 +21,20 @@ const RoomsPage = async () => {
                 </div>
             </div>
 
-            <div className="h-full flex flex-col">
-                <div></div>
-                <Link className="" href="/admin/rooms/add">
-                    <button className="font-semibold text-sm p-1 rounded-md 
-                     border-2 bg-blue-400 text-white border-blue-400
-                    transition-all shadow-md h-[40px]
-                    hover:scale-110 active:scale-95">Add New</button>
-                </Link>
-            </div>
+            {/* 
+            
+                <div className="h-full flex flex-col">
+                    <div></div>
+                    <Link className="" href="/admin/rooms/add">
+                        <button className="font-semibold text-sm p-1 rounded-md 
+                        border-2 bg-blue-400 text-white border-blue-400
+                        transition-all shadow-md h-[40px]
+                        hover:scale-110 active:scale-95">Add New</button>
+                    </Link>
+                </div>
+            
+            */}
+            
         </div>
 
         <RoomCard role={role}/>

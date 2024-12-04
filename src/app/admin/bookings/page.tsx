@@ -63,7 +63,7 @@ const BookingPageAdmin = async () => {
 
       <div className="max-w-[80%] mx-auto mt-10">
         <h1 className="font-bold text-3xl text-blue-950">View Users Bookings</h1>
-        <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-60 p-1 rounded-sm">The Scheduler Calendar will <b>display all related information</b> of a reservation, 
+        <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-75 p-2">The Scheduler Calendar will <b>display all related information</b> of a reservation, 
           you may view 3 summary card of:<br/>
         "<b className="font-semibold text-green-700">Upcoming</b>", "<b className="font-semibold text-blue-700">Today</b>" and "
         <b className="font-semibold text-red-700">Cancel</b>
