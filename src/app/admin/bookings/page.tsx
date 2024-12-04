@@ -108,7 +108,7 @@ const BookingPageAdmin = async () => {
                     <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{todayBook.user.phoneNum}</h1>
                   </div>
                   <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-2 pb-2 border-gray-200">{todayBook.place.placeName}</h1>
-                  <span className="my-1 text-blue-900 font-medium shadow-inner">{todayBook.date.toLocaleDateString()}, {todayBook.startTime.toLocaleTimeString()} - {upComing.endTime.toLocaleTimeString()}
+                  <span className="my-1 text-blue-900 font-medium shadow-inner">{todayBook.date.toLocaleDateString()}, {todayBook.startTime.toLocaleTimeString()} - {todayBook.endTime.toLocaleTimeString()}
                   </span>
                 </div>
               ))
