@@ -6,10 +6,11 @@ import loginLogo from "../../../../public/illustration/login-mdr.jpg";
 const Register = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-5">
-      <div className="h-[100px] rounded-lg bg-none max-w-[30%]">
+      <div className="h-[100px] rounded-lg bg-none max-w-[30%] animate-fade-down animate-once animate-ease-out animate-alternate">
         <Image src={logo} alt="e-tempah" className="h-[100px] object-cover overflow-hidden"/>
       </div>
-      <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-5 max-w-[50%] bg-white rounded-lg max-h-[50%] shadow-lg">
+      <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-5 max-w-[50%] bg-white rounded-lg max-h-[50%] shadow-lg
+      animate-fade-up animate-once animate-ease-out animate-alternate">
         <div className="container rounded-lg h-[90%] self-center w-full mx-7">
           <Image
             className="max-w-full h-full max-h-full w-full object-cover rounded-lg"
