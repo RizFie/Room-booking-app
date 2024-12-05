@@ -23,13 +23,12 @@ const Users = async () => {
                     hover:scale-110 active:scale-95">Add New</button>
                 </Link>
             </div>
-            
         </div>
         
-        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-sm overflow-auto">
+        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-md overflow-auto">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
-                    <tr className="text-left bg-blue-300 text-blue-950 border-b-[1px] border-gray-300">
+                    <tr className="text-left bg-blue-500 text-gray-100 border-b-[1px] border-gray-300">
                         <th className="p-3 w-[280px]">Full Name</th>
                         <th className="p-3">Email</th>
                         <th className="p-3">Phone Number</th>
