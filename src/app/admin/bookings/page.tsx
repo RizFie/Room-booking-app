@@ -48,7 +48,7 @@ const BookingPageAdmin = async () => {
       }
     });
 
-    console.log("upcomings: ",upComings)
+    //console.log("upcomings: ",upComings)
 
     const todayBookings = await prisma.booking.findMany({
       where: { 
@@ -92,7 +92,7 @@ const BookingPageAdmin = async () => {
 
       <div className="container max-w-[80%] mx-auto my-5 grid grid-cols-3 gap-5">
 
-        <div className="bg-green-100 container rounded-md shadow-lg p-3 border-t-8 border-t-green-600">
+        <div className="bg-green-100 container rounded-md shadow-lg p-3 border-t-8 border-t-green-600 min-h-[293px]">
           <h4 className="text-gray-700 text-lg font-medium mb-1 text-center">Upcoming Reservations</h4>
           <div className="container overflow-auto max-h-96">
             {upComings.length > 0 ? (
@@ -117,7 +117,7 @@ const BookingPageAdmin = async () => {
           </div>
         </div>
 
-        <div className="bg-blue-100 container rounded-md shadow-lg p-3 border-t-8 border-t-blue-600">
+        <div className="bg-blue-100 container rounded-md shadow-lg p-3 border-t-8 border-t-blue-600 min-h-[293px]">
           <h4 className="text-gray-700 text-lg font-medium mb-1 text-center">Today Reservations</h4>
           <div className="container overflow-auto max-h-96">
             {todayBookings.length > 0 ? (
@@ -142,7 +142,7 @@ const BookingPageAdmin = async () => {
           </div>
         </div>
 
-        <div className="bg-red-100 container rounded-md shadow-lg p-3 border-t-8 border-t-red-600">
+        <div className="bg-red-100 container rounded-md shadow-lg p-3 border-t-8 border-t-red-600 min-h-[293px]">
           <h4 className="text-gray-700 text-lg font-medium mb-1 text-center">Past Reservations</h4>
           <div className="container overflow-auto max-h-96">
             {pastBookings.length > 0 ? (
