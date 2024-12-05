@@ -122,10 +122,9 @@ const Calendar = ({ data, role }: CalendarProps) => {
         )}
 
         { role == "admin" ? (
-          <h2 className="text-[16px] bg-blue-950 p-1 rounded-sm text-white text-justify">{props.Subject}</h2>
+          <h2 className="text-[14px] bg-blue-950 p-2 rounded-sm text-white text-justify">{props.Subject}</h2>
         ) : (
-          <h2 className="text-[16px] bg-blue-950 p-1 rounded-sm text-white text-justify">Only admin may view the agenda/purpose of
-          the booking</h2>
+          <h2></h2>
         )}
         
         <div className="flex flex-row justify-between">
@@ -146,16 +145,25 @@ const Calendar = ({ data, role }: CalendarProps) => {
             <IoPerson/>
             <h2 className="max-w-40 text-[14px]">{props.fullname}</h2>
           </div>
-          <div className="flex flex-row gap-2 justify-left items-center">
-            <MdEmail />
-            <a className="text-[14px] underline text-blue-500" href={`mailto:${props.email}`}>{props.email}</a>
-          </div>
+          {role === "admin" ? (
+            <div className="flex flex-row gap-2 justify-left items-center">
+              <MdEmail />
+              <a className="text-[14px] underline text-blue-500" href={`mailto:${props.email}`}>{props.email}</a>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
 
-        <div className="flex flex-row gap-2 justify-left items-center mt-1">
-          <FaPhoneAlt />
-          <p className="text-[14px] text-blue-950">{props.phone}</p>
-        </div>
+          {role === "admin" ? (
+            <div className="flex flex-row gap-2 justify-left items-center mt-1">
+              <FaPhoneAlt />
+              <p className="text-[14px] text-blue-950">{props.phone}</p>
+            </div>
+          ) : (
+            <div></div>
+          )}
+        
         
       </div>
     )

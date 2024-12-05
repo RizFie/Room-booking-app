@@ -16,7 +16,8 @@ const ProfilePage = async () => {
     });
 
   return (
-    <div className="grid grid-cols-2 bg-white mx-auto max-w-[80%] my-10 rounded-lg shadow-lg">
+    <div className="grid grid-cols-2 bg-white mx-auto max-w-[80%] my-10 rounded-lg shadow-lg 
+    animate-fade-down animate-once animate-duration-[1000ms] animate-ease-out animate-alternate">
       <div className="p-5">
         <div className="flex flex-row justify-between border-b-blue-200 border-b-2">
           <div className="flex-2">
