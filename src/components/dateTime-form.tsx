@@ -16,7 +16,7 @@ const DateTimeForm = ({userId,placeId}:props) => {
 
   const date = new Date();
   const formattedDate = date.toISOString().split('T')[0];
-  console.log(formattedDate);
+  //console.log("Formatted Date: ",formattedDate);
 
   const createBookingWithIds = createBooking.bind(null,{
     place: placeId,

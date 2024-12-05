@@ -181,6 +181,8 @@ export const updatePlace = async (id: string, prevState: unknown ,formData: Form
 export const createBooking = async ( ids: {place: string, user: string}, prevState: unknown, formData: FormData) => {
 
   const bookDate = formData.get("date") as string;
+  const formatBookDate = new Date(bookDate).toISOString();
+  const splitDate = formatBookDate.split("T")[0];
   const bookStartTime = formData.get("startTime") as string;
   const bookEndTime = formData.get("endTime") as string;
   const purpose = formData.get("purpose") as string | null;
@@ -189,14 +191,14 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
     throw Error("Purpose is null")
   }
 
-  const bookDateStartTime = new Date(`${bookDate}T${bookStartTime}`);
-  const bookDateEndTime = new Date(`${bookDate}T${bookEndTime}`);
+  const bookDateStartTime = new Date(`${splitDate}T${bookStartTime}`);
+  const bookDateEndTime = new Date(`${splitDate}T${bookEndTime}`);
   
   //Check for overlaps timeframe with existing record
   const conflicts = await prisma.booking.findMany({
     where: {
       placeId: ids.place,
-      date: new Date(bookDate),
+      date: new Date(formatBookDate),
       OR: [
         // New booking starts during an existing booking (PASSED)
         {
@@ -232,7 +234,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
       data: {
         startTime: bookDateStartTime,
         endTime: bookDateEndTime,
-        date: new Date(bookDate),
+        date: new Date(formatBookDate),
         purpose: purpose,
         userId: ids.user,
         placeId: ids.place,
