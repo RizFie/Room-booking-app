@@ -80,8 +80,8 @@ const BookingPageAdmin = async () => {
     <div className="w-full h-full container">
 
       <div className="max-w-[80%] mx-auto mt-10">
-        <h1 className="font-bold text-3xl text-blue-950">View Users Bookings</h1>
-        <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-75 p-2">The Scheduler Calendar will <b>display all related information</b> of a reservation, 
+        <h1 className="font-bold text-3xl text-blue-950 animate-fade-left animate-duration-[1000ms] animate-delay-500">View Users Bookings</h1>
+        <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-75 p-2 animate-fade animate-once animate-ease-in animate-normal">The Scheduler Calendar will <b>display all related information</b> of a reservation, 
         <br/>quick info of
         "<b className="font-semibold text-green-700">Upcoming</b>", "<b className="font-semibold text-blue-700">Today</b>" and "
         <b className="font-semibold text-red-700">Past</b>

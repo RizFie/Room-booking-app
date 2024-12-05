@@ -11,8 +11,9 @@ const Users = async () => {
     <>  
         <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between">
             <div>
-                <h1 className="font-bold text-3xl text-blue-950">List of users</h1>
-                <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-75 p-2">A list of all the users that had registered including their full name, email, 
+                <h1 className="font-bold text-3xl text-blue-950 animate-fade-right animate-duration-[1000ms] animate-delay-500">List of users</h1>
+                <p className="font-medium text-gray-700 text-sm my-1 bg-gray-200 bg-opacity-75 p-2
+                animate-fade animate-once animate-ease-in animate-alternate">A list of all the users that had registered including their full name, email, 
                     phone number, role and creation date.</p>
             </div>
             <div>
@@ -25,7 +26,7 @@ const Users = async () => {
             </div>
         </div>
         
-        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-md overflow-auto">
+        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-md overflow-auto animate-fade-down animate-once animate-ease-in animate-normal">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
                     <tr className="text-left bg-blue-500 text-gray-100 border-b-[1px] border-gray-300">
