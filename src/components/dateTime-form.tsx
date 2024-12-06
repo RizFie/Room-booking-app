@@ -1,6 +1,5 @@
 "use client"
 import { createBooking } from '@/lib/action';
-import { redirect } from 'next/navigation';
 import React, {useActionState, useEffect} from 'react';
 import toast from 'react-hot-toast';
 
@@ -56,8 +55,8 @@ const DateTimeForm = ({userId,placeId}:props) => {
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='purpose' className='text-md font-medium block bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Purpose</label>
-            <span className='text-[12px] font-medium my-2 text-gray-600'>Maximum of 150 characters allowed</span>
-            <textarea required name='purpose' id='purpose' maxLength={150} className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
+            <span className='text-[12px] font-medium my-2 text-gray-600'>Maximum of 200 characters allowed</span>
+            <textarea required name='purpose' id='purpose' maxLength={200} className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 

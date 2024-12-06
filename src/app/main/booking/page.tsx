@@ -1,5 +1,7 @@
-import { auth } from "@/auth"
-import { prisma } from "@/lib/prisma"
+import { auth } from "@/auth";
+import CancelButton from "@/components/cancel-booking-button";
+import { prisma } from "@/lib/prisma";
+import { MdDateRange, MdOutlineAccessTimeFilled } from "react-icons/md";
 
 const BookingPage = async () => {
 
@@ -21,16 +23,40 @@ const BookingPage = async () => {
     <div className="max-w-[80%] mx-auto mt-10 text-blue-950">
         <h1 className="text-3xl font-bold animate-fade-right animate-once animate-ease-out mb-3">Booking</h1>
         <span className="text-sm font-medium bg-gray-200 p-2 bg-opacity-75">You may view your reservation details here,
-             page refresh will happen if the admin <b>confirm</b> or <b>cancel</b> your reservation.</span>
+        page refresh will happen if the admin <b>confirm</b> or <b>cancel</b> your reservation.</span>
 
-        <div className="container flex flex-row mt-7 overflow-auto">
+        <div className="container flex flex-row my-7 overflow-auto justify-between">
             {userBookings.map((booking) => (
-                <div key={booking.bookingId} className="bg-white max-w-[250px] rounded-md shadow-md">
-                    <h1 className="font-semibold text-lg my-0 py-2 bg-gradient-to-r from-purple-800 to-red-700 w-full 
+                <div key={booking.bookingId} className="bg-white max-w-[270px] rounded-md shadow-md">
+                    <h1 className="font-semibold text-lg my-0 pt-2 pb-1 bg-gradient-to-r from-purple-800 to-red-700 w-full 
                     text-slate-100 px-2 rounded-t-md">
-                    {booking.place.placeName}
-                    </h1>
-                    <h2>{booking.purpose}</h2>
+                    {booking.place.placeName}</h1>
+                    <div className="text-sm mx-4 my-2 font-bold h-5 flex flex-row gap-3 justify-between">
+                        <div className="flex flex-row items-center gap-2">
+                            <MdDateRange/>
+                            <h2>{booking.date.toLocaleDateString()}</h2>
+                        </div>
+                        {booking.confirm ? (
+                            <div className="bg-green-500 text-white p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
+                                <h3>Confirmed</h3>
+                            </div>
+                        ) : (
+                            <div className="bg-red-500 text-white p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
+                                <h3>Pending</h3>
+                            </div>
+                        )}
+                    </div>
+                    <div className="text-sm m-4 mt-1 mb-2 font-bold flex flex-row items-center gap-2 h-5">
+                        <MdOutlineAccessTimeFilled/>
+                        <h2>{booking.startTime.toLocaleTimeString()} - {booking.endTime.toLocaleTimeString()}</h2>
+                    </div>
+                    <div className="p-2 pt-0 text-[14px] w-full">
+                        <h3 className="font-semibold bg-gray-200 p-1 my-1 rounded-sm">Purpose/Agenda</h3>
+                        <h2 className="text-justify p-2 text-sm rounded-md bg-blue-50 shadow-inner">{booking.purpose}</h2>
+                    </div>
+                    
+                    <CancelButton/>
+
                 </div>
             ))}
         </div>
