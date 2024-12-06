@@ -52,15 +52,15 @@ const Navbar = ({name, role}: User) => {
           </div>
 
         {/*Item 2*/}
-        <ul className="flex-1 justify-center flex items-center gap-6 mr-5 font-bold text-blue-950 py-1">
+        <ul className="flex-1 justify-center flex items-center gap-6 font-bold text-blue-950 py-1">
           <li id="li1" className={`hover:cursor-pointer hover:text-blue-400 transition-all ${pathname.startsWith("/main/home") ? "text-blue-800" : ""}`}>
             <Link href="/main/home">Home</Link>
           </li>
           <li id="li2" className={`hover:cursor-pointer hover:text-blue-400 transition-all ${pathname.startsWith("/main/reserve") ? "text-blue-800" : ""}`}>
             <Link href="/main/reserve">Reserve</Link>
           </li>
-          <li id="li3" className={`hover:cursor-pointer hover:text-blue-400 transition-all ${pathname.startsWith("/main/cancel") ? "text-blue-800" : ""}`}>
-            <Link href="/main/cancel">Cancel</Link>
+          <li id="li3" className={`hover:cursor-pointer hover:text-blue-400 transition-all ${pathname.startsWith("/main/booking") ? "text-blue-800" : ""}`}>
+            <Link href="/main/booking">Booking</Link>
           </li>
           <li id="li4" className={`hover:cursor-pointer hover:text-blue-400 transition-all ${pathname.startsWith("/main/profile") ? "text-blue-800" : ""}`}>
             <Link href="/main/profile">Profile</Link>
@@ -68,7 +68,7 @@ const Navbar = ({name, role}: User) => {
         </ul>
 
         {/*Item 3 LOGOUT BUTTON*/}
-        <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3">
+        <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3 min-w-[240px]">
 
           <div className="flex flex-col justify-self-center text-blue-950 text-right border-r-2 pr-2 border-gray-300">
             <h2 className="flex-0 font-bold">{name}</h2>

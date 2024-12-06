@@ -60,7 +60,7 @@ const ReservePage = async () => {
       py-2 border-l-4 border-l-blue-500 pl-2 flex flex-row gap-3 items-center'>
       <ImNotification/>
       <p>The Calendar may help you to identify reserved date and time.<br/>
-      For booking details and cancellation, please navigate to the "Cancel" section.</p>
+      For reservation details and cancellation, please navigate to the "<b>Booking</b>" section.</p>
     </div>
  
 

@@ -73,7 +73,7 @@ const AdminNavbar = ({name, role}: User) => {
         </ul>
 
         {/*Item 3 LOGOUT BUTTON*/}
-        <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3">
+        <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3 min-w-[240px]">
 
           <div className="flex flex-col justify-self-center text-blue-950 text-right border-r-2 pr-2 border-gray-300">
             <h2 className="flex-0 font-bold">{name}</h2>
