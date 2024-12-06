@@ -41,7 +41,8 @@ const AdminNavbar = ({name, role}: User) => {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-white border-b-2 border-blue-700 shadow-[0px_4px_21px_0px_rgba(59,_130,_246,_0.5)]">
+    <nav className="bg-white border-b-2 border-blue-700 shadow-[0px_4px_21px_0px_rgba(59,_130,_246,_0.5)]
+    animate-fade-down animate-ease-in-out">
       <div className="max-w-full flex items-center justify-between p-2 ">
 
         {/*Item 1*/}

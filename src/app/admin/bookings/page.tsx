@@ -3,6 +3,7 @@ import {prisma} from "../../../lib/prisma"
 import { auth } from "@/auth";
 import Image from "next/image";
 import nothing from "../../../../public/illustration/nothing.svg";
+import { TiPin } from "react-icons/ti";
 
 const BookingPageAdmin = async () => {
 
@@ -77,7 +78,7 @@ const BookingPageAdmin = async () => {
 
 
   return (
-    <div className="w-full h-full container">
+    <div className="w-full h-full container mx-auto">
 
       <div className="max-w-[80%] mx-auto mt-10">
         <h1 className="font-bold text-3xl text-blue-950 animate-fade-left animate-duration-[1000ms] animate-delay-500">View Users Bookings</h1>
@@ -90,15 +91,19 @@ const BookingPageAdmin = async () => {
 
       <Calendar data={bookingDatas} role={role}/>
 
-      <div className="container max-w-[80%] mx-auto my-5 grid grid-cols-3 gap-5">
+      <div className="container max-w-[80%] mx-auto my-5 grid grid-cols-3 gap-3">
 
+        {/* Upcoming Reservations */}
         <div className="bg-green-100 container rounded-md shadow-lg p-3 border-t-8 border-t-green-600 min-h-[293px]">
-          <h4 className="text-gray-700 text-lg font-medium mb-1 text-center">Upcoming Reservations</h4>
+          <div className="text-lg font-medium mb-1 text-center flex flex-row gap-2 items-center justify-center">
+            <TiPin className="text-green-800"/>
+            <h4 className="text-gray-700">Upcoming Reservations</h4>
+          </div>
           <div className="container overflow-auto max-h-96">
             {upComings.length > 0 ? (
               upComings.map((upComing) => (
-                <div key={upComing.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col justify-center">
-                  <div className="flex flex-row justify-between font-medium my-1">
+                <div key={upComing.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col items-center">
+                  <div className="flex flex-row justify-between font-medium my-1 items-center">
                     <h1>{upComing.user.fullname}</h1>
                     <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{upComing.user.phoneNum}</h1>
                   </div>
@@ -117,13 +122,17 @@ const BookingPageAdmin = async () => {
           </div>
         </div>
 
+        {/* Today Reservations */}
         <div className="bg-blue-100 container rounded-md shadow-lg p-3 border-t-8 border-t-blue-600 min-h-[293px]">
-          <h4 className="text-gray-700 text-lg font-medium mb-1 text-center">Today Reservations</h4>
+          <div className="text-lg font-medium mb-1 text-center flex flex-row gap-2 items-center justify-center">
+            <TiPin className="text-blue-800"/>
+            <h4 className="text-gray-700">Today Reservations</h4>
+          </div>
           <div className="container overflow-auto max-h-96">
             {todayBookings.length > 0 ? (
               todayBookings.map((todayBook) => (
-                <div key={todayBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col justify-center">
-                  <div className="flex flex-row justify-between font-medium my-1">
+                <div key={todayBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col">
+                  <div className="flex flex-row justify-between font-medium my-1 items-center">
                     <h1>{todayBook.user.fullname}</h1>
                     <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{todayBook.user.phoneNum}</h1>
                   </div>
@@ -142,13 +151,17 @@ const BookingPageAdmin = async () => {
           </div>
         </div>
 
+        {/* Past Reservations */}
         <div className="bg-red-100 container rounded-md shadow-lg p-3 border-t-8 border-t-red-600 min-h-[293px]">
-          <h4 className="text-gray-700 text-lg font-medium mb-1 text-center">Past Reservations</h4>
+          <div className="text-lg font-medium mb-1 text-center flex flex-row gap-2 items-center justify-center">
+            <TiPin className="text-red-800"/>
+            <h4 className="text-gray-700">Past Reservations</h4>
+          </div>
           <div className="container overflow-auto max-h-96">
             {pastBookings.length > 0 ? (
               pastBookings.map((pastBook) => (
-                <div key={pastBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col justify-center">
-                  <div className="flex flex-row justify-between font-medium my-1">
+                <div key={pastBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col justify-center items-center">
+                  <div className="flex flex-row justify-between font-medium my-1 items-center">
                     <h1>{pastBook.user.fullname}</h1>
                     <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{pastBook.user.phoneNum}</h1>
                   </div>

@@ -78,6 +78,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
       email: booking.user.email,
       past: booking.past,
       date: splitDate,
+      isoDate: new Date(splitDate),
       phone: booking.user.phoneNum,
       confirm: booking.confirm,
       cancel: booking.cancel
@@ -131,7 +132,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
           <div className="my-3 flex flex-row items-center text-[14px] text-blue-950 gap-3 w-auto px-2
           rounded-sm bg-gray-100">
             <MdDateRange/>
-            <h2 className="font-semibold">{props.date.toString()}</h2>
+            <h2 className="font-semibold">{props.isoDate.toLocaleDateString("en-MY")}</h2>
           </div>
           <div className="my-3 flex flex-row items-center text-[14px] text-blue-950 gap-3 w-auto px-2
           rounded-sm bg-gray-100">
@@ -141,10 +142,19 @@ const Calendar = ({ data, role }: CalendarProps) => {
         </div>
         
         <div className="text-blue-950 flex justify-between mt-1">
-          <div className="flex flex-row gap-2 items-center">
-            <IoPerson/>
-            <h2 className="max-w-40 text-[14px]">{props.fullname}</h2>
-          </div>
+
+          {role === "admin" ? (
+            <div className="flex flex-row gap-2 items-center">
+              <IoPerson/>
+              <h2 className="max-w-40 text-[14px]">{props.fullname}</h2>
+            </div>
+          ) : (
+            <div className="w-full p-1 bg-gray-100 shadow-inner rounded-sm">
+              <h2 className="font-medium text-center">Someone already reserved this room/place<br/>
+              for the shown date and time.</h2>
+            </div>
+          )}
+          
           {role === "admin" ? (
             <div className="flex flex-row gap-2 justify-left items-center">
               <MdEmail />

@@ -38,25 +38,26 @@ const DateTimeForm = ({userId,placeId}:props) => {
 
         <div className='flex flex-col'>
             <label htmlFor='date' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Reservation Date</label>
-            <input required min={formattedDate} name='date' id='date' type='date' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <input required min={formattedDate} name='date' id='date' type='date' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='startTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Start Time</label>
-            <input required name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <input required name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='endTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>End Time</label>
-            <input required name='endTime' id='endTime' type='time' className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <input required name='endTime' id='endTime' type='time' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 
         <div className='flex flex-col mt-6'>
-            <label htmlFor='purpose' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Purpose</label>
-            <textarea required name='purpose' id='purpose' maxLength={150} className='p-2 border-[1.4px] rounded-sm border-blue-950 shadow-inner active:outline-1
+            <label htmlFor='purpose' className='text-md font-medium block bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Purpose</label>
+            <span className='text-[12px] font-medium my-2 text-gray-600'>Maximum of 150 characters allowed</span>
+            <textarea required name='purpose' id='purpose' maxLength={150} className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
             outline-blue-500'/>
         </div>
 

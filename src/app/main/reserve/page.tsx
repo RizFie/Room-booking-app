@@ -3,6 +3,7 @@ import Calendar from '@/components/calendar';
 import RoomCard from '@/components/room-card'
 import { prisma } from '@/lib/prisma';
 import React from 'react'
+import { ImNotification } from "react-icons/im";
 
 const ReservePage = async () => {
 
@@ -44,20 +45,24 @@ const ReservePage = async () => {
     <div className='mb-10 flex flex-row justify-center items-center gap-7'>
       <h2 className='text-center text-sm font-semibold bg-gradient-to-r from-purple-700 to-red-600 
       p-3 shadow-md text-white w-[300px] 
-      animate-fade-right animate-once animate-delay-1000 animate-ease-linear animate-alternate'>1. Select your room/place</h2>
+      animate-fade-right animate-once animate-delay-[1000ms] animate-ease-linear animate-alternate'>1. Select your room/place</h2>
       <h2 className='text-center text-sm font-semibold bg-gradient-to-r from-purple-700 to-red-600 
       p-3 shadow-md text-white w-[300px]
-      animate-fade-right animate-once animate-delay-[2000ms] animate-ease-linear animate-alternate'>2. Select your reservation date</h2>
+      animate-fade-right animate-once animate-delay-[1500ms] animate-ease-linear animate-alternate'>2. Select your reservation date</h2>
       <h2 className='text-center text-sm font-semibold bg-gradient-to-r from-purple-700 to-red-600 
       p-3 shadow-md text-white w-[300px]
-      animate-fade-right animate-once animate-delay-[3000ms] animate-ease-linear animate-alternate'>3. Done, your booking will be confirmed</h2>
+      animate-fade-right animate-once animate-delay-[2000ms] animate-ease-linear animate-alternate'>3. Done, your booking will be confirmed</h2>
     </div>
     
     <RoomCard role={role}/>
     
-    <p className='text-blue-800 mt-2 font-semibold text-center bg-blue-100 max-w-[80%] mx-auto
-    py-2 rounded-md border-2 border-blue-500'>This Calendar may help you incase there is a reservation<br/>
-    already have been made for your choosen date and time.</p>
+    <div className='text-blue-800 mt-2 font-medium text-sm bg-blue-100 max-w-[80%] mx-auto
+      py-2 border-l-4 border-l-blue-500 pl-2 flex flex-row gap-3 items-center'>
+      <ImNotification/>
+      <p>The Calendar may help you to identify reserved date and time.<br/>
+      For booking details and cancellation, please navigate to the "Cancel" section.</p>
+    </div>
+ 
 
     <Calendar data={bookingDatas} role={role}/>
 
