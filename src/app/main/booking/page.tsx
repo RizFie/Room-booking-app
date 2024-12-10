@@ -37,7 +37,7 @@ const BookingPage = async () => {
                             <h2>{booking.date.toLocaleDateString()}</h2>
                         </div>
                         {booking.confirm ? (
-                            <div className="bg-green-500 text-white p-1 rounded-md text-xs text-center w-[70px] flex items-center justify-center">
+                            <div className="bg-green-500 text-white p-1 rounded-md text-xs text-center w-[70] flex items-center justify-center">
                                 <h3>Confirmed</h3>
                             </div>
                         ) : (
