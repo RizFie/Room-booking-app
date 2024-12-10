@@ -25,9 +25,9 @@ const BookingPage = async () => {
         <span className="text-sm font-medium bg-gray-200 p-2 bg-opacity-75">You may view your reservation details here,
         page refresh will happen if the admin <b>confirm</b> or <b>cancel</b> your reservation.</span>
 
-        <div className="container flex flex-row my-7 overflow-auto justify-between">
+        <div className="container flex flex-row my-7 flex-wrap gap-7">
             {userBookings.map((booking) => (
-                <div key={booking.bookingId} className="bg-white max-w-[270px] rounded-md shadow-md">
+                <div key={booking.bookingId} className="bg-white max-w-[270px] h-[373px] rounded-md shadow-md hover:scale-105 transition-all">
                     <h1 className="font-semibold text-lg my-0 pt-2 pb-1 bg-gradient-to-r from-purple-800 to-red-700 w-full 
                     text-slate-100 px-2 rounded-t-md">
                     {booking.place.placeName}</h1>
@@ -37,7 +37,7 @@ const BookingPage = async () => {
                             <h2>{booking.date.toLocaleDateString()}</h2>
                         </div>
                         {booking.confirm ? (
-                            <div className="bg-green-500 text-white p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
+                            <div className="bg-green-500 text-white p-1 rounded-md text-xs text-center w-[70px] flex items-center justify-center">
                                 <h3>Confirmed</h3>
                             </div>
                         ) : (
@@ -51,12 +51,11 @@ const BookingPage = async () => {
                         <h2>{booking.startTime.toLocaleTimeString()} - {booking.endTime.toLocaleTimeString()}</h2>
                     </div>
                     <div className="p-2 pt-0 text-[14px] w-full">
-                        <h3 className="font-semibold bg-gray-200 p-1 my-1 rounded-sm">Purpose/Agenda</h3>
-                        <h2 className="text-justify p-2 text-sm rounded-md bg-blue-50 shadow-inner">{booking.purpose}</h2>
+                        <h3 className="font-semibold bg-gray-100 p-1 my-1">Purpose/Agenda</h3>
+                        <h2 className="text-justify p-2 text-sm rounded-md bg-gray-100 shadow-inner h-[156px]">{booking.purpose}</h2>
                     </div>
-                    
-                    <CancelButton/>
 
+                    <CancelButton bookingId={booking.bookingId}/>
                 </div>
             ))}
         </div>

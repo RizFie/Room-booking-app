@@ -82,7 +82,7 @@ const Navbar = ({name, role}: User) => {
         
       </div>
 
-      <dialog id="dialog" ref={dialogRef} className=" bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
+      <dialog id="dialog" ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
         <div className="container w-[160px] h-[160px] mt-9 mx-auto">
           <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-auto h-[160px]"/>
         </div>

@@ -169,8 +169,8 @@ export const updatePlace = async (id: string, prevState: unknown ,formData: Form
       }
     });
 
-    revalidatePath(`/admin/places/${id}`)
-    return {code: 200, message: "Room updated successfully"}
+    revalidatePath(`/admin/places/${id}`);
+    return {code: 200, message: "Room updated successfully"};
 
   } catch (error) {
     return {code: 500, message: "Something went wrong"};
@@ -188,7 +188,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
   const purpose = formData.get("purpose") as string | null;
 
   if(!purpose){
-    throw Error("Purpose is null")
+    throw Error("Purpose is null");
   }
 
   const bookDateStartTime = new Date(`${splitDate}T${bookStartTime}`);
@@ -241,10 +241,10 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
       }
     });
 
-    revalidatePath("/admin/bookings")
-    return {code: 200, message: "Reservation successfully placed"}
+    revalidatePath("/admin/bookings");
+    return {code: 200, message: "Reservation successfully placed"};
   } catch (error) {
-    return {code: 500, message: "Something went wrong, please try again"}
+    return {code: 500, message: "Something went wrong, please try again"};
   }
 
 }
@@ -261,9 +261,10 @@ export const confirmReserve = async ( id: string) => {
         confirm: true,
       }
     });
-    return {code: 200, message: "Reservation has been confirmed"}
+    revalidatePath("/main/booking");
+    return {code: 200, message: "Reservation has been confirmed"};
   } catch (error) {
-    return {code: 500, message: "Oh no, something went wrong. Please try again"}
+    return {code: 500, message: "Oh no, something went wrong. Please try again"};
   }
 }
 
@@ -274,9 +275,9 @@ export const cancelBooking = async (id:string) => {
       where: {bookingId: id},
       data: {cancel: true},
     });
-    return {code: 200, message: "Reservation has been cancelled"}
+    return {code: 200, message: "Reservation has been cancelled"};
   } catch (error) {
-    return {code: 500, message: "Something broke, please try again"}
+    return {code: 500, message: "Something broke, please try again"};
   }
 }
 
@@ -286,8 +287,8 @@ export const deleteBooking = async (id:string) => {
     await prisma.booking.delete({
       where: {bookingId: id},
     });
-    return {code: 200, message: "Reservation has been deleted"}
+    return {code: 200, message: "Reservation has been deleted"};
   } catch (error) {
-    return {code: 500, message: "Something broke, please try again"}
+    return {code: 500, message: "Something broke, please try again"};
   }
 }
