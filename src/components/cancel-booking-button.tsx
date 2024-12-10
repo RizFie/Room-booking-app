@@ -59,7 +59,7 @@ const CancelButton = ({bookingId}: props) => {
           <div className="flex flex-row gap-4">
             <button onClick={handleCancel} className="bg-red-700 text-white p-1 rounded-md text-xs text-center flex items-center 
             justify-center w-[65px] gap-1 hover:scale-105 transition-all active:scale-90">
-              <h3>Yes</h3>
+              <h3>{isPending ? "Cancelling..." : "Yes"}</h3>
             </button>
             <button onClick={handleClose} className="bg-green-700 text-white p-1 rounded-md text-xs text-center flex items-center 
             justify-center w-[65px] gap-1 hover:scale-105 transition-all active:scale-90">

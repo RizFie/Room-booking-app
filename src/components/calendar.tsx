@@ -192,7 +192,6 @@ const Calendar = ({ data, role }: CalendarProps) => {
         const result = await confirmReserve(props.Id);
         if (result.code === 200) {
           toast.success(result.message);
-          router.refresh();
         } else {
           toast.error(result.message);
         }
@@ -204,7 +203,6 @@ const Calendar = ({ data, role }: CalendarProps) => {
         const result = await cancelBooking(props.Id);
         if (result.code === 200) {
           toast.success(result.message);
-          router.refresh();
         } else {
           toast.error(result.message);
         }

@@ -261,6 +261,7 @@ export const confirmReserve = async ( id: string) => {
         confirm: true,
       }
     });
+    revalidatePath("/admin/bookings");
     revalidatePath("/main/booking");
     return {code: 200, message: "Reservation has been confirmed"};
   } catch (error) {
@@ -275,6 +276,7 @@ export const cancelBooking = async (id:string) => {
       where: {bookingId: id},
       data: {cancel: true},
     });
+    revalidatePath("/main/booking");
     return {code: 200, message: "Reservation has been cancelled"};
   } catch (error) {
     return {code: 500, message: "Something broke, please try again"};

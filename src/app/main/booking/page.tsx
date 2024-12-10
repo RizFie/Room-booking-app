@@ -55,7 +55,13 @@ const BookingPage = async () => {
                         <h2 className="text-justify p-2 text-sm rounded-md bg-gray-100 shadow-inner h-[156px]">{booking.purpose}</h2>
                     </div>
 
-                    <CancelButton bookingId={booking.bookingId}/>
+                    {booking.cancel ? (
+                        <div className="bg-red-700 text-white mx-2 mt-2 p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
+                            <h3>Cancelled</h3>
+                        </div>
+                    ) : (
+                        <CancelButton bookingId={booking.bookingId}/>
+                    )}
                 </div>
             ))}
         </div>
