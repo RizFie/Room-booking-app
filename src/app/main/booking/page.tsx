@@ -1,7 +1,23 @@
+import { auth } from "@/auth";
 import AllBookingCard from "@/components/bookings/allBookingCard"
-import CancelBookingCard from "@/components/bookings/cancelBookingCard"
+import { prisma } from "@/lib/prisma";
 
 const BookingPage = async () => {
+
+    const session = await auth();
+    const userId = session?.user.userId;
+
+    const userBookings = await prisma.booking.findMany({
+        where: {
+            userId: userId
+        },
+        include: {
+            place: true,
+        },
+        orderBy: {
+            date: 'asc'
+        }
+    });
 
     //console.log(userBookings);
 
@@ -12,10 +28,7 @@ const BookingPage = async () => {
         page refresh will happen if the admin <b>confirm</b> or <b>cancel</b> your reservation.</span>
 
         <h3 className="mt-10 text-lg font-semibold w-36 bg-blue-200 text-center rounded-sm">All reservation</h3>
-        <AllBookingCard/>
-
-        <h3 className="mt-10 text-lg font-semibold w-52 bg-red-200 text-center rounded-sm text-red-700">Cancelled reservation</h3>
-        <CancelBookingCard/>
+        <AllBookingCard userBookings={userBookings}/>
 
     </div>
   )
