@@ -1,4 +1,3 @@
-
 import { auth } from '@/auth';
 import DateTimeForm from '@/components/dateTime-form';
 import Carousel from '@/components/user-carousel';
