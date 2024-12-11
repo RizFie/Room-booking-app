@@ -52,11 +52,11 @@ const CancelButton = ({bookingId}: props) => {
         </button>
       </div>
 
-      <dialog ref={dialogRef} className="dialog rounded-lg shadow w-[400px] backdrop:backdrop-blur-md text-center">
+      <dialog ref={dialogRef} className="rounded-lg shadow w-[400px] backdrop:backdrop-blur-md text-center">
         <div className="flex flex-col gap-4 p-4">
           <h1 className="text-lg font-bold">Cancel Reservation</h1>
           <p className="text-sm">Are you sure you want to cancel this reservation?</p>
-          <div className="flex flex-row gap-4">
+          <div className="flex flex-row gap-4 w-[300px] justify-center mx-auto">
             <button onClick={handleCancel} className="bg-red-700 text-white p-1 rounded-md text-xs text-center flex items-center 
             justify-center w-[65px] gap-1 hover:scale-105 transition-all active:scale-90">
               <h3>{isPending ? "Cancelling..." : "Yes"}</h3>
