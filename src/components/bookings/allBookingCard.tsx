@@ -22,9 +22,9 @@ const AllBookingCard = async () => {
     });
 
   return (
-    <div className="container flex flex-row mt-3 mb-7 flex-wrap gap-7">
+    <div className="container flex flex-row mt-3 mb-7 gap-5 h-[392px] items-center">
         {userBookings.map((booking) => (
-            <div key={booking.bookingId} className="bg-white max-w-[270px] h-[373px] rounded-md shadow-md hover:scale-105 transition-all">
+            <div key={booking.bookingId} className="bg-white w-[270px] h-[373px] rounded-md shadow-md hover:scale-105 transition-all">
                 <h1 className="font-semibold text-lg my-0 pt-2 pb-1 bg-gradient-to-r from-purple-800 to-red-700 w-full 
                 text-slate-100 px-2 rounded-t-md">
                 {booking.place.placeName}</h1>
