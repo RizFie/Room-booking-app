@@ -1,21 +1,22 @@
+import { auth } from "@/auth";
 import { prisma } from "@/lib/prisma";
 
 const Home = async () => {
 
+  const session = await auth();
+  const fullname = session?.user.name;
+
   return (
-    <div className="h-full w-full">
-      <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%] bg-transparent rounded-lg p-3 shadow-[0px_4px_54px_-18px_#73a8ff]">
-        {/*row 1*/}
-        <h1 className="font-bold text-xl mb-2">Room Status Currently</h1>
-        {/*row 2*/}
-        <div className="flex gap-4">
-          <div className="">cubaan</div>
-          <div>testing</div>
-        </div>
-      </div>
+    <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%]">
+      
+    <div>
+      <h1 className="text-2xl font-semibold mb-2 animate-fade-right animate-duration-[1100ms] animate-ease-linear
+      text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-300">Welcome,</h1>
+      <h1 className="text-3xl font-bold animate-fade-left animate-duration-[1300ms] animate-ease-linear
+      text-transparent bg-clip-text bg-gradient-to-tr from-blue-900 to-blue-600">{fullname}</h1>
     </div>
-    //room status div
-    
+
+    </div>
   )
 }
 
