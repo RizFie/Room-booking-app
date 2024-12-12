@@ -16,7 +16,7 @@ const inter_init = Inter({
 })
 
 export const metadata: Metadata = {
-  title: "Create Next App",
+  title: "eTEMPAH",
 };
 
 export default function RootLayout({
