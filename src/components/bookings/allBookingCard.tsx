@@ -46,28 +46,28 @@ const AllBookingCard = ({userBookings}:Props) => {
         <button onClick={() => setFilter("all")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white`}>
+        hover:bg-blue-500 hover:text-white ${filter === "all" ? "bg-blue-800 text-white" : ""}`}>
             <h3>All</h3>
         </button>
 
         <button onClick={() => setFilter("confirm")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white`}>
+        hover:bg-blue-500 hover:text-white ${filter === "confirm" ? "bg-blue-800 text-white" : ""}`}>
             <h3>Confirmed</h3>
         </button>
 
         <button onClick={() => setFilter("pending")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white`}>
+        hover:bg-blue-500 hover:text-white ${filter === "pending" ? "bg-blue-800 text-white" : ""}`}>
             <h3>Pending</h3>
         </button>
 
         <button onClick={() => setFilter("cancel")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white`}>
+        hover:bg-blue-500 hover:text-white ${filter === "cancel" ? "bg-blue-800 text-white" : ""}`}>
             <h3>Cancelled</h3>
         </button>
     </div>
@@ -75,7 +75,8 @@ const AllBookingCard = ({userBookings}:Props) => {
 
     <div className="container flex flex-row mt-3 mb-7 gap-5 h-[392px] items-center">
         {filteredBookings.map((booking) => (
-            <div key={booking.bookingId} className="bg-white w-[270px] h-[373px] rounded-md shadow-md hover:scale-105 transition-all">
+            <div key={booking.bookingId} className="bg-white w-[270px] h-[373px] rounded-md shadow-md hover:scale-105 transition-all
+            animate-fade-down">
                 <h1 className="font-semibold text-lg my-0 pt-2 pb-1 bg-gradient-to-r from-purple-800 to-red-700 w-full 
                 text-slate-100 px-2 rounded-t-md">
                 {booking.place.placeName}</h1>
