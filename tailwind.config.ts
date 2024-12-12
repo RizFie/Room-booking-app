@@ -71,7 +71,7 @@ const config: Config = {
 			inter: ['var(--font-inter)']
 		},
 		backgroundImage: {
-			wave: "url('/illustration/wave.svg')",
+			wave: "url('/illustration/Background.svg')",
 		},
   	}
   },
