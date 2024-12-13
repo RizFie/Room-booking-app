@@ -9,6 +9,7 @@ datasource db {
 
 model booking {
   bookingId    String         @unique(map: "bookingId") @default(uuid())
+  createdAt    DateTime       @default(now())
   startTime    DateTime       @db.DateTime(0)
   endTime      DateTime       @db.DateTime(0)
   date         DateTime       @db.Date
