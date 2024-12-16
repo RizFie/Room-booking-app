@@ -73,33 +73,50 @@ const Home = async () => {
           </div>
         </div>
 
-        <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-[65%]">
-          <h2 className="text-lg font-semibold mb-2">Your Reservations</h2>
-          <div className="overflow-auto mt-3">
-            <table className="w-full border-collapse border-spacing-2 text-sm rounded-md overflow-auto max-h-[171px]">
-              <thead className="bg-gray-100">
-                <tr>
-                  <th className="text-left border-r-[1.4px] border-r-gray-200 pl-2 py-2">Place</th>
-                  <th className="text-left border-r-[1.4px] border-r-gray-200 pl-2 py-2">Created At</th>
-                  <th className="text-left border-r-[1.4px] border-r-gray-200 pl-2 py-2">Reserved date</th>
-                  <th className="text-left pl-2 py-2">Confirmed</th>
-                </tr>
-              </thead>
+        <div className="grid grid-cols-4 gap-2 w-full">
 
-              <tbody>
-                {allBooking.map((booking) => (
-                  <tr key={booking.bookingId} className="border-t-[1px] border-t-gray-200">
-                    <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.place.placeName}</td>
-                    <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.createdAt.toLocaleDateString("en-MY")}</td>
-                    <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.date.toLocaleDateString("en-MY")}</td>
-                    <td className={`pl-2 ${booking.confirm ? "text-green-600" : "text-red-600"}`}>{booking.confirm ? "Yes" : "No"}</td>
+          <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-full col-span-3">
+            <h2 className="text-lg font-semibold mb-2">Your Reservations</h2>
+            <div className="overflow-auto mt-3">
+              <table className="w-full border-collapse border-spacing-2 text-sm rounded-md overflow-auto max-h-[171px]">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="text-left border-r-[1.4px] border-r-gray-200 pl-2 py-2">Place</th>
+                    <th className="text-left border-r-[1.4px] border-r-gray-200 pl-2 py-2">Created At</th>
+                    <th className="text-left border-r-[1.4px] border-r-gray-200 pl-2 py-2">Reserved date</th>
+                    <th className="text-left pl-2 py-2">Status</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+
+                <tbody>
+                  {allBooking.map((booking) => (
+                    <tr key={booking.bookingId} className="border-t-[1px] border-t-gray-200">
+                      <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.place.placeName}</td>
+                      <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.createdAt.toLocaleDateString("en-MY")}</td>
+                      <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.date.toLocaleDateString("en-MY")}</td>
+                      {booking.cancel ? (
+                        <td className="pl-2 text-red-600">Cancelled</td>
+                      ) : (
+                        <td className={`pl-2 ${booking.confirm ? "text-green-600" : "text-red-600"}`}>{booking.confirm ? "Confirmed" : "Pending"}</td>
+                      )}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div> 
           </div>
-          
+
+          <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-full col-span-1">
+            awdsdawdswas
+          </div>
+
         </div>
+
+        
+
+        
+
+
       </div>
     </div>
   )
