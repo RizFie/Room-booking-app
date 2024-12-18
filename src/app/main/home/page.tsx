@@ -133,7 +133,7 @@ const Home = async () => {
             {date2 === undefined ? (
               <h3 className="">PLace a booking first</h3>
             ) : (
-              <div className="flex flex-row gap-2 items-center justify-center h-[30px] rounded-md w-[120px] mx-auto
+              <div className="flex flex-row gap-3 items-center justify-center h-[30px] rounded-md w-[120px] mx-auto
               backdrop-blur">
                 <h3 className="text-[30px] font-bold scale-150">{dayPast}</h3>
                 <h3 className="text-lg font-semibold">{
