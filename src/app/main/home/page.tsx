@@ -94,7 +94,8 @@ const Home = async () => {
 
         <div className="grid grid-cols-4 gap-2 w-full">
 
-          <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-full col-span-3">
+          <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-full col-span-3
+          animate-fade-right animate-once animate-duration-[1200ms] animate-ease-linear">
             <h2 className="text-lg font-semibold mb-2">Your Reservations</h2>
             <div className="overflow-auto mt-3">
               <table className="w-full border-collapse border-spacing-2 text-sm rounded-md overflow-auto max-h-[171px]">
@@ -126,7 +127,8 @@ const Home = async () => {
           </div>
 
           <div className="bg-white p-2 mb-4 container rounded-md shadow-md w-full col-span-1 grid grid-rows-2 gap-2
-          bg-[url('/illustration/intoTheNight.jpg')] bg-cover bg-center bg-no-repeat text-white">
+          bg-[url('/illustration/intoTheNight.jpg')] bg-cover bg-center bg-no-repeat text-white
+          animate-fade animate-once animate-duration-[1400ms] animate-ease-in">
             <h3 className="text-sm font-bold ">Last reservation</h3>
             {date2 === undefined ? (
               <h3 className="">PLace a booking first</h3>
