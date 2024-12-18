@@ -9,11 +9,11 @@ const Register = () => {
       <div className="h-[100px] rounded-lg bg-none max-w-[30%] animate-fade-down animate-once animate-ease-out animate-alternate">
         <Image src={logo} alt="e-tempah" className="h-[100px] object-cover overflow-hidden"/>
       </div>
-      <div className="grid grid-cols-2 overflow-hidden grid-flow-col gap-5 max-w-[50%] bg-white rounded-lg max-h-[50%] shadow-lg
+      <div className="grid grid-cols-2 overflow-hidden grid-flow-col max-w-[50%] bg-white rounded-lg max-h-[50%] shadow-lg
       animate-fade-up animate-once animate-ease-out animate-alternate">
-        <div className="container rounded-lg h-[90%] self-center w-full mx-7">
+        <div className="container rounded-lg rounded-r-none h-full self-center w-full">
           <Image
-            className="max-w-full h-full max-h-full w-full object-cover rounded-lg"
+            className="max-w-full h-full max-h-full w-full object-cover rounded-lg rounded-r-none"
             src={loginLogo}
             alt="register-mdr"
           />

@@ -31,6 +31,25 @@ const Home = async () => {
     where: { userId: userId, past: true}
   });
 
+  const latestPastBooking = await prisma.booking.findFirst({
+    where: { userId: userId, past: true},
+    orderBy: { date: 'desc' }
+  });
+
+  //console.log(latestPastBooking);
+
+  const date2 = latestPastBooking?.date;
+  if(date2 === undefined) {
+    return (
+      <h1>You dont have any past reservation</h1>
+    )
+  }
+  //console.log(date2);
+  const date1 = today;
+  //console.log(date1);
+
+  const dayPast = Math.floor((date1.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24));
+
   return (
     <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%]">
       
@@ -106,8 +125,20 @@ const Home = async () => {
             </div> 
           </div>
 
-          <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-full col-span-1">
-            awdsdawdswas
+          <div className="bg-white p-2 mb-4 container rounded-md shadow-md w-full col-span-1 grid grid-rows-2 gap-2
+          bg-[url('/illustration/intoTheNight.jpg')] bg-cover bg-center bg-no-repeat text-white">
+            <h3 className="text-sm font-bold ">Last reservation</h3>
+            {date2 === undefined ? (
+              <h3 className="">PLace a booking first</h3>
+            ) : (
+              <div className="flex flex-row gap-2 items-center justify-center h-[30px] rounded-md w-[120px] mx-auto
+              backdrop-blur">
+                <h3 className="text-[30px] font-bold scale-150">{dayPast}</h3>
+                <h3 className="text-lg font-semibold">{
+                  dayPast > 1 ? "days ago" : "day ago"
+                  }</h3>
+              </div>
+            )}
           </div>
 
         </div>

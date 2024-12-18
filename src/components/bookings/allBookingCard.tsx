@@ -12,6 +12,7 @@ interface UserBookings {
     endTime: Date,
     purpose: string,
     confirm: boolean,
+    past: boolean,
     cancel: boolean,
     place: {
         placeName: string
@@ -113,13 +114,21 @@ const AllBookingCard = ({userBookings}:Props) => {
                         <h2 className="text-justify p-2 text-sm rounded-md bg-gray-100 shadow-inner h-[156px]">{booking.purpose}</h2>
                     </div>
     
-                    {booking.cancel ? (
-                        <div className="bg-red-700 text-white mx-2 mt-2 p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
-                            <h3>Cancelled</h3>
+                    {booking.past ? (
+                        <div className="bg-gray-200 text-gray-600 mx-2 mt-2 p-1 rounded-none text-xs text-center w-[70%] flex items-center justify-center">
+                            <h3 className="font-semibold text-red-700">This booking already passed</h3>
                         </div>
-                    ) : (
-                        <CancelButton bookingId={booking.bookingId}/>
+                    ): 
+                        booking.cancel ? (
+                            <div className="bg-red-700 text-white mx-2 mt-2 p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
+                                <h3>Cancelled</h3>
+                            </div>
+                        ) : (
+                            <CancelButton bookingId={booking.bookingId}/>
+                        
                     )}
+
+                    
                 </div>
             ))
         )}
