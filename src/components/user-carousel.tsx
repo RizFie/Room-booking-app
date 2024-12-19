@@ -29,7 +29,7 @@ const Carousel = ({ placePic }: { placePic: Picture[] }) => {
   return (
     <div className="bg-white mx-auto max-w-full mb-5 mt-4 rounded-lg shadow-xl">
 
-            <div className="relative w-full h-[400px] overflow-hidden">
+            <div className="relative w-full h-[400px] overflow-hidden ">
 
                 <Image
                 src={placePic[currentIndex].picLink}

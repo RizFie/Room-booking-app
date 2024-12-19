@@ -49,28 +49,28 @@ const AllBookingCard = ({userBookings}:Props) => {
         <button onClick={() => setFilter("all")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white ${filter === "all" ? "bg-blue-800 text-white" : ""}`}>
+        hover:bg-blue-500 hover:border-blue-500 hover:text-white ${filter === "all" ? "bg-blue-800 text-white" : ""}`}>
             <h3>All</h3>
         </button>
 
         <button onClick={() => setFilter("confirmed")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white ${filter === "confirmed" ? "bg-blue-800 text-white" : ""}`}>
+        hover:bg-blue-500 hover:border-blue-500 hover:text-white ${filter === "confirmed" ? "bg-blue-800 text-white" : ""}`}>
             <h3>Confirmed</h3>
         </button>
 
         <button onClick={() => setFilter("pending")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white ${filter === "pending" ? "bg-blue-800 text-white" : ""}`}>
+        hover:bg-blue-500 hover:border-blue-500 hover:text-white ${filter === "pending" ? "bg-blue-800 text-white" : ""}`}>
             <h3>Pending</h3>
         </button>
 
         <button onClick={() => setFilter("cancelled")} 
         className={`text-blue-800 p-1 rounded-md text-xs text-center w-24 flex active:bg-blue-800 active:text-white
         items-center justify-center border-separate border-[1.4px] border-blue-800 font-semibold transition-all
-        hover:bg-blue-500 hover:text-white ${filter === "cancelled" ? "bg-blue-800 text-white" : ""}`}>
+        hover:bg-blue-500 hover:border-blue-500 hover:text-white ${filter === "cancelled" ? "bg-blue-800 text-white" : ""}`}>
             <h3>Cancelled</h3>
         </button>
     </div>

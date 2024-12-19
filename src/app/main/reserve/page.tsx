@@ -12,20 +12,6 @@ const ReservePage = async () => {
 
     const today = new Date();
     const todayStartOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString();
-    const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
-
-    try {
-      await prisma.booking.updateMany({
-        where: {
-          date: {lt: todayStartOfDay}
-        },
-        data: {
-          past: true,
-        }
-      });
-    } catch (error) {
-      throw error
-    }
 
     const bookingDatas = await prisma.booking.findMany({
       include: {

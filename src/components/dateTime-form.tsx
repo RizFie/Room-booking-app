@@ -60,7 +60,7 @@ const DateTimeForm = ({userId,placeId}:props) => {
             outline-blue-500'/>
         </div>
 
-        <button type='submit' className='w-full my-6 p-1 rounded-md bg-blue-500 text-white font-medium shadow hover:scale-105
+        <button type='submit' className='w-full my-6 p-1 rounded-md bg-blue-500 text-white font-medium shadow hover:scale-100
         transition-all active:scale-95'>Place Booking</button>
                 
     </form>
