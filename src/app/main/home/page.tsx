@@ -44,7 +44,7 @@ const Home = async () => {
   //console.log(date1);
 
   const dayPast = date2 ? Math.floor((date1.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24)) : 0;
-  console.log(dayPast);
+  //console.log(dayPast);
 
   return (
     <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%]">

@@ -6,8 +6,9 @@ import logoEtempah from "../../public/logo/etempah.png"
 import SignOut from "@/lib/action"
 import { usePathname } from "next/navigation"
 import logoMdr from "../../public/logo/Mdr.svg"
-import { useRef,useTransition } from "react"
+import { useRef, useTransition } from "react"
 import exclamation from "../../public/icons/exclamation.png"
+import { useFormStatus } from "react-dom"
 
 interface User {
   name: string | undefined
@@ -16,13 +17,16 @@ interface User {
 
 const Navbar = ({name, role}: User) => {
 
-  const [isPending,startTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
 
   const handleLogout = () => {
-    startTransition(() => {
+    startTransition(async () => {
       await SignOut();
-    });
+    })
   }
+
+  const {pending} = useFormStatus();
+  //console.log(pending);
 
   const pathname = usePathname();
 
@@ -90,7 +94,7 @@ const Navbar = ({name, role}: User) => {
         
       </div>
 
-      <dialog id="dialog" ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[440px] backdrop:backdrop-blur-md">
+      <dialog id="dialog" ref={dialogRef} className="bg-white rounded-lg shadow w-[500px] h-[460px] backdrop:backdrop-blur-md">
         <div className="container w-[160px] h-[160px] mt-9 mx-auto">
           <Image src={exclamation} alt={"exclamation mark"} className="object-contain w-auto h-[160px]"/>
         </div>
@@ -101,9 +105,13 @@ const Navbar = ({name, role}: User) => {
           </h2>
           <div className="grid grid-flow-col justify-evenly">
             <form action={SignOut}>
-              <button type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white font-semibold rounded-xl hover:bg-red-700 active:scale-95 transition-all">Logout</button>
+              <button onClick={handleLogout} type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white 
+              font-semibold rounded-xl hover:bg-red-700 active:scale-95 transition-all h-[87.4]" disabled={isPending}>
+                {isPending ? "Logging out..." : "Logout"}
+              </button>
             </form>
-            <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-grey-400 font-semibold rounded-xl hover:border-blue-950 hover:text-blue-950">Cancel</button>
+            <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-gray-500 font-semibold rounded-xl 
+            hover:border-blue-950 hover:text-blue-950 h-[87.4]">Cancel</button>
           </div>
         </div>
       </dialog>
