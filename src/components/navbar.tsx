@@ -6,7 +6,7 @@ import logoEtempah from "../../public/logo/etempah.png"
 import SignOut from "@/lib/action"
 import { usePathname } from "next/navigation"
 import logoMdr from "../../public/logo/Mdr.svg"
-import { useRef } from "react"
+import { useRef,useTransition } from "react"
 import exclamation from "../../public/icons/exclamation.png"
 
 interface User {
@@ -15,6 +15,14 @@ interface User {
 }
 
 const Navbar = ({name, role}: User) => {
+
+  const [isPending,startTransition] = useTransition();
+
+  const handleLogout = () => {
+    startTransition(() => {
+      await SignOut();
+    });
+  }
 
   const pathname = usePathname();
 
