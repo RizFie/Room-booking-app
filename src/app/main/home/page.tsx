@@ -39,16 +39,11 @@ const Home = async () => {
   //console.log(latestPastBooking);
 
   const date2 = latestPastBooking?.date;
-  if(date2 === undefined) {
-    return (
-      <h1>You dont have any past reservation</h1>
-    )
-  }
   //console.log(date2);
   const date1 = today;
   //console.log(date1);
 
-  const dayPast = Math.floor((date1.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24));
+  const dayPast = date2 ? Math.floor((date1.getTime() - date2.getTime()) / (1000 * 60 * 60 * 24)) : 0;
 
   return (
     <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%]">
@@ -131,7 +126,7 @@ const Home = async () => {
           animate-fade animate-once animate-duration-[1400ms] animate-ease-in">
             <h3 className="text-xl font-bold ">Last reservation</h3>
             {date2 === undefined ? (
-              <h3 className="">PLace a booking first</h3>
+              <h3 className="justify-center text-center backdrop-blur-sm leading-10 text-white">Place a booking first</h3>
             ) : (
               <div className="flex flex-row gap-3 items-center justify-center h-[30px] rounded-md w-[120px] mx-auto
               backdrop-blur">
