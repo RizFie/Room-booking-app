@@ -129,14 +129,14 @@ const Home = async () => {
           <div className="bg-white p-2 mb-4 container rounded-md shadow-md w-full col-span-1 grid grid-rows-2 gap-2
           bg-[url('/illustration/intoTheNight.jpg')] bg-cover bg-center bg-no-repeat text-white
           animate-fade animate-once animate-duration-[1400ms] animate-ease-in">
-            <h3 className="text-sm font-bold ">Last reservation</h3>
+            <h3 className="text-xl font-bold ">Last reservation</h3>
             {date2 === undefined ? (
               <h3 className="">PLace a booking first</h3>
             ) : (
               <div className="flex flex-row gap-3 items-center justify-center h-[30px] rounded-md w-[120px] mx-auto
               backdrop-blur">
                 <h3 className="text-[30px] font-bold scale-150">{dayPast}</h3>
-                <h3 className="text-lg font-semibold">{
+                <h3 className="text-lg font-semibold h-10 text-end">{
                   dayPast > 1 ? "days ago" : "day ago"
                   }</h3>
               </div>

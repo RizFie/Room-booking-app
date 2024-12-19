@@ -62,7 +62,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             id="fullname"
             type="text"
             name="fullname"
-            className="shadow-sm border-2 bg-blue-50 border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
+            className="shadow-sm border-[1px] border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
           />
           <div aria-live="polite" aria-atomic="true">
             <span className="text-sm text-red-500">
@@ -87,7 +87,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             id="email"
             type="email"
             name="email"
-            className="bg-blue-50 shadow-sm border-2 border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
+            className="shadow-sm border-[1px] border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
           />
           <div aria-live="polite" aria-atomic="true">
             <span className="text-sm text-red-500 mt-2">
@@ -112,7 +112,7 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             id="phone"
             type="tel"
             name="phone"
-            className="bg-blue-50 shadow-sm border-2 border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
+            className="shadow-sm border-[1px] border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
           />
           <div aria-live="polite" aria-atomic="true">
             <span className="text-sm text-red-500 mt-2">
