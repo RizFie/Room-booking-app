@@ -1,15 +1,20 @@
 import { auth } from "@/auth"
 import Navbar from "@/components/navbar";
+import { updatePastStatus } from "@/lib/action";
+import { prisma } from "@/lib/prisma";
 
 const MainLayout = async ({children}:{children: React.ReactNode}) => {
 
     const session = await auth();
     const fullname = session?.user.name;
     const role = session?.user.role;
+    const today = new Date();
 
     const splitName = fullname?.split(/(\s+)/);
     const secName = splitName?.[2];
     console.log(secName);
+
+    updatePastStatus();
 
   return (
     <div className="min-h-full">

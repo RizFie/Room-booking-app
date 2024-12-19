@@ -294,3 +294,16 @@ export const deleteBooking = async (id:string) => {
     return {code: 500, message: "Something broke, please try again"};
   }
 }
+
+//UPDATE PAST BOOKING STATUS
+export const updatePastStatus = async () => {
+  const today = new Date();
+  try {
+    await prisma.booking.updateMany({
+      where: { endTime: { lt: today }, past: false },
+      data: { past: true }
+    });
+  } catch (error) {
+    throw error;
+  }
+}
