@@ -1,7 +1,6 @@
 import { auth } from "@/auth"
 import Navbar from "@/components/navbar";
 import { updatePastStatus } from "@/lib/action";
-import { prisma } from "@/lib/prisma";
 
 const MainLayout = async ({children}:{children: React.ReactNode}) => {
 
