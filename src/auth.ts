@@ -53,13 +53,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       //console.log("Auth role:",userRole);
 
       //add more routes here
-      const ProtectedRoutes = ["/","/admin","/main"];
+      const ProtectedRoutes = ["/"];
 
       const isUserRoutes = nextUrl.pathname.startsWith("/main");
       const isAdminRoutes = nextUrl.pathname.startsWith("/admin");
       //console.log("Current pathname: ",nextUrl.pathname);
 
-      if(!isLoggedIn && (ProtectedRoutes.includes(nextUrl.pathname))){
+      if(!isLoggedIn && ( isUserRoutes || isAdminRoutes || ProtectedRoutes.includes(nextUrl.pathname))){
         return NextResponse.redirect(new URL("/login",nextUrl));
       }
 

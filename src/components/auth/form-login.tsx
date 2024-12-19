@@ -3,7 +3,7 @@
 import Link from "next/link"
 import { signInCredentials } from "@/lib/action"
 import toast from "react-hot-toast"
-import { useActionState, useEffect } from "react"
+import { useActionState, useEffect} from "react"
 
 
 const FormLogin = () => {
@@ -38,7 +38,8 @@ const FormLogin = () => {
             </div>
         </div>
 
-        <button type="submit" className="mt-4 w-full text-center text-white font-medium bg-blue-600 p-1 rounded-lg uppercase hover:bg-blue-800">Login</button>
+        <button type="submit" className="mt-4 w-full text-center text-white font-medium bg-blue-600
+         p-1 rounded-lg uppercase hover:bg-blue-800">LOGIN</button>
         <p className="text-sm text-gray-600 mt-2">Do not have an account? <Link className="font-semibold text-blue-600" href="/register">Sign Up here</Link> </p>
     </form>
     )

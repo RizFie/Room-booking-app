@@ -25,9 +25,6 @@ const Navbar = ({name, role}: User) => {
     })
   }
 
-  const {pending} = useFormStatus();
-  //console.log(pending);
-
   const pathname = usePathname();
 
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -104,12 +101,10 @@ const Navbar = ({name, role}: User) => {
           Have you made a reservation yet?
           </h2>
           <div className="grid grid-flow-col justify-evenly">
-            <form action={SignOut}>
-              <button onClick={handleLogout} type="submit" className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white 
-              font-semibold rounded-xl hover:bg-red-700 active:scale-95 transition-all h-[87.4]" disabled={isPending}>
-                {isPending ? "Logging out..." : "Logout"}
-              </button>
-            </form>
+            <button onClick={handleLogout} className="border-red-500 border-2 bg-red-500 p-5 w-36 text-white 
+            font-semibold rounded-xl hover:bg-red-700 active:scale-95 transition-all h-[87.4]" disabled={isPending}>
+              {isPending ? "Logging out..." : "Logout"}
+            </button>
             <button onClick={handleClose} className="border-gray-400 border-2 p-5 w-36 text-gray-500 font-semibold rounded-xl 
             hover:border-blue-950 hover:text-blue-950 h-[87.4]">Cancel</button>
           </div>
