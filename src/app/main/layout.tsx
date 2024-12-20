@@ -13,7 +13,7 @@ const MainLayout = async ({children}:{children: React.ReactNode}) => {
     const secName = splitName?.[2];
     console.log(secName);
 
-    updatePastStatus();
+    await updatePastStatus();
 
   return (
     <div className="min-h-full">
