@@ -38,8 +38,7 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
             <Carousel placePic={placePic || []}/>
 
             <div>
-                <h2 className='font-semibold text-2xl text-blue-950 border-t-[1.6px] border-l-[1.6px] border-blue-500 py-1 pl-[5px]
-                bg-white rounded-tl-sm rounded-br-sm mb-5'>{placeData?.placeName}</h2>
+                <h2 className='font-semibold text-2xl text-blue-900 py-1 bg-white rounded-tl-sm rounded-br-sm mb-5'>{placeData?.placeName}</h2>
                 <div className='flex flex-row gap-10'>
                     <div>
                         <h3 className='font-semibold text-xl text-blue-950 '>{placeData?.placeType}</h3>
@@ -50,8 +49,7 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
                         <h2 className='font-medium text-xs bg-blue-950 w-20 text-center p-1 text-white rounded-md mt-1'>Capacity</h2>
                     </div>
                 </div>
-                <p className='mt-4 text-justify text-blue-950 font-medium border-t-[1.6px] pt-2 border-t-blue-500
-                bg-gray-100 h-32'>{placeData?.placeDesc}</p>   
+                <p className='mt-4 text-justify text-blue-950 font-medium pt-2 bg-gray-100 h-32'>{placeData?.placeDesc}</p>   
             </div>
         </div>
         <div className='container max-w-[40%] min-h-[486px] bg-white p-5 shadow-md rounded-lg'>

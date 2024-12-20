@@ -57,9 +57,12 @@ const Home = async () => {
       </div>
 
       <div className="w-auto items-center h-8 py-3 my-1 text-blue-950">
-        <h3 className="text-sm font-semibold">{day}, {today.toLocaleDateString("en-MY")}</h3>
+        <h3 className="text-sm font-semibold animate-flip-up animate-once animate-duration-[1650ms]">
+          {day}, {today.toLocaleDateString("en-MY")}
+        </h3>
 
-        <div className="bg-white rounded shadow-sm grid w-full grid-cols-3 mt-8 mb-4 p-2 justify-evenly gap-2">
+        <div className="bg-white rounded shadow-sm grid w-full grid-cols-3 mt-8 mb-4 p-2 justify-evenly gap-2
+        animate-fade-up animate-once">
           <div className="flex flex-row gap-4 items-center justify-center p-1
           bg-gray-100 rounded-sm rounded-r-none animate-fade animate-once animate-duration-[1400ms] animate-ease-linear">
               <FaBook className="w-[35px] h-[35px]"/>
