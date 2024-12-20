@@ -49,7 +49,7 @@ const CompleteBooking = async ({ params }: { params: { id: string } }) => {
                         <h2 className='font-medium text-xs bg-blue-950 w-20 text-center p-1 text-white rounded-md mt-1'>Capacity</h2>
                     </div>
                 </div>
-                <p className='mt-4 text-justify text-blue-950 font-medium pt-2 bg-gray-100 h-32'>{placeData?.placeDesc}</p>   
+                <p className='mt-4 text-justify text-gray-700 font-base p-2 bg-gray-100 h-32'>{placeData?.placeDesc}</p>   
             </div>
         </div>
         <div className='container max-w-[40%] min-h-[486px] bg-white p-5 shadow-md rounded-lg'>
