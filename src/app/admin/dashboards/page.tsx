@@ -1,17 +1,18 @@
-import { auth } from '@/auth'
+import { auth } from '@/auth';
 import { prisma } from '@/lib/prisma';
-import React from 'react'
+import React from 'react';
 import { FaUserCircle, FaBook } from "react-icons/fa";
 import { MdMeetingRoom } from "react-icons/md";
 
-const Dashbaord = async () => {
-
+const Dashboard = async () => {
   const session = await auth();
   const fullname = session?.user.name;
 
   const numOfUser = await prisma.user.count();
   const numOfPlace = await prisma.place.count();
   const numOfBooking = await prisma.booking.count();
+
+  const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
 
   return (
     <div className='mx-auto max-w-[80%] mt-10 '>
@@ -23,7 +24,6 @@ const Dashbaord = async () => {
       </div>
 
       <div className='container mt-3 grid grid-cols-3 gap-3 text-blue-950'>
-
         <div className='flex flex-row bg-white items-center p-3 rounded-md gap-5 justify-center shadow-sm'>
           <FaUserCircle className='text-5xl' />
           <div>
@@ -47,11 +47,12 @@ const Dashbaord = async () => {
             <p className='text-md'>Total User Reservations</p>
           </div>
         </div>
-
       </div>
 
+      <div className='mt-5 bg-white p-2 rounded-md shadow-sm'>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Dashbaord
+export default Dashboard;

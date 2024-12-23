@@ -270,19 +270,21 @@ const Calendar = ({ data, role }: CalendarProps) => {
               </div>
 
             ) : (
-
-              <div>
-                <button
-                  onClick={handleConfirm}
-                  disabled={isPendingConfirm || props.past || props.cancel}
-                  className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
-                  ${props.past || props.cancel ? '' : 'hover:scale-105 cursor-pointer transition-all active:scale-95'}`}
-                >
-                  <TiTick className="text-xl scale-105 text-center text-green-600"/>
-                  <h2 className="font-medium text-center">{isPendingConfirm ? 'Confirming...' : 'Confirm'}</h2>
-                </button>
-              </div>
-
+              props.past ? (
+                <div></div>
+              ) : (
+                <div>
+                  <button
+                    onClick={handleConfirm}
+                    disabled={isPendingConfirm || props.past || props.cancel}
+                    className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
+                    ${props.past || props.cancel ? '' : 'hover:scale-105 cursor-pointer transition-all active:scale-95'}`}
+                  >
+                    <TiTick className="text-xl scale-105 text-center text-green-600"/>
+                    <h2 className="font-medium text-center">{isPendingConfirm ? 'Confirming...' : 'Confirm'}</h2>
+                  </button>
+                </div>
+              )
             )}
 
           </div>
