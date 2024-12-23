@@ -1,4 +1,5 @@
 import { auth } from '@/auth';
+import Wrapper from '@/components/client-wrapper';
 import { prisma } from '@/lib/prisma';
 import React from 'react';
 import { FaUserCircle, FaBook } from "react-icons/fa";
@@ -7,12 +8,39 @@ import { MdMeetingRoom } from "react-icons/md";
 const Dashboard = async () => {
   const session = await auth();
   const fullname = session?.user.name;
+  const today = new Date();
 
   const numOfUser = await prisma.user.count();
   const numOfPlace = await prisma.place.count();
   const numOfBooking = await prisma.booking.count();
 
-  const data = [{ name: "Page A", uv: 400, pv: 2400, amt: 2400 }];
+  const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+
+  // Retrieve booking count grouped by date for the current month
+  const bookings = await prisma.booking.groupBy({
+    by: ['date'],
+    _count: {
+      _all: true,
+    },
+    where: {
+      date: {
+        gte: startOfMonth,
+        lte: endOfMonth,
+      },
+    },
+    orderBy: {
+      date: 'asc',
+    },
+  });
+
+  // Format the results to get the count per date
+  const bookingData = bookings.map(booking => ({
+    date: booking.date.toISOString().split('T')[0], // Format date as YYYY-MM-DD
+    value: booking._count._all,
+  }));
+
+  //console.log(bookingData);
 
   return (
     <div className='mx-auto max-w-[80%] mt-10 '>
@@ -49,7 +77,8 @@ const Dashboard = async () => {
         </div>
       </div>
 
-      <div className='mt-5 bg-white p-2 rounded-md shadow-sm'>
+      <div className='mt-5 bg-white p-2 rounded-md shadow-md'>
+        <Wrapper data={bookingData}/>
       </div>
     </div>
   );
