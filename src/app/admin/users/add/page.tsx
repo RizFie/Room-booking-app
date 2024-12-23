@@ -21,8 +21,7 @@ const AddNewAcc = () => {
     },[state?.code]);
 
   return (
-    <div className="bg-white mx-auto max-w-[50%] my-4 rounded-lg shadow-sm p-3
-    mt-10">
+    <div className="bg-white mx-auto max-w-[50%] my-4 rounded-lg shadow-sm p-3 mt-10">
         <h1 className="font-bold text-xl text-blue-950 mb-2">Add a new user to the system</h1>
         <form action={formAction}>
             <div>

@@ -49,15 +49,6 @@ model user {
   booking      booking[]
 }
 
-model verificationToken {
-  identifier String
-  token      String
-  expires    DateTime
-
-  @@unique([identifier, token])
-  @@map("verificationtokens")
-}
-
 model picture {
   picId   String @id @default(uuid())
   picLink String @db.VarChar(500)
