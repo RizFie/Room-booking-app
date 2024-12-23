@@ -21,11 +21,9 @@ const AddNewAcc = () => {
     },[state?.code]);
 
   return (
-    <>
-    <div className="mx-auto max-w-[50%] mt-10">
-        <h1 className="font-bold text-xl text-blue-950">Add a new user to the system</h1>
-    </div>
-    <div className="bg-white mx-auto max-w-[50%] my-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff] p-3">
+    <div className="bg-white mx-auto max-w-[50%] my-4 rounded-lg shadow-sm p-3
+    mt-10">
+        <h1 className="font-bold text-xl text-blue-950 mb-2">Add a new user to the system</h1>
         <form action={formAction}>
             <div>
                 <label htmlFor="fullname" className="block mb-2 text-md font-medium text-gray-600">Full Name</label>
@@ -82,7 +80,6 @@ const AddNewAcc = () => {
         
         </form>
     </div>
-    </>
     )
 }
 

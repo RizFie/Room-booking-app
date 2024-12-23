@@ -38,7 +38,8 @@ const BookingPageAdmin = async () => {
 
     const upComings = await prisma.booking.findMany({
       where: { 
-        date: {gt: todayStartOfDay}
+        date: {gt: todayStartOfDay},
+        past: false
        },
       include: {
         place: true,
@@ -82,12 +83,12 @@ const BookingPageAdmin = async () => {
       <div className="container max-w-[80%] mx-auto my-5 grid grid-cols-2 gap-3">
 
         {/* Upcoming Reservations */}
-        <div className="bg-green-100 container rounded-md shadow-lg p-3 border-t-8 border-t-green-600 min-h-[293px]">
+        <div className="bg-green-100 container rounded-md shadow-lg p-3 border-t-8 border-t-green-600 h-[400px]">
           <div className="text-lg font-medium mb-1 text-center flex flex-row gap-2 items-center justify-center">
             <TiPin className="text-green-800"/>
             <h4 className="text-gray-700">Upcoming Reservations</h4>
           </div>
-          <div className="container overflow-auto max-h-96">
+          <div className="container overflow-auto max-h-[340px]">
             {upComings.length > 0 ? (
               upComings.map((upComing) => (
                 <div key={upComing.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 
@@ -96,7 +97,7 @@ const BookingPageAdmin = async () => {
                     <h1 className="">{upComing.user.fullname}</h1>
                     <h1 className="text-[10px] p-1 rounded-sm bg-gray-100">+6{upComing.user.phoneNum}</h1>
                   </div>
-                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-2 pb-2 border-gray-200
+                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-[1px] pb-2 border-gray-200
                   w-full">{upComing.place.placeName}</h1>
                   <span className="my-1 text-blue-900 font-medium shadow-inner w-full">
                     {upComing.date.toLocaleDateString()}, {upComing.startTime.toLocaleTimeString()} - {upComing.endTime.toLocaleTimeString()}
@@ -114,12 +115,12 @@ const BookingPageAdmin = async () => {
         </div>
 
         {/* Past Reservations */}
-        <div className="bg-red-100 container rounded-md shadow-lg p-3 border-t-8 border-t-red-600 min-h-[293px]">
+        <div className="bg-red-100 container rounded-md shadow-lg p-3 border-t-8 border-t-red-600 h-[400px]">
           <div className="text-lg font-medium mb-1 text-center flex flex-row gap-2 items-center justify-center">
             <TiPin className="text-red-800"/>
             <h4 className="text-gray-700">Past Reservations</h4>
           </div>
-          <div className="container overflow-auto max-h-96">
+          <div className="container overflow-auto max-h-[340px]">
             {pastBookings.length > 0 ? (
               pastBookings.map((pastBook) => (
                 <div key={pastBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 
