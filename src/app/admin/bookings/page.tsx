@@ -38,7 +38,7 @@ const BookingPageAdmin = async () => {
 
     const upComings = await prisma.booking.findMany({
       where: { 
-        date: {gt: tomorrow}
+        date: {gt: todayStartOfDay}
        },
       include: {
         place: true,
@@ -51,21 +51,6 @@ const BookingPageAdmin = async () => {
 
     //console.log("upcomings: ",upComings)
 
-    const todayBookings = await prisma.booking.findMany({
-      where: { 
-        date: {
-          gte: todayStartOfDay,
-          lt: tomorrow,
-        }
-       },
-      include: {
-        place: true,
-        user: true,
-      },
-    });
-
-    //console.log("todayBookings",todayBookings);
-
     const pastBookings = await prisma.booking.findMany({
       where: { 
         past: true
@@ -74,6 +59,9 @@ const BookingPageAdmin = async () => {
         place: true,
         user: true,
       },
+      orderBy: {
+        date: 'desc'
+      }
     });
 
 
@@ -91,7 +79,7 @@ const BookingPageAdmin = async () => {
 
       <Calendar data={bookingDatas} role={role}/>
 
-      <div className="container max-w-[80%] mx-auto my-5 grid grid-cols-3 gap-3">
+      <div className="container max-w-[80%] mx-auto my-5 grid grid-cols-2 gap-3">
 
         {/* Upcoming Reservations */}
         <div className="bg-green-100 container rounded-md shadow-lg p-3 border-t-8 border-t-green-600 min-h-[293px]">
@@ -102,50 +90,24 @@ const BookingPageAdmin = async () => {
           <div className="container overflow-auto max-h-96">
             {upComings.length > 0 ? (
               upComings.map((upComing) => (
-                <div key={upComing.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col items-center">
-                  <div className="flex flex-row justify-between font-medium my-1 items-center">
-                    <h1>{upComing.user.fullname}</h1>
-                    <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{upComing.user.phoneNum}</h1>
+                <div key={upComing.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 
+                flex flex-col items-center w-[300px] mx-auto">
+                  <div className="flex flex-row justify-between font-medium my-1 items-center w-full">
+                    <h1 className="">{upComing.user.fullname}</h1>
+                    <h1 className="text-[10px] p-1 rounded-sm bg-gray-100">+6{upComing.user.phoneNum}</h1>
                   </div>
-                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-2 pb-2 border-gray-200">{upComing.place.placeName}</h1>
-                  <span className="my-1 text-blue-900 font-medium shadow-inner">{upComing.date.toLocaleDateString()}, {upComing.startTime.toLocaleTimeString()} - {upComing.endTime.toLocaleTimeString()}
+                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-2 pb-2 border-gray-200
+                  w-full">{upComing.place.placeName}</h1>
+                  <span className="my-1 text-blue-900 font-medium shadow-inner w-full">
+                    {upComing.date.toLocaleDateString()}, {upComing.startTime.toLocaleTimeString()} - {upComing.endTime.toLocaleTimeString()}
                   </span>
                 </div>
               ))
             ) : (
-              <div className="my-1 flex flex-col gap-2 justify-center items-center">
+              <div className="flex flex-col gap-2 justify-center items-center my-10">
                 <Image src={nothing} width={250} height={250} alt="No Reservation Today" className="
                 mt-2"/>
                 <h1 className="text-sm font-medium text-gray-500 text-left mt-2">No Upcoming Reservation</h1>
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Today Reservations */}
-        <div className="bg-blue-100 container rounded-md shadow-lg p-3 border-t-8 border-t-blue-600 min-h-[293px]">
-          <div className="text-lg font-medium mb-1 text-center flex flex-row gap-2 items-center justify-center">
-            <TiPin className="text-blue-800"/>
-            <h4 className="text-gray-700">Today Reservations</h4>
-          </div>
-          <div className="container overflow-auto max-h-96">
-            {todayBookings.length > 0 ? (
-              todayBookings.map((todayBook) => (
-                <div key={todayBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col">
-                  <div className="flex flex-row justify-between font-medium my-1 items-center">
-                    <h1>{todayBook.user.fullname}</h1>
-                    <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{todayBook.user.phoneNum}</h1>
-                  </div>
-                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-2 pb-2 border-gray-200">{todayBook.place.placeName}</h1>
-                  <span className="my-1 text-blue-900 font-medium shadow-inner">{todayBook.date.toLocaleDateString()}, {todayBook.startTime.toLocaleTimeString()} - {todayBook.endTime.toLocaleTimeString()}
-                  </span>
-                </div>
-              ))
-            ) : (
-              <div className="my-1 flex flex-col gap-2 justify-center items-center">
-                <Image src={nothing} width={250} height={250} alt="No Reservation Today" className="
-                mt-2"/>
-                <h1 className="text-sm font-medium text-gray-500 text-left mt-2">No Reservation Today</h1>
               </div>
             )}
           </div>
@@ -160,13 +122,17 @@ const BookingPageAdmin = async () => {
           <div className="container overflow-auto max-h-96">
             {pastBookings.length > 0 ? (
               pastBookings.map((pastBook) => (
-                <div key={pastBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 flex flex-col justify-center items-center">
-                  <div className="flex flex-row justify-between font-medium my-1 items-center">
+                <div key={pastBook.bookingId} className="rounded-md bg-white shadow-md my-2 text-xs text-black p-2 
+                flex flex-col justify-center items-center w-[300px] mx-auto">
+                  <div className="flex flex-row justify-between font-medium my-1 items-center w-full">
                     <h1>{pastBook.user.fullname}</h1>
-                    <h1 className="text-[10px] border-[2px] rounded-sm bg-gray-200">+6{pastBook.user.phoneNum}</h1>
+                    <h1 className="text-[10px] rounded-sm bg-gray-100 p-1">+6{pastBook.user.phoneNum}</h1>
                   </div>
-                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-2 pb-2 border-gray-200">{pastBook.place.placeName}</h1>
-                  <span className="my-1 text-blue-900 font-medium shadow-inner">{pastBook.date.toLocaleDateString()}, {pastBook.startTime.toLocaleTimeString()} - {pastBook.endTime.toLocaleTimeString()}
+                  <h1 className="text-[14px] text-gray-700 font-semibold my-1 border-b-[1px] pb-2 border-gray-200 w-full">
+                    {pastBook.place.placeName}
+                  </h1>
+                  <span className="my-1 text-blue-900 font-medium shadow-inner w-full">
+                    {pastBook.date.toLocaleDateString()}, {pastBook.startTime.toLocaleTimeString()} - {pastBook.endTime.toLocaleTimeString()}
                   </span>
                 </div>
               ))

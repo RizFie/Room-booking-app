@@ -277,6 +277,7 @@ export const cancelBooking = async (id:string) => {
       data: {cancel: true},
     });
     revalidatePath("/main/booking");
+    revalidatePath("/admin/bookings");
     return {code: 200, message: "Reservation has been cancelled"};
   } catch (error) {
     return {code: 500, message: "Something broke, please try again"};
