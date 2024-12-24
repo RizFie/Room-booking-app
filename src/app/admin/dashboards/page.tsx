@@ -17,6 +17,11 @@ const Dashboard = async () => {
   const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+    'October', 'November', 'December',
+  ];
+
   const bookings = await prisma.booking.groupBy({
     by: ['date'],
     _count: {
@@ -33,6 +38,15 @@ const Dashboard = async () => {
     },
   });
 
+  const totalCurrentMonthBooking = await prisma.booking.count({
+    where: {
+      date: {
+        gte: startOfMonth,
+        lte: endOfMonth,
+      },
+    },
+  });
+
  
   const bookingData = bookings.map(booking => ({
     date: booking.date.toISOString().split('T')[0],
@@ -40,6 +54,11 @@ const Dashboard = async () => {
   }));
 
   //console.log(bookingData);
+
+  const placesWithBookingCount: {placeId: string, placeName: string; bookingCount: number}[] = 
+  await prisma.$queryRaw`SELECT p.placeId , p.placeName, count(b.bookingId) as bookingCount FROM booking b JOIN place p ON p.placeId = b.placeId GROUP BY placeName`;
+  
+  //console.log(placesWithBookingCount);
 
   return (
     <div className='mx-auto max-w-[80%] mt-10 '>
@@ -76,8 +95,34 @@ const Dashboard = async () => {
         </div>
       </div>
 
-      <div className='mt-5 bg-white p-2 rounded-md shadow-md'>
-        <Wrapper data={bookingData}/>
+      <div className='container my-5 flex flex-row justify-center gap-3 max-h-[300px]'>
+        <div className='col-span-1 bg-white rounded-md shadow-sm animate-fade animate-once
+        animate-duration-[1400ms] animate-ease-linear justify-center w-[300px]'>
+          <h2 className='text-2xl font-semibold text-blue-950 mb-1 pl-3 pt-2'>{totalCurrentMonthBooking} Reservations</h2>
+          <h2 className='text-md  text-blue-950 mb-6 pl-3'>{months[today.getMonth()]} Booking Overview</h2>
+          <Wrapper data={bookingData}/>
+        </div>
+
+        <div className='col-span-2 bg-white p-3 rounded-md shadow-sm animate-fade animate-once
+        animate-duration-[1400ms] animate-ease-linear w-full'>
+          <h2 className='text-2xl font-semibold text-blue-950 mb-1'>Place Reservations Number</h2>
+          <table className='w-full rounded-md mt-4 border-separate border-spacing-0'>
+            <thead>
+              <tr className='bg-gray-100 text-left h-9'>
+                <th className='px-2'>Place</th>
+                <th className='px-2'>Number of Reservations</th>
+              </tr>
+            </thead>
+            <tbody>
+              {placesWithBookingCount.map((place) => (
+                <tr key={place.placeId} className='text-sm'>
+                  <td className='px-2'>{place.placeName}</td>
+                  <td className='px-2'>{place.bookingCount}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

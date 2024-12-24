@@ -1,5 +1,5 @@
 "use client";
-import { AreaChart, Area } from "recharts";
+import { AreaChart, Area, Tooltip, XAxis } from "recharts";
 
 type ChartProps = {
   data: { value: number, date: string }[]; // Adjust the type based on your data structure
@@ -15,12 +15,12 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
       data={data}
       margin={{
         top: 5,
-        right: 20,
-        left: 20,
+        left: 5,
+        right: 5,
         bottom: 5,
       }}
     >
-      <Area type="monotone" dataKey="value" stroke="#8884d8" fill="#8884d8" />
+      <Area type="natural" dataKey="value" stroke="#002cff" fill="#689eff" strokeWidth={3} />
     </AreaChart>
   );
 };
