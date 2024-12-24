@@ -10,8 +10,8 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
 
   return (
     <AreaChart
-      width={500}
-      height={300}
+      width={300}
+      height={200}
       data={data}
       margin={{
         top: 5,

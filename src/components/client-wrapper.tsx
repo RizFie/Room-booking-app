@@ -8,8 +8,8 @@ type WrapperProps = {
 
 const Wrapper = ({ data }: WrapperProps) => {
   const MyChart = dynamic(() => import("@/components/chart"), {
-    ssr: false,
-  });
+  ssr: false,
+});
 
   return (
     <div>

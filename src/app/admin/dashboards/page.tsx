@@ -17,7 +17,6 @@ const Dashboard = async () => {
   const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
   const endOfMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
-  // Retrieve booking count grouped by date for the current month
   const bookings = await prisma.booking.groupBy({
     by: ['date'],
     _count: {
@@ -34,9 +33,9 @@ const Dashboard = async () => {
     },
   });
 
-  // Format the results to get the count per date
+ 
   const bookingData = bookings.map(booking => ({
-    date: booking.date.toISOString().split('T')[0], // Format date as YYYY-MM-DD
+    date: booking.date.toISOString().split('T')[0],
     value: booking._count._all,
   }));
 
