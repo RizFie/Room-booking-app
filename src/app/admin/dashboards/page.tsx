@@ -4,6 +4,9 @@ import { prisma } from '@/lib/prisma';
 import React from 'react';
 import { FaUserCircle, FaBook } from "react-icons/fa";
 import { MdMeetingRoom } from "react-icons/md";
+import { IoIosNotifications } from "react-icons/io";
+import Link from 'next/link';
+import Image from 'next/image';
 
 const Dashboard = async () => {
   const session = await auth();
@@ -60,6 +63,13 @@ const Dashboard = async () => {
   
   //console.log(placesWithBookingCount);
 
+  const pendingBooking = await prisma.booking.count({
+    where: {
+      confirm: false,
+      past: false,
+    },
+  });
+
   return (
     <div className='mx-auto max-w-[80%] mt-10 '>
       <div className='flex flex-col'>
@@ -99,29 +109,46 @@ const Dashboard = async () => {
         <div className='col-span-1 bg-white rounded-md shadow-sm animate-fade animate-once
         animate-duration-[1400ms] animate-ease-linear justify-center w-[300px]'>
           <h2 className='text-2xl font-semibold text-blue-950 mb-1 pl-3 pt-2'>{totalCurrentMonthBooking} Reservations</h2>
-          <h2 className='text-md  text-blue-950 mb-6 pl-3'>{months[today.getMonth()]} Booking Overview</h2>
+          <h2 className='text-sm text-blue-950 mb-6 pl-3'>{months[today.getMonth()]} Booking Overview</h2>
           <Wrapper data={bookingData}/>
         </div>
 
-        <div className='col-span-2 bg-white p-3 rounded-md shadow-sm animate-fade animate-once
-        animate-duration-[1400ms] animate-ease-linear w-full'>
-          <h2 className='text-2xl font-semibold text-blue-950 mb-1'>Place Reservations Number</h2>
-          <table className='w-full rounded-md mt-4 border-separate border-spacing-0'>
-            <thead>
-              <tr className='bg-gray-100 text-left h-9'>
-                <th className='px-2'>Place</th>
-                <th className='px-2'>Number of Reservations</th>
-              </tr>
-            </thead>
-            <tbody>
-              {placesWithBookingCount.map((place) => (
-                <tr key={place.placeId} className='text-sm'>
-                  <td className='px-2'>{place.placeName}</td>
-                  <td className='px-2'>{place.bookingCount}</td>
+        <div className='col-span-2 animate-fade animate-once
+        animate-duration-[1400ms] animate-ease-linear w-full flex flex-col gap-3'>
+          <div className='bg-white rounded-md shadow-sm p-3 h-full'>
+            <h2 className='text-2xl font-semibold text-blue-950 mb-1'>Place Reservations Count</h2>
+            <table className='w-full rounded-md mt-4 border-separate border-spacing-0'>
+              <thead>
+                <tr className='bg-gray-100 text-left h-9'>
+                  <th className='px-2'>Place</th>
+                  <th className='px-2'>Number of Reservations</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {placesWithBookingCount.map((place) => (
+                  <tr key={place.placeId} className='text-sm'>
+                    <td className='px-2'>{place.placeName}</td>
+                    <td className='px-2'>{place.bookingCount}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <div className='bg-white rounded-md shadow-sm p-3 flex flex-row justify-between max-h-full gap-0'>
+            <div>
+              <div className='flex flex-row gap-1'>
+                <h2 className='text-2xl font-semibold text-blue-950 mb-1'>{pendingBooking < 1 ? "No" : pendingBooking} Pending {pendingBooking > 1 ? "Reservations" : "Reservation"}</h2>
+                <IoIosNotifications className={pendingBooking > 0 ? "text-red-500 bg-red-200 rounded-full animate-wiggle-more animate-infinite animate-duration-700 animate-ease-in-out" : "hidden"}/>
+              </div>
+              <h2 className='text-sm text-blue-950 mb-2'>Number of reservation awaiting confirmation</h2>
+              <Link href={'/admin/bookings'} className='text-[12px] font-medium bg-blue-200 text-blue-600
+              p-2 rounded-sm hover:bg-blue-400 hover:text-white transition-all'>View Bookings</Link>
+            </div>
+            
+            <div className="w-[350px] h-[100px] overflow-hidden bg-[url('/illustration/pending.png')]
+            bg-contain bg-no-repeat bg-left">
+            </div>
+          </div>
         </div>
       </div>
     </div>

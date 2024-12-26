@@ -4,7 +4,11 @@ import UserButton from "@/components/user-button";
 
 const Users = async () => {
 
-    const users = await prisma.user.findMany();
+    const users = await prisma.user.findMany({
+        orderBy: {
+            fullname: 'asc'
+        }
+    });
     //console.log("fetched users:",users);
 
   return (
