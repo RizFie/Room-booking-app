@@ -30,7 +30,7 @@ const Users = async () => {
             </div>
         </div>
         
-        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-md overflow-auto animate-fade-down animate-once animate-ease-in animate-normal">
+        <div className="bg-white mx-auto max-w-[80%] mb-10 mt-4 rounded-lg shadow-sm overflow-auto animate-fade-down animate-once animate-ease-in animate-normal">
             <table className="table-auto text-sm h-full w-full border-collapse rounded-lg">
                 <thead>
                     <tr className="text-left bg-blue-500 text-gray-100 border-b-[1px] border-gray-300">
