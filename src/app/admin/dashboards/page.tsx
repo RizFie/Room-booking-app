@@ -2,11 +2,10 @@ import { auth } from '@/auth';
 import Wrapper from '@/components/client-wrapper';
 import { prisma } from '@/lib/prisma';
 import React from 'react';
-import { FaUserCircle, FaBook } from "react-icons/fa";
+import { FaUserCircle, FaBook, FaSun, FaMoon } from "react-icons/fa";
 import { MdMeetingRoom } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import Link from 'next/link';
-import Image from 'next/image';
 
 const Dashboard = async () => {
   const session = await auth();
@@ -72,12 +71,21 @@ const Dashboard = async () => {
 
   return (
     <div className='mx-auto max-w-[80%] mt-10 '>
-      <div className='flex flex-col'>
-        <p className='text-[26px] text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-950 font-semibold 
-        animate-fade-right animate-duration-[2500ms] animate-delay-100'>Hello,</p>
-        <h1 className='text-[46px] font-bold animate-fade-left animate-duration-[2500ms] animate-delay-500 
-        text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600'>{fullname}</h1>
+      <div className='flex flex-row justify-between gap-3 items-center'>
+        <div className='flex flex-col'>
+          <p className='text-[26px] text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-950 font-semibold 
+          animate-fade-right animate-duration-[2500ms] animate-delay-100'>Hello,</p>
+          <h1 className='text-[46px] font-bold animate-fade-left animate-duration-[2500ms] animate-delay-500 
+          text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600'>{fullname}</h1>
+        </div>
+        <div>
+          { today.getHours() >= 19 || today.getHours() < 6 ? 
+          <FaMoon className='text-6xl animate-spin animate-infinite animate-duration-[60000ms] animate-ease-linear text-yellow-400'/> 
+          : 
+          <FaSun className='text-6xl animate-spin animate-infinite animate-duration-[60000ms] animate-ease-linear text-orange-400'/> }
+        </div>
       </div>
+      
 
       <div className='container mt-3 grid grid-cols-3 gap-3 text-blue-950'>
         <div className='flex flex-row bg-white items-center p-3 rounded-md gap-5 justify-center shadow-sm'>
@@ -119,14 +127,14 @@ const Dashboard = async () => {
             <h2 className='text-2xl font-semibold text-blue-950 mb-1'>Place Reservations Count</h2>
             <table className='w-full rounded-md mt-4 border-separate border-spacing-0'>
               <thead>
-                <tr className='bg-gray-100 text-left h-9'>
+                <tr className='bg-gray-200 text-left h-9'>
                   <th className='px-2'>Place</th>
                   <th className='px-2'>Number of Reservations</th>
                 </tr>
               </thead>
               <tbody>
                 {placesWithBookingCount.map((place) => (
-                  <tr key={place.placeId} className='text-sm'>
+                  <tr key={place.placeId} className='text-sm bg-gray-100'>
                     <td className='px-2'>{place.placeName}</td>
                     <td className='px-2'>{place.bookingCount}</td>
                   </tr>

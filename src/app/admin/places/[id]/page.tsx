@@ -23,7 +23,8 @@ const EditPlace = async ({ params }: { params: { id: string } }) => {
             <h1 className="text-3xl font-bold mb-2">Edit Place</h1>
             <MdModeEditOutline className="ml-3 w-[30px] h-[30px]"/>
         </div>
-        <div className="p-2 bg-red-100 border-red-400 rounded-md border-2 w-[600px] flex flex-row gap-5 items-center">
+        <div className="p-2 bg-red-100 border-red-400 rounded-md border-[1px] w-[600px] flex flex-row gap-5 items-center
+        text-sm">
             <TbAlertOctagonFilled className="ml-3 w-[26px] h-[26px] text-red-700 scale-150"/>
             <p className="font-semibold text-gray-700
             ">In this page, you may update the places information.<br/>
