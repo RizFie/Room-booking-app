@@ -76,7 +76,7 @@ const AllBookingCard = ({userBookings}:Props) => {
     </div>
     
 
-    <div className="container flex flex-row mt-3 mb-7 gap-5 h-[392px] items-center">
+    <div className="container flex flex-row mt-3 mb-7 gap-5 h-[392px] items-center flex-wrap justify-stretch">
         {filteredBookings.length === 0 ? (
             <div className="container m-0 bg-white w-full h-full shadow-sm rounded-md mt-3 flex flex-col justify-center items-center
             gap-6 animate-fade-down">

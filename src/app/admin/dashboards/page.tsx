@@ -6,6 +6,7 @@ import { FaUserCircle, FaBook, FaSun, FaMoon } from "react-icons/fa";
 import { MdMeetingRoom } from "react-icons/md";
 import { IoIosNotifications } from "react-icons/io";
 import Link from 'next/link';
+import { IoAlert } from "react-icons/io5";
 
 const Dashboard = async () => {
   const session = await auth();
@@ -113,7 +114,7 @@ const Dashboard = async () => {
         </div>
       </div>
 
-      <div className='container my-5 flex flex-row justify-center gap-3 max-h-[300px]'>
+      <div className='container my-5 flex flex-row justify-center gap-3 max-h-[288px]'>
         <div className='col-span-1 bg-white rounded-md shadow-sm animate-fade animate-once
         animate-duration-[1400ms] animate-ease-linear justify-center w-[300px]'>
           <h2 className='text-2xl font-semibold text-blue-950 mb-1 pl-3 pt-2'>{totalCurrentMonthBooking} Reservations</h2>
@@ -125,24 +126,26 @@ const Dashboard = async () => {
         animate-duration-[1400ms] animate-ease-linear w-full flex flex-col gap-3'>
           <div className='bg-white rounded-md shadow-sm p-3 h-full'>
             <h2 className='text-2xl font-semibold text-blue-950 mb-1'>Place Reservations Count</h2>
-            <table className='w-full rounded-md mt-4 border-separate border-spacing-0'>
-              <thead>
-                <tr className='bg-gray-200 text-left h-9'>
-                  <th className='px-2'>Place</th>
-                  <th className='px-2'>Number of Reservations</th>
-                </tr>
-              </thead>
-              <tbody>
-                {placesWithBookingCount.map((place) => (
-                  <tr key={place.placeId} className='text-sm bg-gray-100'>
-                    <td className='px-2'>{place.placeName}</td>
-                    <td className='px-2'>{place.bookingCount}</td>
+            <div className='overflow-auto max-h-[80px]'>
+              <table className='w-full rounded-md mt-4 border-separate border-spacing-0'>
+                <thead>
+                  <tr className='bg-gray-200 text-left h-9'>
+                    <th className='px-2'>Place</th>
+                    <th className='px-2'>Number of Reservations</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {placesWithBookingCount.map((place) => (
+                    <tr key={place.placeId} className='text-sm bg-gray-100'>
+                      <td className='px-2'>{place.placeName}</td>
+                      <td className='px-2'>{place.bookingCount}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className='bg-white rounded-md shadow-sm p-3 flex flex-row justify-center max-h-full gap-2'>
+          <div className='bg-white rounded-md shadow-sm p-3 flex flex-row justify-center max-h-full gap-2 items-center'>
             <div className='text-center'>
               <div className='flex flex-row'>
                 <h2 className='text-2xl font-semibold text-blue-950 mb-1 w-full'>{pendingBooking < 1 ? "No" : pendingBooking} Pending {pendingBooking > 1 ? "Reservations" : "Reservation"}</h2>
@@ -154,7 +157,12 @@ const Dashboard = async () => {
             </div>
             
             <div className="w-[100px] h-[100px] overflow-hidden bg-[url('/illustration/pending.png')]
-            bg-contain bg-no-repeat bg-left">
+            bg-contain bg-no-repeat bg-left"></div>
+
+            <div className='flex flex-row justify-center items-center bg-red-100 text-red-500 h-16 w-52 p-2
+            rounded-sm'>
+              <IoAlert className='text-8xl'/>
+              <h1 className='text-[11px] font-semibold'>Pending Reservation only shows reservation that has not passed</h1>
             </div>
           </div>
         </div>
