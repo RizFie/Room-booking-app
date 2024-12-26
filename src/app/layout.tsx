@@ -28,7 +28,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${roboto_init.variable} ${inter_init.variable} font-inter antialiased relative 
-          bg-wave bg-no-repeat bg-cover bg-fixed`}
+          bg-wave bg-no-repeat bg-cover bg-fixed container`}
       >
         
         <Toaster/>

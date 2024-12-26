@@ -71,11 +71,11 @@ const Dashboard = async () => {
 
   return (
     <div className='mx-auto max-w-[80%] mt-10 '>
-      <div className='flex flex-row justify-between gap-3 items-center'>
+      <div className='flex flex-row gap-4 items-center'>
         <div className='flex flex-col'>
           <p className='text-[26px] text-transparent bg-clip-text bg-gradient-to-r from-slate-600 to-slate-950 font-semibold 
           animate-fade-right animate-duration-[2500ms] animate-delay-100'>Hello,</p>
-          <h1 className='text-[46px] font-bold animate-fade-left animate-duration-[2500ms] animate-delay-500 
+          <h1 className='text-[46px] leading-[46px] font-bold animate-fade-left animate-duration-[2500ms] animate-delay-500 
           text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-blue-600'>{fullname}</h1>
         </div>
         <div>
@@ -100,7 +100,7 @@ const Dashboard = async () => {
           <MdMeetingRoom className='text-5xl' />
           <div>
             <p className='text-3xl font-semibold'>{numOfPlace}</p>
-            <p className='text-lg'>Total Place</p>
+            <p className='text-lg text-center'>Total Place</p>
           </div>
         </div>
 
@@ -142,10 +142,10 @@ const Dashboard = async () => {
               </tbody>
             </table>
           </div>
-          <div className='bg-white rounded-md shadow-sm p-3 flex flex-row justify-between max-h-full gap-0'>
-            <div>
-              <div className='flex flex-row gap-1'>
-                <h2 className='text-2xl font-semibold text-blue-950 mb-1'>{pendingBooking < 1 ? "No" : pendingBooking} Pending {pendingBooking > 1 ? "Reservations" : "Reservation"}</h2>
+          <div className='bg-white rounded-md shadow-sm p-3 flex flex-row justify-center max-h-full gap-2'>
+            <div className='text-center'>
+              <div className='flex flex-row'>
+                <h2 className='text-2xl font-semibold text-blue-950 mb-1 w-full'>{pendingBooking < 1 ? "No" : pendingBooking} Pending {pendingBooking > 1 ? "Reservations" : "Reservation"}</h2>
                 <IoIosNotifications className={pendingBooking > 0 ? "text-red-500 bg-red-200 rounded-full animate-wiggle-more animate-infinite animate-duration-700 animate-ease-in-out" : "hidden"}/>
               </div>
               <h2 className='text-sm text-blue-950 mb-2'>Number of reservation awaiting confirmation</h2>
@@ -153,7 +153,7 @@ const Dashboard = async () => {
               p-2 rounded-sm hover:bg-blue-400 hover:text-white transition-all'>View Bookings</Link>
             </div>
             
-            <div className="w-[350px] h-[100px] overflow-hidden bg-[url('/illustration/pending.png')]
+            <div className="w-[100px] h-[100px] overflow-hidden bg-[url('/illustration/pending.png')]
             bg-contain bg-no-repeat bg-left">
             </div>
           </div>
