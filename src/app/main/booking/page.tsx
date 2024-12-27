@@ -15,7 +15,7 @@ const BookingPage = async () => {
             place: true,
         },
         orderBy: {
-            date: 'asc'
+            date: 'desc'
         }
     });
 

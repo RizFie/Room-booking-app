@@ -149,7 +149,9 @@ const Dashboard = async () => {
             <div className='text-center'>
               <div className='flex flex-row'>
                 <h2 className='text-2xl font-semibold text-blue-950 mb-1 w-full'>{pendingBooking < 1 ? "No" : pendingBooking} Pending {pendingBooking > 1 ? "Reservations" : "Reservation"}</h2>
-                <IoIosNotifications className={pendingBooking > 0 ? "text-red-500 bg-red-200 rounded-full animate-wiggle-more animate-infinite animate-duration-700 animate-ease-in-out" : "hidden"}/>
+                <IoIosNotifications className={pendingBooking > 0 ? "text-red-500 bg-red-200 rounded-full animate-ease-in-out animate-ping animate-infinite animate-duration-[1300ms]" 
+                  : 
+                "hidden"}/>
               </div>
               <h2 className='text-sm text-blue-950 mb-2'>Number of reservation awaiting confirmation</h2>
               <Link href={'/admin/bookings'} className='text-[12px] font-medium bg-blue-200 text-blue-600

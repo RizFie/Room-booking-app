@@ -36,7 +36,7 @@ const AllBookingCard = ({userBookings}:Props) => {
         } else if(filter === "confirmed") {
             setFilteredBookings(userBookings.filter(booking => booking.confirm === true));
         } else if(filter === "pending") {
-            setFilteredBookings(userBookings.filter(booking => booking.confirm === false));
+            setFilteredBookings(userBookings.filter(booking => booking.confirm === false && booking.cancel === false && booking.past === false));
         } else if(filter === "cancelled") {
             setFilteredBookings(userBookings.filter(booking => booking.cancel === true));
         }
@@ -124,8 +124,10 @@ const AllBookingCard = ({userBookings}:Props) => {
                                 <h3>Cancelled</h3>
                             </div>
                         ) : (
-                            <CancelButton bookingId={booking.bookingId}/>
-                        
+
+                            booking.confirm ? 
+                            (<h4 className="text-[11px] mx-2 font-medium bg-gray-100 p-1">The booking has been confirmed,<br/>
+                            for any problem, please contact the admin.</h4> ) : (<CancelButton bookingId={booking.bookingId}/>)
                     )}
 
                     

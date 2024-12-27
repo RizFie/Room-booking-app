@@ -241,19 +241,26 @@ const Calendar = ({ data, role }: CalendarProps) => {
                       <button disabled={isPendingCancel} onClick={handleDelete} className="flex flex-row gap-1">
                         <TiCancel className="text-xl scale-105 text-center text-red-500"/>
                         <h2 className="font-medium text-center">{isPendingCancel ? 'Deleting...' : 'Delete'}</h2>
-                      </button>
-                      
+                      </button>  
                     </div>
                   )
                 :
                   (
-                  <div>
+                  <div className="flex flex-row gap-2">
                     <button disabled={isPendingCancel} onClick={handleCancel} className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600
-                    hover:scale-105 cursor-pointer transition-all active:scale-95`}>
+                    hover:scale-105 cursor-pointer transition-all active:scale-95 ${props.confirm ? 'hidden' : ''}`}>
                       <TiCancel className="text-xl scale-105 text-center text-red-500"/>
                       <h2 className="font-medium text-center">{isPendingCancel ? 'Cancelling...' : 'Cancel'}</h2>
                     </button>
                     
+                    <button
+                    onClick={handleConfirm}
+                    disabled={isPendingConfirm || props.past || props.cancel}
+                    className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
+                    ${props.past || props.cancel ? '' : 'hover:scale-105 cursor-pointer transition-all active:scale-95'} ${props.confirm ? 'hidden' : ''}`}>
+                      <TiTick className="text-xl scale-105 text-center text-green-600"/>
+                      <h2 className="font-medium text-center">{isPendingConfirm ? 'Confirming...' : 'Confirm'}</h2>
+                    </button>
                   </div>
                   )
 
@@ -261,30 +268,26 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
             {props.confirm ? (
 
-              <div>
+              <div className="flex flex-row gap-2">
+
+                <div className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600
+                hover:scale-105 cursor-pointer transition-all active:scale-95`}>
+                  <button disabled={isPendingCancel} onClick={handleDelete} className="flex flex-row gap-1">
+                    <TiCancel className="text-xl scale-105 text-center text-red-500"/>
+                    <h2 className="font-medium text-center">{isPendingCancel ? 'Deleting...' : 'Delete'}</h2>
+                  </button>  
+                </div>
+
                 <button className="flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-700 text-green-600 bg-green-700" disabled>
                   <TiTick className="text-xl scale-105 text-center text-white"/>
                   <h2 className="font-medium text-center text-white">Confirmed</h2>
                 </button>
                 
+
               </div>
 
             ) : (
-              props.past ? (
-                <div></div>
-              ) : (
-                <div>
-                  <button
-                    onClick={handleConfirm}
-                    disabled={isPendingConfirm || props.past || props.cancel}
-                    className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-600 text-green-700
-                    ${props.past || props.cancel ? '' : 'hover:scale-105 cursor-pointer transition-all active:scale-95'}`}
-                  >
-                    <TiTick className="text-xl scale-105 text-center text-green-600"/>
-                    <h2 className="font-medium text-center">{isPendingConfirm ? 'Confirming...' : 'Confirm'}</h2>
-                  </button>
-                </div>
-              )
+              <div></div>
             )}
 
           </div>
