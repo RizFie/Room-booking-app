@@ -104,7 +104,7 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
     };
   }
 
-  console.log(validatedFields);
+  //console.log(validatedFields);
   const { fullname, email, phone, role} = validatedFields.data;
 
   

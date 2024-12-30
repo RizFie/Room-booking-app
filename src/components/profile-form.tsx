@@ -26,7 +26,7 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
       setDisable(!disable)
     }
 
-    console.log("prop id:",userData?.userId);
+    console.log("prop :",userData);
 
     if(!userData?.userId){
         throw Error("User ID is invalid");
