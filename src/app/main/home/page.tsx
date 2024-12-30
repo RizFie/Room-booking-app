@@ -15,7 +15,7 @@ const Home = async () => {
   const month = monthNames[today.getMonth()];
 
   const allBooking = await prisma.booking.findMany({
-    where: { userId: userId},
+    where: { userId: userId, past: false},
     include: { place: true }
   });
 

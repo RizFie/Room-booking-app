@@ -6,7 +6,7 @@ import { userDataType } from '@/lib/types/types'
 import { useActionState } from 'react'
 import { updateProfile } from '@/lib/action'
 import toast from 'react-hot-toast'
-import { MdEmail } from "react-icons/md";
+import { MdEmail, MdAdminPanelSettings } from "react-icons/md";
 import { IoPersonCircle } from "react-icons/io5";
 import { FaPhone, FaLock, FaLockOpen } from "react-icons/fa6";
 
@@ -134,7 +134,7 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
               >
                 Role
               </label>
-              <IoPersonCircle className="text-gray-600 scale-125" />
+              <MdAdminPanelSettings className="text-gray-600 scale-125" />
             </div>
             <select
               disabled={disable}
