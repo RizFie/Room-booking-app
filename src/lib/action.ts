@@ -105,7 +105,7 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
   }
 
   console.log(validatedFields);
-  const { fullname, email, phone} = validatedFields.data;
+  const { fullname, email, phone, role} = validatedFields.data;
 
   
   try {
@@ -117,9 +117,11 @@ export const updateProfile = async (userId: string, prevState: unknown ,formData
         fullname: fullname,
         email: email,
         phoneNum: phone,
+        role: role,
       }
     });
     revalidatePath("/main/profile");
+    revalidatePath(`/admin/users/${userId}`);
     return {code: 200, message: "Update Successfull"}
   } catch (error) {
     return {code: 500 ,message: "Update user profile fail, please try again" };

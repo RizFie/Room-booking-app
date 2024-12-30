@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, } from 'react'
+import { useRouter } from 'next/navigation'
 import { userDataType } from '@/lib/types/types'
 import { useActionState } from 'react'
 import { updateProfile } from '@/lib/action'
@@ -10,13 +11,15 @@ import { IoPersonCircle } from "react-icons/io5";
 import { FaPhone, FaLock, FaLockOpen } from "react-icons/fa6";
 
 interface ProfileFormProps {
-    userData: userDataType
+    userData: userDataType;
+    sessionRole: string | undefined;
 }
 
-const ProfileForm = ({userData}: ProfileFormProps) => {
+const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
 
     const [open, setOpen] = useState<boolean>(false);
     const [disable, setDisable] = useState<boolean>(true);
+    const router = useRouter();
 
     const handleOpen = () => {
       setOpen(!open);
@@ -34,8 +37,9 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
 
     useEffect(() => {
         if(state?.code == 200){
-            toast.success(state.message);
+            toast.success(state.message, {duration: 2000});
             state.code = 0;
+
         }
         else if(state?.code == 500){
             toast.error(state?.message);
@@ -120,6 +124,38 @@ const ProfileForm = ({userData}: ProfileFormProps) => {
             </span>
           </div>
         </div>
+
+        {sessionRole == "admin" ? (
+          <div className="mt-4">
+            <div className="flex items-center mb-2">
+              <label
+                htmlFor="role"
+                className="text-md font-medium text-gray-600 mr-2"
+              >
+                Role
+              </label>
+              <IoPersonCircle className="text-gray-600 scale-125" />
+            </div>
+            <select
+              disabled={disable}
+              defaultValue={userData?.role}
+              id="role"
+              name="role"
+              required
+              className="shadow-sm border-[1px] border-gray-200 p-2 text-sm rounded-md text-gray-800 w-full focus:outline-blue-400"
+            >
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
+            <div aria-live="polite" aria-atomic="true">
+              <span className="text-sm text-red-500">
+                {state?.error?.role}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div></div>
+        )}
 
         <div className='grid grid-cols-2 gap-3'>
           {open == false ? (
