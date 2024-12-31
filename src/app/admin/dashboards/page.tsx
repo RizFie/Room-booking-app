@@ -67,6 +67,7 @@ const Dashboard = async () => {
     where: {
       confirm: false,
       past: false,
+      cancel: false,
     },
   });
 

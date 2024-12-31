@@ -20,7 +20,7 @@ const Chart: React.FC<ChartProps> = ({ data }) => {
         bottom: 5,
       }}
     >
-      <Area type="natural" dataKey="value" stroke="#002cff" fill="#689eff" strokeWidth={3} />
+      <Area type="natural" dataKey="value" stroke="#002cff" fill="#689eff" strokeWidth={0} />
     </AreaChart>
   );
 };
