@@ -157,15 +157,15 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
           <div></div>
         )}
 
-        <div className='grid grid-cols-2 gap-3'>
+        <div className='grid grid-cols-2 gap-3 w-[50%]'>
           {open == false ? (
-            <button onClick={handleOpen} type='button' className="my-6 bg-red-300 p-2 w-full mx-auto rounded-xl text-lg text-red-700 font-semibold 
-            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all">
+            <button onClick={handleOpen} type='button' className="my-4 bg-red-300 p-2 rounded-xl text-lg text-red-700 font-semibold 
+            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all h-[33px]">
               <FaLock />
               Edit Profile
             </button>
           ) : (
-            <button onClick={handleOpen} type='button' className="my-6 bg-green-300 p-2 w-full mx-auto rounded-xl text-lg transition-all
+            <button onClick={handleOpen} type='button' className="my-4 bg-green-300 p-2 rounded-xl text-lg transition-all h-[33px]
             active:scale-95 text-green-700 font-semibold flex items-center justify-center gap-2 hover:bg-green-700 hover:text-white">
               <FaLockOpen />
               Edit Profile
@@ -176,7 +176,8 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
             <button
             disabled={disable}
             type="submit"
-            className="my-6 bg-gray-400 p-2 w-full mx-auto rounded-xl text-lg text-gray-700 font-semibold transition-all"
+            className="my-4 bg-gray-400 p-2 rounded-xl text-lg text-gray-700 font-semibold transition-all h-[33px]
+            flex items-center justify-center"
           >
             Update
           </button>
@@ -184,8 +185,8 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
           <button
             disabled={disable}
             type="submit"
-            className="my-6 bg-blue-500 p-2 w-full mx-auto rounded-xl text-lg text-white font-semibold transition-all 
-            hover:bg-blue-700 active:scale-95"
+            className="my-4 bg-blue-500 p-2 rounded-xl text-lg text-white font-semibold transition-all h-[33px]
+            hover:bg-blue-700 active:scale-95 flex items-center justify-center"
           >
             Update
           </button>

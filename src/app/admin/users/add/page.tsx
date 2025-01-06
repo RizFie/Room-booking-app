@@ -65,11 +65,11 @@ const AddNewAcc = () => {
             </div>
 
             <div className="flex flex-row gap-2">
-                <div className="w-[50%]">
-                    <button type="submit" className="mt-4 w-full text-center text-white font-medium 
+                <div className="w-[20%]">
+                    <button type="submit" className="mt-4 w-full text-center text-white font-medium
                     bg-blue-600 p-1 rounded-lg uppercase border-blue-600 border-2 hover:bg-blue-800 active:scale-95">Add New</button>
                 </div>
-                <div className="w-[50%]">
+                <div className="w-[20%]">
                     <Link href="/admin/users">
                         <button type="submit" className="mt-4 w-full text-center text-gray-500 border-gray-500 hover:text-gray-800 font-medium 
                         bg-white p-1 rounded-lg uppercase hover:border-gray-950 border-2 active:scale-95">Back</button>
