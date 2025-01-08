@@ -9,6 +9,7 @@ const ProfilePage = async () => {
 
     const session = await auth();
     const userId = session?.user.id;
+    const role = session?.user.role;
     //console.log("returned from session user id:",userId);
 
     const userData = await prisma.user.findUnique({
@@ -35,7 +36,7 @@ const ProfilePage = async () => {
             <p className="text-sm font-semibold">{userData?.createdAt.toLocaleDateString()}</p>
           </div>
         </div>
-        <ProfileForm userData={userData}/>
+        <ProfileForm sessionRole={role} userData={userData}/>
       </div>
 
       <div id="innerBg" className="rounded-r-lg w-full h-auto">

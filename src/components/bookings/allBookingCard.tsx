@@ -76,11 +76,11 @@ const AllBookingCard = ({userBookings}:Props) => {
     </div>
     
 
-    <div className="container flex flex-row mt-3 mb-7 gap-5 h-[392px] items-center flex-wrap justify-stretch">
+    <div className="container flex flex-row mt-3 mb-7 gap-7 h-[392px] items-center flex-wrap justify-between overflow-auto">
         {filteredBookings.length === 0 ? (
             <div className="container m-0 bg-white w-full h-full shadow-sm rounded-md mt-3 flex flex-col justify-center items-center
             gap-6 animate-fade-down">
-                <Image height={260} width={260} src={voidImage} alt="Nothing image"></Image>
+                <Image height={260} width={260} src={voidImage} alt="Nothing image"/>
                 <h1 className="text-center text-gray-600">You have no reservation</h1>
             </div>
         ) : (
@@ -88,7 +88,7 @@ const AllBookingCard = ({userBookings}:Props) => {
                 <div key={booking.bookingId} className="bg-white w-[270px] h-[373px] rounded-md shadow-md hover:scale-105 transition-all
                 animate-fade-down">
                     <h1 className="font-semibold text-lg my-0 pt-2 pb-1 bg-gradient-to-r from-purple-800 to-red-700 w-full 
-                    text-slate-100 px-2 rounded-t-md">
+                    text-slate-100 px-2 rounded-t-md min-h-[68px]">
                     {booking.place.placeName}</h1>
                     <div className="text-sm mx-4 my-2 font-bold h-5 flex flex-row gap-3 justify-between">
                         <div className="flex flex-row items-center gap-2">

@@ -18,7 +18,7 @@ const RoomCard = async ({role}: prop) => {
 
     let justify;
     if(role=="admin"){
-        justify = "justify-left";
+        justify = "justify-between";
     } else if(role == "user"){
         justify = "justify-center";
     }
@@ -27,7 +27,7 @@ const RoomCard = async ({role}: prop) => {
     //shadow-[0px_4px_54px_-18px_#73a8ff]
 
   return (
-    <div className={`mx-auto max-w-[80%] mt-5 mb-10 flex gap-7 ${justify} flex-wrap`}>
+    <div className={`mx-auto max-w-[82%] mt-5 mb-10 flex gap-7 ${justify} flex-wrap`}>
         {places.map( (place) => (
             <div key={place.placeId} className="bg-gradient-to-t from-gray-50 to-white rounded-xl shadow-lg hover:scale-105 
             hover:shadow-[0px_1px_26px_-3px_#4073ff] transition-all max-w-[320px] max-h-[483px] h-[483px]
@@ -47,7 +47,8 @@ const RoomCard = async ({role}: prop) => {
                 )}
                 
                 <div className="w-full p-3 pb-0 text-ellipsis">
-                    <h1 className="text-xl font-bold text-blue-950 border-l-4 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none">{place.placeName}</h1>
+                    <h1 className="text-xl font-bold text-blue-950 border-l-4 border-l-blue-900 p-1 bg-blue-50 rounded-md rounded-l-none
+                    min-h-[64px]">{place.placeName}</h1>
                     <p className="text-sm font-medium text-gray-700 mt-2 text-justify mb-2 max-h-[140px] min-h-[140px]">{place.placeDesc}</p>
                 </div>
                 

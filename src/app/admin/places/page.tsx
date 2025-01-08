@@ -10,7 +10,7 @@ const RoomsPage = async () => {
 
   return (
     <>
-        <div className="flex flex-row mx-auto max-w-[80%] mt-10 items-center justify-between h-auto">
+        <div className="flex flex-row mx-auto max-w-[82%] mt-10 items-center justify-between h-auto">
             <div className="flex flex-col">
                 <h1 className="font-bold text-3xl text-blue-950 animate-fade-right animate-duration-[1000ms] animate-delay-500">Room/Place</h1>
                 <div className="flex gap-2 items-center my-2 border-[1px] p-2 rounded-md bg-blue-100 border-blue-500 z-10

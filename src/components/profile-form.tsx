@@ -19,7 +19,6 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
 
     const [open, setOpen] = useState<boolean>(false);
     const [disable, setDisable] = useState<boolean>(true);
-    const router = useRouter();
 
     const handleOpen = () => {
       setOpen(!open);
@@ -157,10 +156,10 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
           <div></div>
         )}
 
-        <div className='grid grid-cols-2 gap-3 w-[50%]'>
+        <div className='grid grid-cols-2 gap-3 w-[70%]'>
           {open == false ? (
-            <button onClick={handleOpen} type='button' className="my-4 bg-red-300 p-2 rounded-xl text-lg text-red-700 font-semibold 
-            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all h-[33px]">
+            <button onClick={handleOpen} type='button' className={`my-4 w-full bg-red-300 p-2 rounded-xl text-lg text-red-700 font-semibold 
+            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all h-[33px]`}>
               <FaLock />
               Edit Profile
             </button>
