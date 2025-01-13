@@ -116,9 +116,11 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 id="placeName"
                 type="text"
                 name="placeName"
-                className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
+                className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2 mb-2 
                 bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
                 focus:bg-green-50 focus:text-green-950"/>
+                <span className={`text-[13px] font-medium ${state?.error?.placeName ? "text-red-500" : "text-gray-600"}`}>{state?.error?.placeName ? state?.error?.placeName : "Minimum of one character, name can't be blank"}</span>
+
 
                 <label
                 htmlFor="placeDesc"
@@ -134,8 +136,28 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                 className="text-md font-semibold text-blue-950 border-[1.5px] border-blue-900 py-1 px-2  
                 bg-blue-50 rounded-md w-full mt-2 h-20 focus:outline-green-600 focus:text-green-950
                 focus:bg-green-50 transition-all"/>
+                <span className={`text-[13px] font-medium ${state?.error?.placeDesc ? "text-red-500" : "text-gray-600"} mt-2`}>{state?.error?.placeDesc ? state?.error?.placeDesc : "Maximum of 275 characters allowed, description can't be blank"}</span>
 
-                <div className="flex flex-row gap-3 mt-5 justify-between">
+                <div className="flex flex-row gap-5 mt-5 justify-between">
+
+                    <div>
+                        <label
+                        htmlFor="placeType"
+                        className="text-md font-medium text-gray-700 text-2xl font-sans block"
+                        >
+                        Type
+                        </label>
+                        <input
+                        defaultValue={placeData?.placeType}
+                        id="placeType"
+                        type="text"
+                        name="placeType"
+                        className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2 mb-2 
+                        bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
+                        focus:bg-green-50 focus:text-green-950"/>
+                        <span className={`text-[13px] font-medium ${state?.error?.placeType ? "text-red-500" : "text-gray-600"} mt-2`}>{state?.error?.placeType ? state?.error?.placeType : "Minimum of one character, type can't be blank"}</span>
+                    </div>
+
                     <div>
                         <label
                         htmlFor="placeCapacity"
@@ -153,31 +175,15 @@ const RoomFormUpdate = ({ placeData }: Props) => {
                         bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
                         focus:bg-green-50 focus:text-green-950"/>
                     </div>
-                    <div>
-                        <label
-                        htmlFor="placeType"
-                        className="text-md font-medium text-gray-700 text-2xl font-sans block"
-                        >
-                        Type
-                        </label>
-                        <input
-                        defaultValue={placeData?.placeType}
-                        id="placeType"
-                        type="text"
-                        name="placeType"
-                        className="text-md font-semibold text-blue-950 border-l-[3px] border-l-blue-900 py-1 px-2  
-                        bg-blue-50 rounded-md rounded-l-none w-full mt-2 h-14 focus:outline-none focus:border-l-green-600
-                        focus:bg-green-50 focus:text-green-950"/>
-                    </div>
+                </div>
 
-                    <div className="grid grid-rows-2 justify-center items-center w-[110px] gap-2">
-                      <button type="submit" className="w-full border-2 bg-blue-100 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
-                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all shadow-md">UPDATE</button>
-                      <Link href={"/admin/places"}>
-                        <button className="w-full border-2 bg-gray-100 border-gray-500 p-2 rounded-md text-gray-600 hover:bg-gray-700
-                      hover:text-white font-medium hover:scale-110 active:scale-95 transition-all shadow-md">BACK</button>
-                      </Link>
-                    </div>
+                <div className="flex flex-row justify-center items-center w-[110px] gap-2 mt-4 ml-5">
+                    <button type="submit" className="w-full border-2 bg-blue-100 border-blue-500 p-2 rounded-md text-blue-600 hover:bg-blue-700
+                    hover:text-white font-medium hover:scale-110 active:scale-95 transition-all shadow-md">UPDATE</button>
+                    <Link href={"/admin/places"}>
+                      <button className="w-full border-2 bg-gray-100 border-gray-500 p-2 rounded-md text-gray-600 hover:bg-gray-700
+                    hover:text-white font-medium hover:scale-110 active:scale-95 transition-all shadow-md">BACK</button>
+                    </Link>
                 </div>
             </form>
         </div>

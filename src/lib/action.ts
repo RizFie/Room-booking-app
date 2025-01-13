@@ -6,6 +6,7 @@ import { hashSync } from "bcrypt-ts";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
+import { error } from "console";
 
 //SIGN UP FORM ACTION
 export const signUpCredentials = async (
@@ -154,7 +155,7 @@ export const updatePlace = async (id: string, prevState: unknown ,formData: Form
 
   if (!validatedFields.success) {
     return {
-      error: validatedFields.error.flatten().fieldErrors,
+      code: 500, message: "Invalid input data", error: validatedFields.error.flatten().fieldErrors,
     };
   }
 
