@@ -69,7 +69,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
   return (
     <>
 
-        <div className="bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
+        <div className="bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-md">
 
             <div className="relative w-full h-[400px] overflow-hidden">
 
@@ -103,7 +103,7 @@ const RoomFormUpdate = ({ placeData }: Props) => {
             </div>
         </div>
     
-        <div className="p-5 bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-[0px_4px_54px_-18px_#73a8ff]">
+        <div className="p-5 bg-white mx-auto max-w-[60%] mb-10 mt-4 rounded-lg shadow-md">
             <form action={formAction}>
                 <label
                 htmlFor="placeName"
