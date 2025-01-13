@@ -18,7 +18,7 @@ const AddNewAcc = () => {
           toast.success(state.message);
           state.code = 0;
         }
-    },[state?.code]);
+    },[state]);
 
   return (
     <div className="bg-white mx-auto max-w-[50%] my-4 rounded-lg shadow-sm p-3 mt-10">

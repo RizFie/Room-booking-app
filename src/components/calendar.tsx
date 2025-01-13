@@ -123,7 +123,7 @@ const Calendar = ({ data, role }: CalendarProps) => {
         )}
 
         { role == "admin" ? (
-          <h2 className="text-[14px] bg-blue-950 p-2 rounded-sm text-white text-justify">{props.Subject}</h2>
+          <h2 className="text-[14px] bg-blue-950 p-2 rounded-sm text-white text-justify break-words">{props.Subject}</h2>
         ) : (
           <h2></h2>
         )}

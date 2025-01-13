@@ -76,7 +76,7 @@ const AllBookingCard = ({userBookings}:Props) => {
     </div>
     
 
-    <div className="container flex flex-row mt-3 mb-7 gap-7 h-[392px] items-center flex-wrap justify-between overflow-auto">
+    <div className="container flex flex-row mt-3 mb-7 gap-7 h-[392px] items-center flex-wrap justify-left overflow-auto">
         {filteredBookings.length === 0 ? (
             <div className="container m-0 bg-white w-full h-full shadow-sm rounded-md mt-3 flex flex-col justify-center items-center
             gap-6 animate-fade-down">
@@ -111,7 +111,7 @@ const AllBookingCard = ({userBookings}:Props) => {
                     </div>
                     <div className="p-2 pt-0 text-[14px] w-full">
                         <h3 className="font-semibold bg-gray-100 p-1 my-1">Purpose/Agenda</h3>
-                        <h2 className="text-justify p-2 text-sm rounded-md bg-gray-100 shadow-inner h-[156px]">{booking.purpose}</h2>
+                        <h2 className="text-justify p-2 text-sm rounded-md bg-gray-100 shadow-inner h-[156px] break-words">{booking.purpose}</h2>
                     </div>
     
                     {booking.past ? (
