@@ -6,7 +6,6 @@ import { hashSync } from "bcrypt-ts";
 import { signIn, signOut } from "@/auth";
 import { AuthError } from "next-auth";
 import { revalidatePath } from "next/cache";
-import { error } from "console";
 
 //SIGN UP FORM ACTION
 export const signUpCredentials = async (
@@ -202,6 +201,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
     where: {
       placeId: ids.place,
       date: new Date(formatBookDate),
+      cancel: false,
       OR: [
         // New booking starts during an existing booking (PASSED)
         {
