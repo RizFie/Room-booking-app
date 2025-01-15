@@ -217,7 +217,7 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
             { endTime: { gte: bookDateEndTime } }
           ]
         },
-        // New booking completely within or is the same with an existing booking (PASSED)
+        // New booking is completely within or is the same with an existing booking (PASSED)
         {
           AND: [
             { startTime: { gte: bookDateStartTime } },
