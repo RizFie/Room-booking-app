@@ -12,7 +12,6 @@ const BookingPageAdmin = async () => {
 
   const today = new Date();
   const todayStartOfDay = new Date(today.getFullYear(), today.getMonth(), today.getDate()).toISOString();
-  const tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate(), 23, 59, 59);
 
   //console.log(tomorrow)
 

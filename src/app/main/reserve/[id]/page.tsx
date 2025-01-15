@@ -7,14 +7,14 @@ import Link from 'next/link';
 import React from 'react';
 import datePickerIllustration from '../../../../../public/illustration/date_picker_illustration.svg';
 
-const CompleteBooking = async ({ params }: { params: { id: string } }) => {
+const CompleteBooking = async ({ params }: { params: Promise<{ id: string }> }) => {
 
     const session = await auth();
     const userId = session?.user.id;
 
     console.log(userId);
 
-    const {id} = await params;
+    const id = (await params).id;
     
     const placeData = await prisma.place.findUnique({
         where: {

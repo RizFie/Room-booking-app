@@ -4,11 +4,11 @@ import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { IoIosArrowBack } from "react-icons/io";
 
-const EditUser = async ({ params }: { params: { id: string } }) => {
+const EditUser = async ({ params }: { params: Promise<{ id: string }> }) => {
 
     const session = await auth();
     const role = session?.user.role;
-    const {id} = await params;
+    const id = (await params).id;
 
     const userData = await prisma.user.findUnique({
       where: {userId: id},

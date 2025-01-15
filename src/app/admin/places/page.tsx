@@ -1,6 +1,5 @@
 import { auth } from "@/auth";
 import RoomCard from "@/components/room-card";
-import Link from "next/link";
 import { FaCircleExclamation } from "react-icons/fa6";
 
 const RoomsPage = async () => {

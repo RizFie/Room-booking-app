@@ -3,9 +3,9 @@ import { prisma } from "@/lib/prisma";
 import { MdModeEditOutline } from "react-icons/md";
 import { TbAlertOctagonFilled } from "react-icons/tb";
 
-const EditPlace = async ({ params }: { params: { id: string } }) => {
+const EditPlace = async ({ params }: { params: Promise<{ id: string }> }) => {
 
-    const {id} = await params;
+    const id = (await params).id;
 
     const placeData = await prisma.place.findUnique({
         where: {
