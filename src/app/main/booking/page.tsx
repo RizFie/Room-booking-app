@@ -5,7 +5,8 @@ import { prisma } from "@/lib/prisma";
 const BookingPage = async () => {
 
     const session = await auth();
-    const userId = session?.user.userId;
+    const userId = session?.user.id;
+    //console.log(userId);
 
     const userBookings = await prisma.booking.findMany({
         where: {

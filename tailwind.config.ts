@@ -73,6 +73,13 @@ const config: Config = {
 		backgroundImage: {
 			wave: "url('/illustration/Background.svg')",
 		},
+		screens: {
+			'max-sm': { max: '639px' },
+			'max-md': { max: '767px' }, 
+			'max-lg': { max: '1023px' }, 
+			'max-xl': { max: '1279px' }, 
+			'max-2xl': { max: '1535px' }, 
+		}
   	}
   },
   plugins: [require('tailwindcss-animated')],
