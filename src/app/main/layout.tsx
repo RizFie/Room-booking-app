@@ -16,7 +16,7 @@ const MainLayout = async ({children}:{children: React.ReactNode}) => {
     await updatePastStatus();
 
   return (
-    <div className="min-h-full">
+    <div className="h-screen w-screen">
         <Navbar name={secName} role={role}/>
         {children}
     </div>

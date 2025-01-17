@@ -65,37 +65,37 @@ const Home = async () => {
         animate-fade-up animate-once">
           <div className="flex flex-row gap-4 items-center justify-center p-1
           bg-gray-100 rounded-sm rounded-r-none animate-fade animate-once animate-duration-[1400ms] animate-ease-linear">
-              <FaBook className="w-[35px] h-[35px]"/>
+              <FaBook className="w-[35px] h-[35px] max-sm:hidden"/>
               <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Total Reservations</h3>
+                <h3 className="text-sm font-semibold max-sm:text-[12px]">Total Reservations</h3>
                 <h3 className="text-xl font-bold">{bookingNum}</h3>
               </div>
           </div>
 
           <div className="flex flex-row gap-4 items-center justify-center p-1
           bg-gray-100 rounded-sm rounded-r-none animate-fade animate-once animate-duration-[1600ms] animate-ease-linear">
-              <MdLibraryBooks className="w-[35px] h-[35px]"/>
+              <MdLibraryBooks className="w-[35px] h-[35px] max-sm:hidden"/>
               <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Active Reservations</h3>
+                <h3 className="text-sm font-semibold max-sm:text-[12px]">Active Reservations</h3>
                 <h3 className="text-xl font-bold">{activeBookingNum}</h3>
               </div>
           </div>
 
           <div className="flex flex-row gap-4 items-center justify-center p-1
           bg-gray-100 rounded-sm animate-fade animate-once animate-duration-[1800ms] animate-ease-linear">
-              <TiTickOutline className="w-[35px] h-[35px] scale-125"/>
+              <TiTickOutline className="w-[35px] h-[35px] scale-125 max-sm:hidden"/>
               <div className="flex flex-col gap-1">
-                <h3 className="text-sm font-semibold">Past Reservations</h3>
+                <h3 className="text-sm font-semibold max-sm:text-[12px]">Past Reservations</h3>
                 <h3 className="text-xl font-bold">{pastBookingNum}</h3>
               </div>
           </div>
         </div>
 
-        <div className="container grid grid-cols-4 gap-2 w-full max-h-[200px]">
+        <div className="container grid grid-cols-4 gap-2 w-full max-h-[200px] max-sm:flex max-sm:flex-col">
 
           <div className="bg-white p-4 mb-4 container rounded-md shadow-sm w-full col-span-3
           animate-fade-right animate-once animate-duration-[1200ms] animate-ease-linear max-h-[200px]
-          overflow-auto">
+           max-sm:h-64 max-sm:max-h-none">
             <h2 className="text-lg font-semibold mb-2">Your Reservations</h2>
             <div className="overflow-auto mt-3">
               <table className="w-full border-collapse border-spacing-2 text-sm rounded-md overflow-auto max-h-[171px]">

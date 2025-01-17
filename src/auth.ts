@@ -38,7 +38,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         const passwordMatch = compareSync(password, user.password);
 
         if(!passwordMatch) return null;
-        console.log("user info",user);
+        //console.log("user info",user);
         return user;
       }
     })

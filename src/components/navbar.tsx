@@ -43,7 +43,7 @@ const Navbar = ({name, role}: User) => {
       <div className="max-w-full flex items-center justify-between p-2">
 
         {/*Item 1*/}
-          <div className="flex-0 container w-[180px] h-[60px] overflow-hidden flex justify-center ">
+          <div className="flex-0 container w-[180px] h-[60px] overflow-hidden flex justify-center max-sm:hidden">
             <Image
               src={logoEtempah}
               alt="e-tempah"
@@ -51,7 +51,7 @@ const Navbar = ({name, role}: User) => {
               priority
             />
           </div>
-          <div className="flex-0 container w-[60px] h-[60px] flex justify-center ">
+          <div className="flex-0 container w-[60px] h-[60px] flex justify-center max-sm:hidden">
             <Image
               src={logoMdr}
               alt="Logo Majlis Daerah Raub"
@@ -61,7 +61,8 @@ const Navbar = ({name, role}: User) => {
           </div>
 
         {/*Item 2*/}
-        <ul className="flex-1 justify-center flex items-center gap-6 font-bold text-blue-950 py-1">
+        <ul className="flex-1 justify-center flex items-center gap-6 font-bold text-blue-950 py-1
+        max-sm:scale-75">
           <li id="li1" className={`hover:cursor-pointer hover:text-blue-400 transition-all ${pathname.startsWith("/main/home") ? "text-blue-800" : ""}`}>
             <Link href="/main/home">Home</Link>
           </li>
@@ -77,9 +78,11 @@ const Navbar = ({name, role}: User) => {
         </ul>
 
         {/*Item 3 LOGOUT BUTTON*/}
-        <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3 min-w-[240px]">
+        <div className="flex-2 justify-end flex items-center text-blue-950 py-1 gap-3 min-w-[240px] max-sm:min-w-12
+        max-sm:scale-75">
 
-          <div className="flex flex-col justify-self-center text-blue-950 text-right border-r-2 pr-2 border-gray-300">
+          <div className="flex flex-col justify-self-center text-blue-950 text-right border-r-2 pr-2 border-gray-300
+          max-sm:hidden">
             <h2 className="flex-0 font-bold">{name}</h2>
             <h2 className="flex-1 font-semibold text-gray-800">{role}</h2>
           </div>
