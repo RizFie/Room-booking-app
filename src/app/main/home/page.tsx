@@ -128,7 +128,7 @@ const Home = async () => {
 
           <div className="bg-white p-2 mb-4 container rounded-md shadow-md w-full col-span-1 grid grid-rows-2 gap-2
           bg-[url('/illustration/intoTheNight.jpg')] bg-cover bg-center bg-no-repeat text-white max-h-[200px]
-          animate-fade animate-once animate-duration-[1400ms] animate-ease-in mb-4">
+          animate-fade animate-once animate-duration-[1400ms] animate-ease-in">
             <h3 className="text-xl font-bold ">Last reservation</h3>
             {date2 === undefined ? (
               <h3 className="justify-center text-center backdrop-blur-sm leading-10 text-white">You have no past reservation</h3>
