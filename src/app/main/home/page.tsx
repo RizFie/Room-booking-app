@@ -47,7 +47,7 @@ const Home = async () => {
   //console.log(dayPast);
 
   return (
-    <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%]">
+    <div className="grid grid-rows-2 my-10 mx-auto max-w-[80%] max-sm:w-full max-sm:justify-center">
       
       <div>
         <h1 className="text-2xl font-semibold mb-2 animate-fade-right animate-duration-[1100ms] animate-ease-linear
@@ -128,15 +128,15 @@ const Home = async () => {
 
           <div className="bg-white p-2 mb-4 container rounded-md shadow-md w-full col-span-1 grid grid-rows-2 gap-2
           bg-[url('/illustration/intoTheNight.jpg')] bg-cover bg-center bg-no-repeat text-white max-h-[200px]
-          animate-fade animate-once animate-duration-[1400ms] animate-ease-in">
+          animate-fade animate-once animate-duration-[1400ms] animate-ease-in mb-4">
             <h3 className="text-xl font-bold ">Last reservation</h3>
             {date2 === undefined ? (
               <h3 className="justify-center text-center backdrop-blur-sm leading-10 text-white">You have no past reservation</h3>
             ) : (
               <div className="flex flex-row gap-3 items-center justify-center h-[30px] rounded-md w-[120px] mx-auto
               backdrop-blur">
-                <h3 className="text-[30px] font-bold scale-150">{dayPast}</h3>
-                <h3 className="text-lg font-semibold h-10 text-end">{
+                <h3 className="text-[30px] font-bold scale-150 max-sm:text-xl">{dayPast}</h3>
+                <h3 className="text-lg font-semibold h-10 text-end max-sm:text-sm">{
                   dayPast > 1 ? "days ago" : "day ago"
                   }</h3>
               </div>
