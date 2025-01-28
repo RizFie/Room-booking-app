@@ -28,7 +28,7 @@ const ReservePage = async () => {
       <p className='text-gray-700 mt-2 font-semibold'>Start your booking process now and secure your spot!</p>
     </div>
 
-    <div className='mb-10 flex flex-row justify-center items-center gap-7'>
+    <div className='mb-10 flex flex-row justify-center items-center gap-7 max-sm:flex-col'>
       <h2 className='text-center text-sm font-semibold bg-gradient-to-r from-purple-700 to-red-600 
       p-3 shadow-md text-white w-[300px] 
       animate-fade-right animate-once animate-delay-[1000ms] animate-ease-linear animate-alternate'>1. Select your room/place</h2>
@@ -43,8 +43,8 @@ const ReservePage = async () => {
     <RoomCard role={role}/>
     
     <div className='text-blue-800 mt-2 font-medium text-sm bg-blue-100 max-w-[80%] mx-auto
-      py-2 border-l-4 border-l-blue-500 pl-2 flex flex-row gap-3 items-center'>
-      <ImNotification/>
+      py-2 border-l-4 border-l-blue-500 pl-2 flex flex-row gap-3 items-center max-sm:text-[11px] max-sm:p-1'>
+      <ImNotification className='max-sm:hidden'/>
       <p>The Calendar may help you to identify reserved date and time.<br/>
       For reservation details and cancellation, please navigate to the "<b>Booking</b>" section.</p>
     </div>

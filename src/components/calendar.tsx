@@ -1,6 +1,6 @@
 "use client";
 
-import React, {useActionState, useEffect, useTransition,} from "react";
+import React, {useActionState, useEffect, useState, useTransition, useRef } from "react";
 import { useRouter } from "next/navigation";
 import {
   Week, Month, Agenda, ScheduleComponent, ViewsDirective, ViewDirective, EventSettingsModel, ResourcesDirective, ResourceDirective, Inject, Resize, DragAndDrop,
@@ -55,6 +55,16 @@ interface CalendarProps {
 }
 
 const Calendar = ({ data, role }: CalendarProps) => {
+
+  const scheduleRef = useRef<ScheduleComponent | null>(null);
+
+  const [height, setHeight] = useState("550px");
+
+  useEffect(() => {
+    if (window.innerWidth < 640) {
+      setHeight("224px");
+    }
+  }, []);
 
   //console.log(role)
   const dateVariable = new Date();
@@ -220,6 +230,13 @@ const Calendar = ({ data, role }: CalendarProps) => {
         }
       });
     };
+
+    const handleClosePopup = () => {
+      if (scheduleRef.current) {
+        scheduleRef.current.closeQuickInfoPopup();
+      }
+    };
+  
   
     return (
       <div>
@@ -289,7 +306,17 @@ const Calendar = ({ data, role }: CalendarProps) => {
             ) : (
               <div></div>
             )}
+          </div>
+        )}
 
+        { window.innerWidth < 640 && role === 'user' && (
+          <div className="container flex flex-row justify-end items-center gap-2">
+            <button
+              onClick={handleClosePopup}
+              className="py-1 px-2 rounded-full border-2 border-blue-500 text-blue-600 
+              cursor-pointer transition-all active:scale-95">
+              <h2 className="font-medium">Close</h2>
+            </button>
           </div>
         )}
       </div>
@@ -304,12 +331,14 @@ const Calendar = ({ data, role }: CalendarProps) => {
     footer: footerTemplate,
   }
 
-  const eventSettings: EventSettingsModel = { dataSource: schedulerData, allowAdding: false, allowEditing: false, template: template }
+  const eventSettings: EventSettingsModel = { dataSource: schedulerData, allowAdding: false, allowEditing: false, template: template };
+
+  //closeQuickInfoPopup();
   
   return (
     <div className="w-[80%] mx-auto my-4 p-3 rounded-md bg-white flex items-center justify-center shadow-lg border-t-8 rounded-t-md border-t-blue-700">
-      <ScheduleComponent className="border-none rounded-lg" width='100%' height='550px' currentView='Month' selectedDate={dateVariable} eventSettings={eventSettings}
-      quickInfoTemplates={quickTemplate}>
+      <ScheduleComponent className="border-none rounded-lg" width='100%' height={height} currentView='Month' selectedDate={dateVariable} eventSettings={eventSettings}
+      quickInfoTemplates={quickTemplate} ref={scheduleRef}>
         <ViewsDirective>
           <ViewDirective option='Day' />
           <ViewDirective option='Week' />

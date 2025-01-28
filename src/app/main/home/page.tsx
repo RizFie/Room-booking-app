@@ -110,7 +110,7 @@ const Home = async () => {
 
                 <tbody>
                   {allBooking.map((booking) => (
-                    <tr key={booking.bookingId} className="border-t-[1px] border-t-gray-200">
+                    <tr key={booking.bookingId} className="border-t-[1px] border-t-gray-200 max-sm:text-[10px]">
                       <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.place.placeName}</td>
                       <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.createdAt.toLocaleDateString("en-MY")}</td>
                       <td className="border-r-[1.4px] border-r-gray-200 pl-2 py-2">{booking.date.toLocaleDateString("en-MY")}</td>
