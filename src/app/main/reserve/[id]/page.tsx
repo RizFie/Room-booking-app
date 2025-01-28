@@ -29,10 +29,14 @@ const CompleteBooking = async ({ params }: { params: Promise<{ id: string }> }) 
     const placeId = id;
 
   return (
-    <div className='mx-auto max-w-[80%] my-10 flex flex-row gap-4'>
-        <div className='bg-white p-5 shadow-md rounded-lg max-w-[60%] min-h-[486px]'>
+    <div className='mx-auto max-w-[80%] my-10 flex flex-row gap-4 max-sm:flex-col'>
+        <div className='bg-white p-5 shadow-md rounded-lg max-w-[60%] min-h-[486px] max-sm:max-w-full'>
             <div className='flex flex-row items-center justify-between'>
                 <h1 className='text-2xl font-bold text-blue-950'>Complete your booking,</h1>
+                <div className={`max-sm:flex justify-end hidden`}>
+                    <Link href={'/main/reserve'}><button className='rounded-md shadow-sm bg-blue-950 h-[32px] w-[54px]
+                    text-white font-medium hover:scale-110 active:scale-95 transition-all'>Back</button></Link>
+                </div>
             </div>
         
             <Carousel placePic={placePic || []}/>
@@ -49,11 +53,13 @@ const CompleteBooking = async ({ params }: { params: Promise<{ id: string }> }) 
                         <h2 className='font-medium text-xs bg-blue-950 w-20 text-center p-1 text-white rounded-md mt-1'>Capacity</h2>
                     </div>
                 </div>
-                <p className='mt-4 text-justify text-gray-700 font-base p-2 bg-gray-100 h-32'>{placeData?.placeDesc}</p>   
+                <p className='mt-4 text-justify text-gray-700 font-base p-2 bg-gray-100 h-32 max-sm:text-sm max-sm:overflow-auto'>{placeData?.placeDesc}</p>   
             </div>
         </div>
-        <div className='container max-w-[40%] min-h-[486px] bg-white p-5 shadow-md rounded-lg'>
-            <div className='flex justify-end'>
+
+        <div className='container max-w-[40%] min-h-[486px] bg-white p-5 shadow-md rounded-lg max-sm:max-w-full'>
+           
+            <div className={`flex justify-end max-sm:hidden`}>
                 <Link href={'/main/reserve'}><button className='rounded-md shadow-sm bg-blue-950 h-[32px] w-[54px]
                 text-white font-medium hover:scale-110 active:scale-95 transition-all'>Back</button></Link>
             </div>

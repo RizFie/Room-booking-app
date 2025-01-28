@@ -38,19 +38,19 @@ const DateTimeForm = ({userId,placeId}:props) => {
         <div className='flex flex-col'>
             <label htmlFor='date' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Reservation Date</label>
             <input required min={formattedDate} name='date' id='date' type='date' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
-            outline-blue-500'/>
+            outline-blue-500 max-sm:w-full'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='startTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Start Time</label>
             <input required name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
-            outline-blue-500'/>
+            outline-blue-500 max-sm:w-full'/>
         </div>
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='endTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>End Time</label>
             <input required name='endTime' id='endTime' type='time' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
-            outline-blue-500'/>
+            outline-blue-500 max-sm:w-full'/>
         </div>
 
         <div className='flex flex-col mt-6'>

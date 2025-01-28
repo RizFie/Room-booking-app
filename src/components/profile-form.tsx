@@ -159,14 +159,14 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
         <div className='grid grid-cols-2 gap-3 w-[70%]'>
           {open == false ? (
             <button onClick={handleOpen} type='button' className={`my-4 w-full bg-red-300 p-2 rounded-xl text-lg text-red-700 font-semibold 
-            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all h-[33px]`}>
-              <FaLock />
+            flex items-center justify-center gap-2 hover:bg-red-700 hover:text-white active:scale-95 transition-all h-[33px] max-sm:text-[12px]`}>
+              <FaLock className='max-sm:hidden'/>
               Edit Profile
             </button>
           ) : (
             <button onClick={handleOpen} type='button' className="my-4 bg-green-300 p-2 rounded-xl text-lg transition-all h-[33px]
-            active:scale-95 text-green-700 font-semibold flex items-center justify-center gap-2 hover:bg-green-700 hover:text-white">
-              <FaLockOpen />
+            active:scale-95 text-green-700 font-semibold flex items-center justify-center gap-2 hover:bg-green-700 hover:text-white max-sm:text-[12px]">
+              <FaLockOpen className='max-sm:hidden'/>
               Edit Profile
             </button>
           )}
@@ -176,7 +176,7 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
             disabled={disable}
             type="submit"
             className="my-4 bg-gray-400 p-2 rounded-xl text-lg text-gray-700 font-semibold transition-all h-[33px]
-            flex items-center justify-center"
+            flex items-center justify-center max-sm:text-[12px]"
           >
             Update
           </button>
@@ -185,7 +185,7 @@ const ProfileForm = ({userData, sessionRole}: ProfileFormProps ) => {
             disabled={disable}
             type="submit"
             className="my-4 bg-blue-500 p-2 rounded-xl text-lg text-white font-semibold transition-all h-[33px]
-            hover:bg-blue-700 active:scale-95 flex items-center justify-center"
+            hover:bg-blue-700 active:scale-95 flex items-center justify-center max-sm:text-[12px]"
           >
             Update
           </button>

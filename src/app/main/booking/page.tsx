@@ -25,8 +25,7 @@ const BookingPage = async () => {
   return (
     <div className="max-w-[80%] mx-auto mt-10 text-blue-950">
         <h1 className="text-3xl font-bold animate-fade-right animate-once animate-ease-out mb-3">Booking</h1>
-        <span className="text-sm font-medium bg-gray-200 p-2 bg-opacity-75">You may view your reservation details here,
-        page refresh will happen if the admin <b>confirm</b> or <b>cancel</b> your reservation.</span>
+        <span className="text-sm font-medium bg-gray-200 p-2 bg-opacity-75 max-sm:text-[12px]">You may view your reservation details here.</span>
 
         <h3 className="mt-10 text-lg font-semibold w-36 bg-blue-200 text-center rounded-sm">All reservation</h3>
         <AllBookingCard userBookings={userBookings}/>

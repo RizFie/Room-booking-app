@@ -287,6 +287,9 @@ const Calendar = ({ data, role }: CalendarProps) => {
 
               <div className="flex flex-row gap-2">
 
+                { props.past ? (
+                  <div></div>
+                ): (
                 <div className={`flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-red-500 text-red-600
                 hover:scale-105 cursor-pointer transition-all active:scale-95`}>
                   <button disabled={isPendingCancel} onClick={handleDelete} className="flex flex-row gap-1">
@@ -294,6 +297,8 @@ const Calendar = ({ data, role }: CalendarProps) => {
                     <h2 className="font-medium text-center">{isPendingCancel ? 'Deleting...' : 'Delete'}</h2>
                   </button>  
                 </div>
+                )}
+                
 
                 <button className="flex flex-row justify-center items-center py-1 px-2 rounded-full border-2 border-green-700 text-green-600 bg-green-700" disabled>
                   <TiTick className="text-xl scale-105 text-center text-white"/>

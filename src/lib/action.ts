@@ -243,7 +243,6 @@ export const createBooking = async ( ids: {place: string, user: string}, prevSta
         placeId: ids.place,
       }
     });
-
     revalidatePath("/admin/bookings");
     return {code: 200, message: "Reservation successfully placed"};
   } catch (error) {
@@ -287,12 +286,13 @@ export const cancelBooking = async (id:string) => {
   }
 }
 
-//CANCEL BOOKING SERVER ACTION
+//DELETE BOOKING SERVER ACTION
 export const deleteBooking = async (id:string) => {
   try {
     await prisma.booking.delete({
       where: {bookingId: id},
     });
+    revalidatePath("/main/booking");
     return {code: 200, message: "Reservation has been deleted"};
   } catch (error) {
     return {code: 500, message: "Something broke, please try again"};
