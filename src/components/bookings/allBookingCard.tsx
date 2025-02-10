@@ -100,7 +100,7 @@ const AllBookingCard = ({userBookings}:Props) => {
                                 <h3>Confirmed</h3>
                             </div>
                         ) : (
-                            <div className="bg-red-500 text-white p-1 rounded-md text-xs text-center w-16 flex items-center justify-center">
+                            <div className={`bg-red-500 text-white p-1 rounded-md text-xs text-center w-16 flex items-center justify-center ${booking.past ? "hidden" : ""}`}>
                                 <h3>Pending</h3>
                             </div>
                         )}
