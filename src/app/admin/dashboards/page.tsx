@@ -82,7 +82,7 @@ const Dashboard = async () => {
         </div>
         <div>
           { today.getHours() >= 19 || today.getHours() < 6 ? 
-          <FaMoon className='text-6xl animate-spin animate-infinite animate-duration-[60000ms] animate-ease-linear text-yellow-400'/> 
+          <FaMoon className='text-6xl text-yellow-400'/> 
           : 
           <FaSun className='text-6xl animate-spin animate-infinite animate-duration-[60000ms] animate-ease-linear text-orange-400'/> }
         </div>

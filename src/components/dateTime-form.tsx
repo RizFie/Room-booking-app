@@ -14,9 +14,10 @@ const DateTimeForm = ({userId,placeId}:props) => {
   //console.log("Date Time placeId: ",placeId);
 
   const date = new Date();
+  console.log("Current Date: ",date.toLocaleString());
   const formattedDate = date.toISOString().split('T')[0];
   const formattedTime = date.toLocaleTimeString().split(' ')[0].slice(0,5).concat(":00");
-  console.log("Formatted Date: ",formattedTime);
+  console.log("Formatted Time: ",formattedTime);
 
   const createBookingWithIds = createBooking.bind(null,{
     place: placeId,
@@ -44,7 +45,7 @@ const DateTimeForm = ({userId,placeId}:props) => {
 
         <div className='flex flex-col mt-6'>
             <label htmlFor='startTime' className='text-md font-medium block mb-2 bg-blue-950 text-white px-2 w-40 text-center rounded-md'>Start Time</label>
-            <input required min={formattedTime} name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
+            <input required name='startTime' id='startTime' type='time' className='p-2 border-[1.4px] rounded-sm border-gray-300 shadow-inner active:outline-1
             outline-blue-500 max-sm:w-full'/>
         </div>
 
